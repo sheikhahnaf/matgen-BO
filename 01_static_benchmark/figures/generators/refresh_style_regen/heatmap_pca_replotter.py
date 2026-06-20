@@ -19,6 +19,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -39,8 +41,8 @@ from plot_style import (
 )
 
 
-ANALYSIS_ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/ASE_regression_test")
-DFPT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/phonon_thermo_benchmark/paper_figures_new_phonon_2026-06-18/arm_a_dfpt")
+ANALYSIS_ROOT = _ROOT / "archive" / "ASE-native-surrogates"
+DFPT = _ROOT / "archive" / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18" / "arm_a_dfpt"
 FIG_DIR = Path(__file__).resolve().parent / "out"
 
 DATASETS = {

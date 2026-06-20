@@ -15,12 +15,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import pandas as pd
 
-REPO = Path("/Volumes/SSD1_SMAAA/matinvent-bo")
-ANALYSIS_BASE = REPO / "ASE_regression_test"
+ANALYSIS_BASE = _ROOT / "archive" / "ASE-native-surrogates"
 # Phonon is now the new DFPT phonon-thermodynamics benchmark (replaces phonon-dielectric).
-DFPT = REPO / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18" / "arm_a_dfpt"
+DFPT = _ROOT / "archive" / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18" / "arm_a_dfpt"
 
 DATASET_DIR = {
     "elastic": ANALYSIS_BASE / "analysis_v3",

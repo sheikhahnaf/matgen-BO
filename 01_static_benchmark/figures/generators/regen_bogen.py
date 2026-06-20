@@ -10,11 +10,14 @@ import shutil
 import sys
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 
-ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/FME_paper_refresh_v1")
-SRC = Path("/Volumes/SSD1_SMAAA/matinvent-hcap-bo/analysis")
-DST = ROOT / "figures"
+ROOT = _ROOT / "archive" / "FME_paper_refresh_v1"
+SRC = _ROOT / "archive" / "matinvent-hcap-bo" / "analysis"
+DST = _ROOT / "01_static_benchmark" / "figures" / "regenerated"
+DST.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(ROOT / "figures_src"))
 from plot_style import apply_style  # noqa: E402

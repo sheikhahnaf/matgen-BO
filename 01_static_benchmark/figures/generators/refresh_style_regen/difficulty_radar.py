@@ -17,6 +17,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -30,9 +32,8 @@ from plot_style import (
     SZ_AXIS, SZ_TICK, SZ_SUPTITLE, SZ_SUBTITLE, SZ_LEGEND, SZ_ANNOT, SZ_VALUE_LABEL,
 )
 
-ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-bo")
-ANALYSIS = ROOT / "ASE_regression_test"
-DFPT = ROOT / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18" / "arm_a_dfpt"
+ANALYSIS = _ROOT / "archive" / "ASE-native-surrogates"
+DFPT = _ROOT / "archive" / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18" / "arm_a_dfpt"
 FIG_OUT = Path(__file__).resolve().parent / "out"
 
 DATASETS = {

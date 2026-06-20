@@ -19,6 +19,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -39,9 +41,9 @@ from plot_style import (
 )
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-ANALYSIS_ROOT = REPO_ROOT.parent / "ASE_regression_test"
-FIG_DIR = REPO_ROOT / "figures"
+ANALYSIS_ROOT = _ROOT / "archive" / "ASE-native-surrogates"
+FIG_DIR = _ROOT / "01_static_benchmark" / "figures" / "regenerated"
+FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 DATASETS = {
     "elastic": {

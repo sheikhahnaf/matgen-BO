@@ -22,15 +22,23 @@ conda activate matinvent
 ```
 
 ## Reproduce
-Everything needed to regenerate the figures is **in-tree** (figure-driving CSVs under `0*/data/`, prepared datasets `0*/data/*.pkl`, rendered references under `0*/figures/rendered/`). No external downloads required for figures.
+Everything needed to regenerate the figures is **in-tree**. Each generator resolves the
+repo root from its own location and reads the complete verbatim data mirror under
+`archive/<source-tree>/` (e.g. `archive/ASE-native-surrogates/analysis_v3/…`), writing
+freshly rendered figures to `0*/figures/regenerated/`. The paper-reference figures under
+`0*/figures/rendered/` are never overwritten. No external downloads required for figures.
 ```bash
+conda activate matinvent
 bash reproduce.sh          # regenerates figures for all three subsystems from in-tree data
 # or per subsystem:
 bash 01_static_benchmark/run.sh
 ```
 See **REPRODUCE.md** for the Figure/Table → command map.
 
-> **Note:** the vendored figure generators under `0*/figures/generators/` were written against the original working tree and may carry absolute data paths; point them at the in-tree `0*/data/` directories (each generator's data-path constant near the top) if a path error appears. The figure-driving CSVs they need are all present in-tree.
+> **Self-contained:** the generators are path-portable — no machine-specific paths, no
+> manual edits. They discover the repo root via `Path(__file__)` and read in-tree
+> `archive/` data, so a fresh clone reproduces the figures as-is. `s13_s14_regen` also
+> self-checks its reproduced R² values against the published numbers.
 
 ## External (full from-scratch rerun only)
 Raw 79 GB phonon deposit (Zenodo `20196565`) and model checkpoints (HuggingFace `SheikhAhnaf/...`) are **not** needed to reproduce figures — see `docs/EXTERNAL.md` / `docs/fetch_external.sh`.

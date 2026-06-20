@@ -14,6 +14,8 @@ import re
 import sys
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -22,8 +24,9 @@ from plot_style import apply_style, save_figure
 
 apply_style()
 
-ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-hcap-bo")
-OUT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/FME_paper_refresh_v1/figures")
+ROOT = _ROOT / "archive" / "matinvent-hcap-bo"
+OUT = _ROOT / "01_static_benchmark" / "figures" / "regenerated"
+OUT.mkdir(parents=True, exist_ok=True)
 
 PARADIGMS = ["mg", "cf", "adit"]
 PARADIGM_LABEL = {"mg": "MatterGen", "cf": "CrystalFlow", "adit": "ADiT"}

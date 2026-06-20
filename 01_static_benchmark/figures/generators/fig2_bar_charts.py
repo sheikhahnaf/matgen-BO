@@ -38,7 +38,8 @@ from plot_style import (
 )
 
 
-FIGURES_DIR = Path(__file__).resolve().parent.parent / "figures"
+FIGURES_DIR = Path(__file__).resolve().parents[2] / "figures" / "regenerated"
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 
 DATASETS = [
     ("elastic", "fig2_bar_elastic_R2_grouped.png"),

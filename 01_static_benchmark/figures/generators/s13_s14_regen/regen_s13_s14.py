@@ -24,6 +24,8 @@ Colour encodes DATASET position (elastic=blue, dielectric=orange, phonon=green).
 import sys
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -36,8 +38,8 @@ import plot_style as ps  # noqa: E402
 ps.apply_style()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
 
-ASE = Path("/Volumes/SSD1_SMAAA/matinvent-bo/ASE_regression_test")
-NEW = Path("/Volumes/SSD1_SMAAA/matinvent-bo/phonon_thermo_benchmark/paper_figures_new_phonon_2026-06-18")
+ASE = _ROOT / "archive" / "ASE-native-surrogates"
+NEW = _ROOT / "archive" / "phonon_thermo_benchmark" / "paper_figures_new_phonon_2026-06-18"
 CSV = {
     "elastic":    ASE / "analysis_v3" / "aggregated_results.csv",
     "dielectric": ASE / "analysis_v3_dielectric_constant" / "aggregated_results.csv",

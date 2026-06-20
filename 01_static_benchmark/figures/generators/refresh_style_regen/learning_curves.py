@@ -14,6 +14,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -29,24 +31,26 @@ from plot_style import (
 )
 
 
-REPO_ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-bo")
 FIG_DIR = Path(__file__).resolve().parent / "out"
 
 DATASETS = {
-    "dielectric": REPO_ROOT
-    / "ASE_regression_test"
+    "dielectric": _ROOT
+    / "archive"
+    / "ASE-native-surrogates"
     / "combined_dielectric_constant"
     / "data"
     / "learning_curves_orb.csv",
-    "phonon": REPO_ROOT
+    "phonon": _ROOT
+    / "archive"
     / "phonon_thermo_benchmark"
     / "paper_figures_new_phonon_2026-06-18"
     / "arm_a_dfpt"
     / "combined"
     / "data"
     / "learning_curves_orb.csv",
-    "elastic": REPO_ROOT
-    / "ASE_regression_test"
+    "elastic": _ROOT
+    / "archive"
+    / "ASE-native-surrogates"
     / "analysis_v3"
     / "combined"
     / "data"

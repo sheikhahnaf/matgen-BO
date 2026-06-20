@@ -12,6 +12,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -20,8 +22,9 @@ from plot_style import apply_style, save_figure
 
 apply_style()
 
-ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-hcap-bo/analysis/top_structures")
-OUT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/FME_paper_refresh_v1/figures")
+ROOT = _ROOT / "archive" / "matinvent-hcap-bo" / "hcap_bo" / "analysis" / "top_structures"
+OUT = _ROOT / "02_closed_loop_bo" / "figures" / "regenerated"
+OUT.mkdir(parents=True, exist_ok=True)
 
 PARADIGMS = ["mg", "cf", "adit"]
 PARADIGM_LABEL = {"mg": "MatterGen", "cf": "CrystalFlow", "adit": "ADiT"}

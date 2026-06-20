@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-set -uo pipefail; HERE="$(cd "$(dirname "$0")" && pwd)"; cd "$HERE"
-echo "Closed-loop: generators in figures/generators/, per-trajectory CSVs in results/results-paper-v4/, LTM parquets in data/hcap_data/."
-echo "Run e.g.:  python figures/generators/closed_loop_curves.py"
+# Regenerate closed-loop discovery figures from in-tree archive/ data (no external downloads).
+set -uo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+G="$HERE/figures/generators"
+echo "== Closed-loop BO: regenerating discovery figures (figures/regenerated/) =="
+run() { ( cd "$1" && echo "-- $2" && python "$2" >/dev/null ) && echo "   ok" || echo "   ($2 reported errors — see README.md)"; }
+run "$G" closed_loop_curves.py
+run "$G" closed_loop_extras.py
+echo "Done. Rendered figures under figures/regenerated/."

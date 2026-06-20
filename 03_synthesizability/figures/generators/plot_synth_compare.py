@@ -24,8 +24,12 @@ plt.rcParams.update({
     "savefig.dpi": 200,
 })
 
-HERE = "/Volumes/SSD1_SMAAA/matinvent-hcap-bo"
-df = pd.read_csv(f"{HERE}/results/apu_grace/generated_scores/scores.csv")
+from pathlib import Path
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+_SUB = _ROOT / "03_synthesizability"
+_OUT = _SUB / "figures" / "regenerated"
+_OUT.mkdir(parents=True, exist_ok=True)
+df = pd.read_csv(_SUB / "results" / "generated_scores" / "scores.csv")
 
 COLORS = {"ADiT": "#1b7837", "CrystalFlow": "#2166ac", "MatterGen": "#b2182b"}
 order = ["ADiT", "CrystalFlow", "MatterGen"]
@@ -60,7 +64,7 @@ leg1 = ax.legend(handles=bb_handles, title="backbone", loc="upper left", frameon
 ax.add_artist(leg1)
 ax.legend(handles=flag_handles, loc="lower right", frameon=False)
 fig.tight_layout()
-fig.savefig(f"{HERE}/analysis/synth_figures/fig_apu_vs_cgnf_scatter.png", bbox_inches="tight")
+fig.savefig(_OUT / "fig_apu_vs_cgnf_scatter.png", bbox_inches="tight")
 plt.close(fig)
 
 # ---------------------------------------------------------------- Figure 2
@@ -93,7 +97,7 @@ for xi, v in zip(x, g.ood * 100):
     ax1.text(xi, v + 2, f"{v:.0f}", ha="center", va="bottom", fontsize=8.5)
 
 fig.tight_layout()
-fig.savefig(f"{HERE}/analysis/synth_figures/fig_per_backbone_panel.png", bbox_inches="tight")
+fig.savefig(_OUT / "fig_per_backbone_panel.png", bbox_inches="tight")
 plt.close(fig)
 print("wrote fig_apu_vs_cgnf_scatter.png and fig_per_backbone_panel.png")
 print(f"rho={rho:.4f} agree={agree:.3f}")

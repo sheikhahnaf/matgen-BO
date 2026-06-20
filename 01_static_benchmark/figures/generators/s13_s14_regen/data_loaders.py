@@ -18,8 +18,11 @@ from pathlib import Path
 import pandas as pd
 import os as _os
 from pathlib import Path as _Path
+
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 # Repo-relative by default; override with ASE_REPO_ROOT for out-of-tree data.
-_REPO = _Path(_os.environ.get("ASE_REPO_ROOT", _Path(__file__).resolve().parent.parent))
+_REPO = _ROOT / "archive" / "ASE-native-surrogates"
 
 
 REPO = _REPO

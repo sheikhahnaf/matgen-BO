@@ -1,8 +1,13 @@
 # Reproduce — paper artifact → command
 
 All inputs are in-tree (no external downloads). Activate the env first:
-`conda activate matinvent`. Generators live in `0*/figures/generators/`, read the
-CSVs in `0*/data/`, and write to `0*/figures/rendered/`.
+`conda activate matinvent`. Generators live in `0*/figures/generators/`; each resolves the
+repo root from its own location and reads the verbatim data mirror under
+`archive/<source-tree>/` (the figure-driving CSVs are also mirrored in `0*/data/` for
+browsing), and writes freshly rendered output to `0*/figures/regenerated/`. The
+paper-reference figures in `0*/figures/rendered/` are left untouched. Note: the paper's
+final phonon panels come from the `refresh_style_regen/` generators (DFPT data); the main
+`fig2_bar_charts.py` phonon panel reproduces the earlier phonon-dielectric analysis.
 
 ## Static benchmark (§3.2–3.4)
 | Paper artifact | Generator | Inputs (in-tree) |

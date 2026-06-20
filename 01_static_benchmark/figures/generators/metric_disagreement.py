@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+_ROOT = next(p for p in Path(__file__).resolve().parents if (p / "archive").is_dir())
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -15,8 +17,10 @@ from plot_style import apply_style, save_figure
 
 apply_style()
 
-ROOT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/ASE_regression_test/results/gp")
-OUT = Path("/Volumes/SSD1_SMAAA/matinvent-bo/FME_paper_refresh_v1/figures/fig_metric_disagreement.png")
+ROOT = _ROOT / "archive" / "ASE-native-surrogates" / "results" / "gp"
+_OUT_DIR = _ROOT / "01_static_benchmark" / "figures" / "regenerated"
+_OUT_DIR.mkdir(parents=True, exist_ok=True)
+OUT = _OUT_DIR / "fig_metric_disagreement.png"
 
 DATASETS = {
     "elastic_tensor_2015": ("Elastic",  "#1f77b4"),
