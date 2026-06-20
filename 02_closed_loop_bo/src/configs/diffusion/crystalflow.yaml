@@ -1,0 +1,15 @@
+# CrystalFlow (Luo et al., Nat. Comm. 2025) — flow-based crystal generator.
+# https://github.com/ixsluo/CrystalFlow
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: crystalflow
+    adapter_kwargs:
+      model_path: ${oc.env:SCRATCH}/checkpoints/crystalflow/ckpt-v1.0.0/DNG-mp-20
+      device: cuda
+      n_steps: 100
+      train_dataset: mp_20
+      batch_size: 64
+      step_lr: 1.0e-5
+    timeout_seconds: 1800

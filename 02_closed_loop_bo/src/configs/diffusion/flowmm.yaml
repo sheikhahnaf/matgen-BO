@@ -1,0 +1,12 @@
+# FlowMM (Miller, Sun, Sriram et al., ICML 2024) — Riemannian flow matching.
+# https://github.com/facebookresearch/flowmm
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: flowmm
+    adapter_kwargs:
+      checkpoint: ${oc.env:SCRATCH}/checkpoints/flowmm/mp20.ckpt
+      device: cuda
+      n_inference_steps: 250
+    timeout_seconds: 1800
