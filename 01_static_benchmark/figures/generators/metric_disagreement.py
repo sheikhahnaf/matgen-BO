@@ -17,7 +17,16 @@ from plot_style import apply_style, save_figure
 
 apply_style()
 
-ROOT = _ROOT / "archive" / "ASE-native-surrogates" / "results" / "gp"
+# NOTE: this supplementary figure needs the raw per-run results, which are NOT vendored
+# here (≈9 GB; see ../../../docs/EXTERNAL.md). Clone github.com/sheikhahnaf/ASE-native-surrogates
+# and set ASE_RESULTS to its results/gp/ to regenerate. Every other figure uses in-tree CSVs.
+import os
+ROOT = Path(os.environ.get("ASE_RESULTS",
+            _ROOT / "archive" / "ASE-native-surrogates" / "results" / "gp"))
+if not ROOT.is_dir():
+    raise SystemExit(
+        f"[metric_disagreement] raw results not found at {ROOT}. This supplementary figure "
+        "needs the ASE-native-surrogates results/gp/ (see docs/EXTERNAL.md); set $ASE_RESULTS.")
 _OUT_DIR = _ROOT / "01_static_benchmark" / "figures" / "regenerated"
 _OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT = _OUT_DIR / "fig_metric_disagreement.png"

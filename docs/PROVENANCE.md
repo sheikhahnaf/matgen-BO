@@ -21,6 +21,7 @@ This repo was assembled (additively, `mkdir`+`cp`) from several working repos/di
 - `ASE-native-surrogates/`, `phonon_thermo_benchmark/`, `FME_paper_refresh_v1/`, `hcap_bo/`, `matinvent-hcap-bo/`
 
 ## Intentional exclusions
-- **Copyrighted review PDFs** (`…/data/diffusion_reviews/`) — never copied (cited in the paper).
+- **Copyrighted PDFs** — never published: the `…/data/diffusion_reviews/` review papers, plus a third-party Nature Machine Intelligence article (`s42256-…pdf`) and the working paper draft (`main.pdf`), both purged from history. All cited in the paper.
+- **Raw static-benchmark per-run results** (`archive/ASE-native-surrogates/results/`, ≈9 GB) — regenerable; the aggregated CSVs every figure reads are in-tree. Full raw set is public in the `sheikhahnaf/ASE-native-surrogates` repo. See `EXTERNAL.md`.
 - **ACES results pull** (≈6.7 GB) — regenerable; aggregated CSVs are in-tree. See `EXTERNAL.md`.
 - **Model checkpoints** (`*.joblib`, `*.ckpt`) — on HuggingFace. See `EXTERNAL.md`.
