@@ -1,0 +1,19 @@
+# Optional second env: FairChem eSEN-30M-OAM heat-capacity oracle.
+# Created separately because fairchem-core sometimes pins torch versions
+# incompatible with mattergen / botorch. We invoke this env via subprocess
+# the same way upstream matinvent does (rewards/calculators/fairchem/calc.py).
+name: matinvent-hcap-fairchem
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.11
+  - pip
+  - numpy<2.0
+  - pip:
+      - torch==2.4.0+cu121
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - fairchem-core
+      - ase>=3.23
+      - pymatgen>=2024.6

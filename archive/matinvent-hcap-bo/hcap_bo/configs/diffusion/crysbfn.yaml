@@ -1,0 +1,12 @@
+# CrysBFN (Wu et al., 2024) — Bayesian Flow Network for crystal generation.
+# https://github.com/wu-han-lin/CrysBFN
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: crysbfn
+    adapter_kwargs:
+      model_path: ${oc.env:SCRATCH}/checkpoints/crysbfn/mp_20_gen_s1000
+      device: cuda
+      sample_steps: 100
+    timeout_seconds: 1800

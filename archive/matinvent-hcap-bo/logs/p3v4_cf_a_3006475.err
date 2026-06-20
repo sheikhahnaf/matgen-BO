@@ -1,0 +1,479 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'base': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[GPRoutedV4] queued 446 warm-start samples from /scratch/user/ahnafalvi/matinvent-hcap-bo/data/ltm_seed_pool_v3.parquet
+[GPRoutedV4] init: K=4 K_ratio=0.5 anchor_every=999 cold_min=0 target=1.5 acq=ei
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/lightning/fabric/utilities/cloud_io.py:73: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:11<19:39, 11.92s/it]  9%|▉         | 9/100 [00:12<01:28,  1.03it/s] 17%|█▋        | 17/100 [00:12<00:35,  2.34it/s] 27%|██▋       | 27/100 [00:12<00:15,  4.60it/s] 39%|███▉      | 39/100 [00:12<00:07,  8.28it/s] 51%|█████     | 51/100 [00:12<00:03, 13.12it/s] 63%|██████▎   | 63/100 [00:12<00:01, 19.32it/s] 75%|███████▌  | 75/100 [00:12<00:00, 26.95it/s] 87%|████████▋ | 87/100 [00:12<00:00, 35.88it/s] 99%|█████████▉| 99/100 [00:12<00:00, 45.90it/s]100%|██████████| 100/100 [00:12<00:00,  7.77it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:16,  6.06it/s] 11%|█         | 11/100 [00:00<00:01, 47.37it/s] 21%|██        | 21/100 [00:00<00:01, 65.96it/s] 31%|███       | 31/100 [00:00<00:00, 75.88it/s] 41%|████      | 41/100 [00:00<00:00, 81.97it/s] 51%|█████     | 51/100 [00:00<00:00, 85.04it/s] 61%|██████    | 61/100 [00:00<00:00, 87.72it/s] 70%|███████   | 70/100 [00:00<00:00, 86.70it/s] 80%|████████  | 80/100 [00:01<00:00, 87.91it/s] 90%|█████████ | 90/100 [00:01<00:00, 89.60it/s]100%|██████████| 100/100 [00:01<00:00, 90.72it/s]100%|██████████| 100/100 [00:01<00:00, 80.33it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 99.34it/s] 20%|██        | 20/100 [00:00<00:00, 99.33it/s] 30%|███       | 30/100 [00:00<00:00, 99.25it/s] 40%|████      | 40/100 [00:00<00:00, 99.39it/s] 50%|█████     | 50/100 [00:00<00:00, 99.41it/s] 60%|██████    | 60/100 [00:00<00:00, 98.15it/s] 70%|███████   | 70/100 [00:00<00:00, 96.78it/s] 80%|████████  | 80/100 [00:00<00:00, 95.93it/s] 90%|█████████ | 90/100 [00:00<00:00, 95.28it/s]100%|██████████| 100/100 [00:01<00:00, 94.94it/s]100%|██████████| 100/100 [00:01<00:00, 96.81it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 93.98it/s] 20%|██        | 20/100 [00:00<00:00, 93.94it/s] 30%|███       | 30/100 [00:00<00:00, 93.90it/s] 40%|████      | 40/100 [00:00<00:00, 93.96it/s] 50%|█████     | 50/100 [00:00<00:00, 93.90it/s] 60%|██████    | 60/100 [00:00<00:00, 93.98it/s] 70%|███████   | 70/100 [00:00<00:00, 94.01it/s] 80%|████████  | 80/100 [00:00<00:00, 94.02it/s] 90%|█████████ | 90/100 [00:00<00:00, 94.00it/s]100%|██████████| 100/100 [00:01<00:00, 93.95it/s]100%|██████████| 100/100 [00:01<00:00, 93.94it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/utils.py:30: UserWarning: Setting global torch default dtype to torch.float32.
+  warnings.warn(f"Setting global torch default dtype to {torch_dtype}.")
+W0506 09:46:54.862000 2141884 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] torch._dynamo hit config.cache_size_limit (8)
+W0506 09:46:54.862000 2141884 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    function: 'forward' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/forcefield/gns.py:476)
+W0506 09:46:54.862000 2141884 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    last reason: 0/0: tensor 'L['batch'][0]' size mismatch at index 0. expected 1156, actual 406
+W0506 09:46:54.862000 2141884 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0506 09:46:54.862000 2141884 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/ltm.py:106: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self._df = pd.concat([self._df, new_df], ignore_index=True)
+[GPRoutedV4] re-embedded 446 warm-start rows
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/escn/so3.py:23: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/scn/spherical_harmonics.py:23: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/equiformer_v2/wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/common/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/esen/esen.py:91: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  Jd_list = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:256: RuntimeWarning: Mean of empty slice.
+  logging.info(f'buffer reward mean={self.replay.buffer["reward"].values.mean()}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 91.04it/s] 20%|██        | 20/100 [00:00<00:00, 95.79it/s] 32%|███▏      | 32/100 [00:00<00:00, 103.81it/s] 44%|████▍     | 44/100 [00:00<00:00, 107.91it/s] 56%|█████▌    | 56/100 [00:00<00:00, 110.65it/s] 68%|██████▊   | 68/100 [00:00<00:00, 112.55it/s] 80%|████████  | 80/100 [00:00<00:00, 113.91it/s] 92%|█████████▏| 92/100 [00:00<00:00, 110.81it/s]100%|██████████| 100/100 [00:00<00:00, 109.33it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 113.16it/s] 24%|██▍       | 24/100 [00:00<00:00, 115.12it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.97it/s] 48%|████▊     | 48/100 [00:00<00:00, 116.28it/s] 60%|██████    | 60/100 [00:00<00:00, 116.54it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.69it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.84it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.69it/s]100%|██████████| 100/100 [00:00<00:00, 116.33it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 110.56it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.39it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.11it/s] 48%|████▊     | 48/100 [00:00<00:00, 113.38it/s] 60%|██████    | 60/100 [00:00<00:00, 113.46it/s] 72%|███████▏  | 72/100 [00:00<00:00, 113.64it/s] 84%|████████▍ | 84/100 [00:00<00:00, 113.72it/s] 96%|█████████▌| 96/100 [00:00<00:00, 113.74it/s]100%|██████████| 100/100 [00:00<00:00, 113.39it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.02it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.00it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.99it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.12it/s] 60%|██████    | 60/100 [00:00<00:00, 114.50it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.63it/s] 84%|████████▍ | 84/100 [00:00<00:00, 114.80it/s] 96%|█████████▌| 96/100 [00:00<00:00, 114.89it/s]100%|██████████| 100/100 [00:00<00:00, 114.43it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:256: RuntimeWarning: Mean of empty slice.
+  logging.info(f'buffer reward mean={self.replay.buffer["reward"].values.mean()}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 94.42it/s] 22%|██▏       | 22/100 [00:00<00:00, 105.47it/s] 34%|███▍      | 34/100 [00:00<00:00, 109.68it/s] 46%|████▌     | 46/100 [00:00<00:00, 111.97it/s] 58%|█████▊    | 58/100 [00:00<00:00, 109.11it/s] 70%|███████   | 70/100 [00:00<00:00, 111.17it/s] 82%|████████▏ | 82/100 [00:00<00:00, 112.60it/s] 94%|█████████▍| 94/100 [00:00<00:00, 113.42it/s]100%|██████████| 100/100 [00:00<00:00, 111.17it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.55it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.76it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.54it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.81it/s] 60%|██████    | 60/100 [00:00<00:00, 116.13it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.27it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.30it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.36it/s]100%|██████████| 100/100 [00:00<00:00, 115.91it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 102.73it/s] 23%|██▎       | 23/100 [00:00<00:00, 109.70it/s] 34%|███▍      | 34/100 [00:00<00:00, 106.08it/s] 45%|████▌     | 45/100 [00:00<00:00, 104.23it/s] 57%|█████▋    | 57/100 [00:00<00:00, 108.37it/s] 69%|██████▉   | 69/100 [00:00<00:00, 110.93it/s] 81%|████████  | 81/100 [00:00<00:00, 109.41it/s] 93%|█████████▎| 93/100 [00:00<00:00, 111.72it/s]100%|██████████| 100/100 [00:00<00:00, 109.81it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 115.25it/s] 24%|██▍       | 24/100 [00:00<00:00, 116.92it/s] 36%|███▌      | 36/100 [00:00<00:00, 117.74it/s] 48%|████▊     | 48/100 [00:00<00:00, 117.27it/s] 60%|██████    | 60/100 [00:00<00:00, 117.78it/s] 72%|███████▏  | 72/100 [00:00<00:00, 118.05it/s] 84%|████████▍ | 84/100 [00:00<00:00, 118.26it/s] 96%|█████████▌| 96/100 [00:00<00:00, 118.35it/s]100%|██████████| 100/100 [00:00<00:00, 117.86it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:256: RuntimeWarning: Mean of empty slice.
+  logging.info(f'buffer reward mean={self.replay.buffer["reward"].values.mean()}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 93.26it/s] 20%|██        | 20/100 [00:00<00:00, 95.83it/s] 32%|███▏      | 32/100 [00:00<00:00, 103.74it/s] 44%|████▍     | 44/100 [00:00<00:00, 107.66it/s] 56%|█████▌    | 56/100 [00:00<00:00, 109.84it/s] 68%|██████▊   | 68/100 [00:00<00:00, 111.16it/s] 80%|████████  | 80/100 [00:00<00:00, 111.85it/s] 92%|█████████▏| 92/100 [00:00<00:00, 110.32it/s]100%|██████████| 100/100 [00:00<00:00, 107.41it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 98.41it/s] 21%|██        | 21/100 [00:00<00:00, 104.32it/s] 32%|███▏      | 32/100 [00:00<00:00, 105.81it/s] 44%|████▍     | 44/100 [00:00<00:00, 109.10it/s] 56%|█████▌    | 56/100 [00:00<00:00, 111.00it/s] 68%|██████▊   | 68/100 [00:00<00:00, 112.06it/s] 80%|████████  | 80/100 [00:00<00:00, 112.78it/s] 92%|█████████▏| 92/100 [00:00<00:00, 113.28it/s]100%|██████████| 100/100 [00:00<00:00, 111.02it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 111.44it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.34it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.13it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.44it/s] 60%|██████    | 60/100 [00:00<00:00, 114.65it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.79it/s] 84%|████████▍ | 84/100 [00:00<00:00, 114.90it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.02it/s]100%|██████████| 100/100 [00:00<00:00, 114.53it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 110.44it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.18it/s] 36%|███▌      | 36/100 [00:00<00:00, 112.81it/s] 48%|████▊     | 48/100 [00:00<00:00, 112.77it/s] 60%|██████    | 60/100 [00:00<00:00, 112.79it/s] 72%|███████▏  | 72/100 [00:00<00:00, 113.35it/s] 84%|████████▍ | 84/100 [00:00<00:00, 113.70it/s] 96%|█████████▌| 96/100 [00:00<00:00, 113.93it/s]100%|██████████| 100/100 [00:00<00:00, 113.28it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 98.74it/s] 21%|██        | 21/100 [00:00<00:00, 100.75it/s] 32%|███▏      | 32/100 [00:00<00:00, 102.78it/s] 44%|████▍     | 44/100 [00:00<00:00, 108.21it/s] 56%|█████▌    | 56/100 [00:00<00:00, 111.47it/s] 68%|██████▊   | 68/100 [00:00<00:00, 113.52it/s] 80%|████████  | 80/100 [00:00<00:00, 114.88it/s] 92%|█████████▏| 92/100 [00:00<00:00, 115.73it/s]100%|██████████| 100/100 [00:00<00:00, 112.00it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 104.51it/s] 22%|██▏       | 22/100 [00:00<00:00, 102.19it/s] 33%|███▎      | 33/100 [00:00<00:00, 101.05it/s] 44%|████▍     | 44/100 [00:00<00:00, 102.37it/s] 56%|█████▌    | 56/100 [00:00<00:00, 107.19it/s] 68%|██████▊   | 68/100 [00:00<00:00, 110.10it/s] 80%|████████  | 80/100 [00:00<00:00, 111.95it/s] 92%|█████████▏| 92/100 [00:00<00:00, 113.17it/s]100%|██████████| 100/100 [00:00<00:00, 109.46it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 110.53it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.48it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.17it/s] 48%|████▊     | 48/100 [00:00<00:00, 113.52it/s] 60%|██████    | 60/100 [00:00<00:00, 113.77it/s] 72%|███████▏  | 72/100 [00:00<00:00, 113.90it/s] 84%|████████▍ | 84/100 [00:00<00:00, 113.89it/s] 96%|█████████▌| 96/100 [00:00<00:00, 113.97it/s]100%|██████████| 100/100 [00:00<00:00, 113.59it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 114.31it/s] 24%|██▍       | 24/100 [00:00<00:00, 115.15it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.52it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.70it/s] 60%|██████    | 60/100 [00:00<00:00, 115.77it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.82it/s] 84%|████████▍ | 84/100 [00:00<00:00, 112.32it/s] 96%|█████████▌| 96/100 [00:00<00:00, 111.84it/s]100%|██████████| 100/100 [00:00<00:00, 113.08it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:10,  9.90it/s] 11%|█         | 11/100 [00:00<00:01, 62.63it/s] 22%|██▏       | 22/100 [00:00<00:00, 82.11it/s] 33%|███▎      | 33/100 [00:00<00:00, 92.06it/s] 45%|████▌     | 45/100 [00:00<00:00, 99.03it/s] 57%|█████▋    | 57/100 [00:00<00:00, 103.12it/s] 69%|██████▉   | 69/100 [00:00<00:00, 105.68it/s] 81%|████████  | 81/100 [00:00<00:00, 106.77it/s] 92%|█████████▏| 92/100 [00:00<00:00, 105.60it/s]100%|██████████| 100/100 [00:01<00:00, 97.75it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 109.22it/s] 23%|██▎       | 23/100 [00:00<00:00, 113.04it/s] 35%|███▌      | 35/100 [00:00<00:00, 114.32it/s] 47%|████▋     | 47/100 [00:00<00:00, 114.87it/s] 59%|█████▉    | 59/100 [00:00<00:00, 114.18it/s] 71%|███████   | 71/100 [00:00<00:00, 114.44it/s] 83%|████████▎ | 83/100 [00:00<00:00, 114.68it/s] 95%|█████████▌| 95/100 [00:00<00:00, 114.85it/s]100%|██████████| 100/100 [00:00<00:00, 114.33it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 108.84it/s] 23%|██▎       | 23/100 [00:00<00:00, 111.33it/s] 35%|███▌      | 35/100 [00:00<00:00, 112.28it/s] 47%|████▋     | 47/100 [00:00<00:00, 112.67it/s] 59%|█████▉    | 59/100 [00:00<00:00, 112.94it/s] 71%|███████   | 71/100 [00:00<00:00, 113.11it/s] 83%|████████▎ | 83/100 [00:00<00:00, 113.19it/s] 95%|█████████▌| 95/100 [00:00<00:00, 113.23it/s]100%|██████████| 100/100 [00:00<00:00, 112.76it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 109.07it/s] 23%|██▎       | 23/100 [00:00<00:00, 111.28it/s] 35%|███▌      | 35/100 [00:00<00:00, 112.07it/s] 47%|████▋     | 47/100 [00:00<00:00, 112.38it/s] 59%|█████▉    | 59/100 [00:00<00:00, 112.60it/s] 71%|███████   | 71/100 [00:00<00:00, 112.71it/s] 83%|████████▎ | 83/100 [00:00<00:00, 112.83it/s] 95%|█████████▌| 95/100 [00:00<00:00, 112.82it/s]100%|██████████| 100/100 [00:00<00:00, 112.44it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  9%|▉         | 9/100 [00:00<00:01, 89.77it/s] 19%|█▉        | 19/100 [00:00<00:00, 92.37it/s] 30%|███       | 30/100 [00:00<00:00, 100.07it/s] 42%|████▏     | 42/100 [00:00<00:00, 105.49it/s] 54%|█████▍    | 54/100 [00:00<00:00, 107.94it/s] 65%|██████▌   | 65/100 [00:00<00:00, 105.44it/s] 77%|███████▋  | 77/100 [00:00<00:00, 108.10it/s] 89%|████████▉ | 89/100 [00:00<00:00, 109.83it/s]100%|██████████| 100/100 [00:00<00:00, 106.73it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 102.40it/s] 22%|██▏       | 22/100 [00:00<00:00, 101.73it/s] 34%|███▍      | 34/100 [00:00<00:00, 106.89it/s] 46%|████▌     | 46/100 [00:00<00:00, 109.22it/s] 58%|█████▊    | 58/100 [00:00<00:00, 109.27it/s] 69%|██████▉   | 69/100 [00:00<00:00, 106.54it/s] 81%|████████  | 81/100 [00:00<00:00, 108.69it/s] 93%|█████████▎| 93/100 [00:00<00:00, 110.16it/s]100%|██████████| 100/100 [00:00<00:00, 108.63it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 97.14it/s] 20%|██        | 20/100 [00:00<00:00, 98.13it/s] 31%|███       | 31/100 [00:00<00:00, 102.27it/s] 43%|████▎     | 43/100 [00:00<00:00, 106.78it/s] 54%|█████▍    | 54/100 [00:00<00:00, 107.43it/s] 65%|██████▌   | 65/100 [00:00<00:00, 105.79it/s] 77%|███████▋  | 77/100 [00:00<00:00, 108.37it/s] 88%|████████▊ | 88/100 [00:00<00:00, 106.47it/s]100%|██████████| 100/100 [00:00<00:00, 108.47it/s]100%|██████████| 100/100 [00:00<00:00, 106.33it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 100.51it/s] 23%|██▎       | 23/100 [00:00<00:00, 108.20it/s] 35%|███▌      | 35/100 [00:00<00:00, 111.61it/s] 47%|████▋     | 47/100 [00:00<00:00, 113.15it/s] 59%|█████▉    | 59/100 [00:00<00:00, 114.17it/s] 71%|███████   | 71/100 [00:00<00:00, 114.73it/s] 83%|████████▎ | 83/100 [00:00<00:00, 115.10it/s] 95%|█████████▌| 95/100 [00:00<00:00, 115.05it/s]100%|██████████| 100/100 [00:00<00:00, 113.50it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/base.py:123: RuntimeWarning: Mean of empty slice.
+  logging.info(f'reward mean={success_rewards.mean():.4f} std={success_rewards.std():.4f}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/base.py:124: RuntimeWarning: Mean of empty slice.
+  prop_str = [f'{k} mean={v.mean():.4f} std={v.std():.4f}' for k, v in success_prop_dict.items()]
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:204: RuntimeWarning: Mean of empty slice.
+  log_dict = {f'{k} mean': v.mean() for k, v in prop_dict.items()}
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:206: RuntimeWarning: Mean of empty slice.
+  log_dict.update({'reward mean': rewards.mean(), 'reward std': rewards.std()})
+  0%|          | 0/100 [00:00<?, ?it/s]  8%|▊         | 8/100 [00:00<00:01, 76.19it/s] 18%|█▊        | 18/100 [00:00<00:00, 88.94it/s] 30%|███       | 30/100 [00:00<00:00, 99.88it/s] 42%|████▏     | 42/100 [00:00<00:00, 104.84it/s] 54%|█████▍    | 54/100 [00:00<00:00, 107.70it/s] 66%|██████▌   | 66/100 [00:00<00:00, 109.48it/s] 78%|███████▊  | 78/100 [00:00<00:00, 110.68it/s] 90%|█████████ | 90/100 [00:00<00:00, 111.50it/s]100%|██████████| 100/100 [00:00<00:00, 107.12it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 110.85it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.63it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.74it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.31it/s] 60%|██████    | 60/100 [00:00<00:00, 115.44it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.64it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.76it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.83it/s]100%|██████████| 100/100 [00:00<00:00, 115.29it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 114.49it/s] 24%|██▍       | 24/100 [00:00<00:00, 111.73it/s] 36%|███▌      | 36/100 [00:00<00:00, 110.87it/s] 48%|████▊     | 48/100 [00:00<00:00, 112.93it/s] 60%|██████    | 60/100 [00:00<00:00, 113.98it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.55it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.06it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.37it/s]100%|██████████| 100/100 [00:00<00:00, 114.26it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  6%|▌         | 6/100 [00:00<00:01, 57.31it/s] 18%|█▊        | 18/100 [00:00<00:00, 89.00it/s] 30%|███       | 30/100 [00:00<00:00, 99.29it/s] 42%|████▏     | 42/100 [00:00<00:00, 104.07it/s] 54%|█████▍    | 54/100 [00:00<00:00, 106.73it/s] 66%|██████▌   | 66/100 [00:00<00:00, 107.94it/s] 78%|███████▊  | 78/100 [00:00<00:00, 109.31it/s] 90%|█████████ | 90/100 [00:00<00:00, 110.26it/s]100%|██████████| 100/100 [00:00<00:00, 105.45it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 95.06it/s] 22%|██▏       | 22/100 [00:00<00:00, 105.97it/s] 34%|███▍      | 34/100 [00:00<00:00, 111.27it/s] 46%|████▌     | 46/100 [00:00<00:00, 113.81it/s] 58%|█████▊    | 58/100 [00:00<00:00, 115.57it/s] 70%|███████   | 70/100 [00:00<00:00, 116.60it/s] 82%|████████▏ | 82/100 [00:00<00:00, 117.27it/s] 94%|█████████▍| 94/100 [00:00<00:00, 117.66it/s]100%|██████████| 100/100 [00:00<00:00, 114.92it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 114.92it/s] 24%|██▍       | 24/100 [00:00<00:00, 117.22it/s] 36%|███▌      | 36/100 [00:00<00:00, 118.00it/s] 48%|████▊     | 48/100 [00:00<00:00, 118.31it/s] 60%|██████    | 60/100 [00:00<00:00, 118.67it/s] 72%|███████▏  | 72/100 [00:00<00:00, 118.64it/s] 84%|████████▍ | 84/100 [00:00<00:00, 118.78it/s] 96%|█████████▌| 96/100 [00:00<00:00, 118.88it/s]100%|██████████| 100/100 [00:00<00:00, 118.40it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 113.10it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.16it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.99it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.41it/s] 60%|██████    | 60/100 [00:00<00:00, 115.82it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.00it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.21it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.29it/s]100%|██████████| 100/100 [00:00<00:00, 115.72it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 113.18it/s] 24%|██▍       | 24/100 [00:00<00:00, 115.21it/s] 36%|███▌      | 36/100 [00:00<00:00, 116.14it/s] 48%|████▊     | 48/100 [00:00<00:00, 116.38it/s] 60%|██████    | 60/100 [00:00<00:00, 116.70it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.83it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.57it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.91it/s]100%|██████████| 100/100 [00:00<00:00, 116.45it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  6%|▌         | 6/100 [00:00<00:01, 56.52it/s] 16%|█▌        | 16/100 [00:00<00:01, 80.23it/s] 27%|██▋       | 27/100 [00:00<00:00, 93.46it/s] 39%|███▉      | 39/100 [00:00<00:00, 101.85it/s] 51%|█████     | 51/100 [00:00<00:00, 106.25it/s] 62%|██████▏   | 62/100 [00:00<00:00, 104.79it/s] 74%|███████▍  | 74/100 [00:00<00:00, 107.69it/s] 86%|████████▌ | 86/100 [00:00<00:00, 109.77it/s] 98%|█████████▊| 98/100 [00:00<00:00, 111.06it/s]100%|██████████| 100/100 [00:00<00:00, 104.08it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 111.97it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.76it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.18it/s] 48%|████▊     | 48/100 [00:00<00:00, 113.31it/s] 60%|██████    | 60/100 [00:00<00:00, 113.40it/s] 72%|███████▏  | 72/100 [00:00<00:00, 110.47it/s] 84%|████████▍ | 84/100 [00:00<00:00, 106.09it/s] 95%|█████████▌| 95/100 [00:00<00:00, 105.97it/s]100%|██████████| 100/100 [00:00<00:00, 109.31it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.40it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.63it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.41it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.77it/s] 60%|██████    | 60/100 [00:00<00:00, 116.05it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.15it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.24it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.25it/s]100%|██████████| 100/100 [00:00<00:00, 115.84it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 109.78it/s] 23%|██▎       | 23/100 [00:00<00:00, 112.25it/s] 35%|███▌      | 35/100 [00:00<00:00, 112.83it/s] 47%|████▋     | 47/100 [00:00<00:00, 113.27it/s] 59%|█████▉    | 59/100 [00:00<00:00, 113.54it/s] 71%|███████   | 71/100 [00:00<00:00, 113.22it/s] 83%|████████▎ | 83/100 [00:00<00:00, 113.66it/s] 95%|█████████▌| 95/100 [00:00<00:00, 113.86it/s]100%|██████████| 100/100 [00:00<00:00, 113.35it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 93.64it/s] 20%|██        | 20/100 [00:00<00:00, 96.36it/s] 31%|███       | 31/100 [00:00<00:00, 101.71it/s] 43%|████▎     | 43/100 [00:00<00:00, 106.21it/s] 55%|█████▌    | 55/100 [00:00<00:00, 108.64it/s] 67%|██████▋   | 67/100 [00:00<00:00, 110.14it/s] 79%|███████▉  | 79/100 [00:00<00:00, 111.05it/s] 91%|█████████ | 91/100 [00:00<00:00, 111.62it/s]100%|██████████| 100/100 [00:00<00:00, 108.55it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 96.87it/s] 22%|██▏       | 22/100 [00:00<00:00, 105.82it/s] 34%|███▍      | 34/100 [00:00<00:00, 108.62it/s] 46%|████▌     | 46/100 [00:00<00:00, 109.83it/s] 58%|█████▊    | 58/100 [00:00<00:00, 110.56it/s] 70%|███████   | 70/100 [00:00<00:00, 111.03it/s] 82%|████████▏ | 82/100 [00:00<00:00, 111.37it/s] 94%|█████████▍| 94/100 [00:00<00:00, 111.46it/s]100%|██████████| 100/100 [00:00<00:00, 110.15it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.16it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.99it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.30it/s] 48%|████▊     | 48/100 [00:00<00:00, 113.51it/s] 60%|██████    | 60/100 [00:00<00:00, 113.66it/s] 72%|███████▏  | 72/100 [00:00<00:00, 113.73it/s] 84%|████████▍ | 84/100 [00:00<00:00, 113.79it/s] 96%|█████████▌| 96/100 [00:00<00:00, 113.81it/s]100%|██████████| 100/100 [00:00<00:00, 113.58it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.48it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.68it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.37it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.83it/s] 60%|██████    | 60/100 [00:00<00:00, 111.21it/s] 72%|███████▏  | 72/100 [00:00<00:00, 107.27it/s] 83%|████████▎ | 83/100 [00:00<00:00, 106.72it/s] 95%|█████████▌| 95/100 [00:00<00:00, 109.65it/s]100%|██████████| 100/100 [00:00<00:00, 110.80it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  4%|▍         | 4/100 [00:00<00:02, 37.50it/s] 15%|█▌        | 15/100 [00:00<00:01, 77.49it/s] 27%|██▋       | 27/100 [00:00<00:00, 93.14it/s] 38%|███▊      | 38/100 [00:00<00:00, 98.94it/s] 49%|████▉     | 49/100 [00:00<00:00, 101.93it/s] 61%|██████    | 61/100 [00:00<00:00, 106.90it/s] 73%|███████▎  | 73/100 [00:00<00:00, 110.10it/s] 85%|████████▌ | 85/100 [00:00<00:00, 112.06it/s] 97%|█████████▋| 97/100 [00:00<00:00, 113.41it/s]100%|██████████| 100/100 [00:00<00:00, 104.13it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.11it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.31it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.18it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.50it/s] 60%|██████    | 60/100 [00:00<00:00, 111.82it/s] 72%|███████▏  | 72/100 [00:00<00:00, 107.87it/s] 83%|████████▎ | 83/100 [00:00<00:00, 105.57it/s] 94%|█████████▍| 94/100 [00:00<00:00, 106.57it/s]100%|██████████| 100/100 [00:00<00:00, 109.69it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 113.11it/s] 24%|██▍       | 24/100 [00:00<00:00, 115.46it/s] 36%|███▌      | 36/100 [00:00<00:00, 116.50it/s] 48%|████▊     | 48/100 [00:00<00:00, 116.87it/s] 60%|██████    | 60/100 [00:00<00:00, 117.18it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.58it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.83it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.99it/s]100%|██████████| 100/100 [00:00<00:00, 116.47it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.24it/s] 24%|██▍       | 24/100 [00:00<00:00, 115.37it/s] 36%|███▌      | 36/100 [00:00<00:00, 116.60it/s] 48%|████▊     | 48/100 [00:00<00:00, 117.19it/s] 60%|██████    | 60/100 [00:00<00:00, 117.15it/s] 72%|███████▏  | 72/100 [00:00<00:00, 116.47it/s] 84%|████████▍ | 84/100 [00:00<00:00, 116.98it/s] 96%|█████████▌| 96/100 [00:00<00:00, 117.27it/s]100%|██████████| 100/100 [00:00<00:00, 116.75it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  6%|▌         | 6/100 [00:00<00:01, 56.29it/s] 16%|█▌        | 16/100 [00:00<00:01, 81.18it/s] 28%|██▊       | 28/100 [00:00<00:00, 95.03it/s] 40%|████      | 40/100 [00:00<00:00, 102.20it/s] 51%|█████     | 51/100 [00:00<00:00, 103.63it/s] 63%|██████▎   | 63/100 [00:00<00:00, 106.59it/s] 75%|███████▌  | 75/100 [00:00<00:00, 109.72it/s] 87%|████████▋ | 87/100 [00:00<00:00, 111.75it/s] 99%|█████████▉| 99/100 [00:00<00:00, 113.23it/s]100%|██████████| 100/100 [00:00<00:00, 105.23it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.95it/s] 24%|██▍       | 24/100 [00:00<00:00, 116.03it/s] 36%|███▌      | 36/100 [00:00<00:00, 117.06it/s] 48%|████▊     | 48/100 [00:00<00:00, 117.56it/s] 60%|██████    | 60/100 [00:00<00:00, 117.92it/s] 72%|███████▏  | 72/100 [00:00<00:00, 118.10it/s] 84%|████████▍ | 84/100 [00:00<00:00, 118.25it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.88it/s]100%|██████████| 100/100 [00:00<00:00, 116.19it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.71it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.65it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.86it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.35it/s] 60%|██████    | 60/100 [00:00<00:00, 115.63it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.66it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.80it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.92it/s]100%|██████████| 100/100 [00:00<00:00, 115.41it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 115.16it/s] 24%|██▍       | 24/100 [00:00<00:00, 117.01it/s] 36%|███▌      | 36/100 [00:00<00:00, 118.18it/s] 48%|████▊     | 48/100 [00:00<00:00, 118.71it/s] 60%|██████    | 60/100 [00:00<00:00, 119.10it/s] 72%|███████▏  | 72/100 [00:00<00:00, 119.39it/s] 84%|████████▍ | 84/100 [00:00<00:00, 119.50it/s] 97%|█████████▋| 97/100 [00:00<00:00, 119.70it/s]100%|██████████| 100/100 [00:00<00:00, 119.01it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/base.py:123: RuntimeWarning: Mean of empty slice.
+  logging.info(f'reward mean={success_rewards.mean():.4f} std={success_rewards.std():.4f}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/base.py:124: RuntimeWarning: Mean of empty slice.
+  prop_str = [f'{k} mean={v.mean():.4f} std={v.std():.4f}' for k, v in success_prop_dict.items()]
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:204: RuntimeWarning: Mean of empty slice.
+  log_dict = {f'{k} mean': v.mean() for k, v in prop_dict.items()}
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:206: RuntimeWarning: Mean of empty slice.
+  log_dict.update({'reward mean': rewards.mean(), 'reward std': rewards.std()})
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:07<13:04,  7.92s/it] 11%|█         | 11/100 [00:08<00:47,  1.89it/s] 21%|██        | 21/100 [00:08<00:18,  4.31it/s] 32%|███▏      | 32/100 [00:08<00:08,  7.88it/s] 44%|████▍     | 44/100 [00:08<00:04, 13.03it/s] 56%|█████▌    | 56/100 [00:08<00:02, 19.57it/s] 68%|██████▊   | 68/100 [00:08<00:01, 27.57it/s] 80%|████████  | 80/100 [00:08<00:00, 36.90it/s] 91%|█████████ | 91/100 [00:08<00:00, 46.18it/s]100%|██████████| 100/100 [00:08<00:00, 11.30it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 98.07it/s] 22%|██▏       | 22/100 [00:00<00:00, 106.54it/s] 34%|███▍      | 34/100 [00:00<00:00, 109.37it/s] 45%|████▌     | 45/100 [00:00<00:00, 107.51it/s] 57%|█████▋    | 57/100 [00:00<00:00, 109.44it/s] 69%|██████▉   | 69/100 [00:00<00:00, 110.80it/s] 81%|████████  | 81/100 [00:00<00:00, 111.71it/s] 93%|█████████▎| 93/100 [00:00<00:00, 112.26it/s]100%|██████████| 100/100 [00:00<00:00, 110.38it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 104.93it/s] 22%|██▏       | 22/100 [00:00<00:00, 102.05it/s] 33%|███▎      | 33/100 [00:00<00:00, 101.23it/s] 44%|████▍     | 44/100 [00:00<00:00, 100.81it/s] 55%|█████▌    | 55/100 [00:00<00:00, 100.68it/s] 67%|██████▋   | 67/100 [00:00<00:00, 104.17it/s] 79%|███████▉  | 79/100 [00:00<00:00, 106.81it/s] 91%|█████████ | 91/100 [00:00<00:00, 108.53it/s]100%|██████████| 100/100 [00:00<00:00, 104.82it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 103.08it/s] 23%|██▎       | 23/100 [00:00<00:00, 109.29it/s] 35%|███▌      | 35/100 [00:00<00:00, 111.49it/s] 47%|████▋     | 47/100 [00:00<00:00, 110.54it/s] 59%|█████▉    | 59/100 [00:00<00:00, 110.88it/s] 71%|███████   | 71/100 [00:00<00:00, 111.97it/s] 83%|████████▎ | 83/100 [00:00<00:00, 112.60it/s] 95%|█████████▌| 95/100 [00:00<00:00, 110.82it/s]100%|██████████| 100/100 [00:00<00:00, 110.91it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  7%|▋         | 7/100 [00:00<00:01, 68.86it/s] 14%|█▍        | 14/100 [00:00<00:01, 63.71it/s] 26%|██▌       | 26/100 [00:00<00:00, 86.07it/s] 38%|███▊      | 38/100 [00:00<00:00, 97.08it/s] 50%|█████     | 50/100 [00:00<00:00, 104.06it/s] 62%|██████▏   | 62/100 [00:00<00:00, 108.42it/s] 74%|███████▍  | 74/100 [00:00<00:00, 111.32it/s] 86%|████████▌ | 86/100 [00:00<00:00, 113.29it/s] 98%|█████████▊| 98/100 [00:00<00:00, 114.65it/s]100%|██████████| 100/100 [00:00<00:00, 104.58it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.13it/s] 24%|██▍       | 24/100 [00:00<00:00, 106.23it/s] 35%|███▌      | 35/100 [00:00<00:00, 103.92it/s] 47%|████▋     | 47/100 [00:00<00:00, 107.50it/s] 59%|█████▉    | 59/100 [00:00<00:00, 110.59it/s] 71%|███████   | 71/100 [00:00<00:00, 112.59it/s] 83%|████████▎ | 83/100 [00:00<00:00, 113.92it/s] 95%|█████████▌| 95/100 [00:00<00:00, 114.82it/s]100%|██████████| 100/100 [00:00<00:00, 111.89it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.05it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.51it/s] 36%|███▌      | 36/100 [00:00<00:00, 106.70it/s] 48%|████▊     | 48/100 [00:00<00:00, 109.65it/s] 60%|██████    | 60/100 [00:00<00:00, 111.67it/s] 72%|███████▏  | 72/100 [00:00<00:00, 111.00it/s] 84%|████████▍ | 84/100 [00:00<00:00, 110.95it/s] 96%|█████████▌| 96/100 [00:00<00:00, 112.50it/s]100%|██████████| 100/100 [00:00<00:00, 111.44it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  2%|▏         | 2/100 [00:00<00:05, 19.09it/s] 12%|█▏        | 12/100 [00:00<00:01, 65.52it/s] 23%|██▎       | 23/100 [00:00<00:00, 83.31it/s] 35%|███▌      | 35/100 [00:00<00:00, 95.39it/s] 46%|████▌     | 46/100 [00:00<00:00, 99.34it/s] 56%|█████▌    | 56/100 [00:00<00:00, 99.27it/s] 66%|██████▌   | 66/100 [00:00<00:00, 99.25it/s] 77%|███████▋  | 77/100 [00:00<00:00, 99.64it/s] 87%|████████▋ | 87/100 [00:00<00:00, 99.40it/s] 98%|█████████▊| 98/100 [00:01<00:00, 100.76it/s]100%|██████████| 100/100 [00:01<00:00, 94.64it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 96.66it/s] 22%|██▏       | 22/100 [00:00<00:00, 107.03it/s] 34%|███▍      | 34/100 [00:00<00:00, 110.62it/s] 46%|████▌     | 46/100 [00:00<00:00, 112.36it/s] 58%|█████▊    | 58/100 [00:00<00:00, 113.36it/s] 70%|███████   | 70/100 [00:00<00:00, 114.04it/s] 82%|████████▏ | 82/100 [00:00<00:00, 114.54it/s] 94%|█████████▍| 94/100 [00:00<00:00, 114.84it/s]100%|██████████| 100/100 [00:00<00:00, 112.93it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 111.16it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.50it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.46it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.82it/s] 60%|██████    | 60/100 [00:00<00:00, 115.15it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.38it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.49it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.55it/s]100%|██████████| 100/100 [00:00<00:00, 114.99it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 107.64it/s] 23%|██▎       | 23/100 [00:00<00:00, 110.22it/s] 35%|███▌      | 35/100 [00:00<00:00, 111.07it/s] 47%|████▋     | 47/100 [00:00<00:00, 110.34it/s] 59%|█████▉    | 59/100 [00:00<00:00, 110.87it/s] 71%|███████   | 71/100 [00:00<00:00, 111.17it/s] 83%|████████▎ | 83/100 [00:00<00:00, 111.38it/s] 95%|█████████▌| 95/100 [00:00<00:00, 111.35it/s]100%|██████████| 100/100 [00:00<00:00, 110.97it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 108.92it/s] 23%|██▎       | 23/100 [00:00<00:00, 111.29it/s] 35%|███▌      | 35/100 [00:00<00:00, 112.48it/s] 47%|████▋     | 47/100 [00:00<00:00, 113.10it/s] 59%|█████▉    | 59/100 [00:00<00:00, 113.53it/s] 71%|███████   | 71/100 [00:00<00:00, 109.77it/s] 83%|████████▎ | 83/100 [00:00<00:00, 110.94it/s] 95%|█████████▌| 95/100 [00:00<00:00, 111.85it/s]100%|██████████| 100/100 [00:00<00:00, 111.78it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  3%|▎         | 3/100 [00:00<00:03, 27.53it/s] 13%|█▎        | 13/100 [00:00<00:01, 68.34it/s] 24%|██▍       | 24/100 [00:00<00:00, 86.47it/s] 36%|███▌      | 36/100 [00:00<00:00, 96.42it/s] 48%|████▊     | 48/100 [00:00<00:00, 102.49it/s] 60%|██████    | 60/100 [00:00<00:00, 106.03it/s] 72%|███████▏  | 72/100 [00:00<00:00, 108.36it/s] 84%|████████▍ | 84/100 [00:00<00:00, 109.93it/s] 96%|█████████▌| 96/100 [00:00<00:00, 110.65it/s]100%|██████████| 100/100 [00:00<00:00, 101.43it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.11it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.21it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.01it/s] 48%|████▊     | 48/100 [00:00<00:00, 115.39it/s] 60%|██████    | 60/100 [00:00<00:00, 115.69it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.87it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.91it/s] 96%|█████████▌| 96/100 [00:00<00:00, 116.09it/s]100%|██████████| 100/100 [00:00<00:00, 115.57it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.03it/s] 24%|██▍       | 24/100 [00:00<00:00, 114.31it/s] 36%|███▌      | 36/100 [00:00<00:00, 115.01it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.15it/s] 60%|██████    | 60/100 [00:00<00:00, 114.55it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.73it/s] 84%|████████▍ | 84/100 [00:00<00:00, 114.92it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.02it/s]100%|██████████| 100/100 [00:00<00:00, 114.66it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 98.02it/s] 22%|██▏       | 22/100 [00:00<00:00, 106.46it/s] 33%|███▎      | 33/100 [00:00<00:00, 105.69it/s] 44%|████▍     | 44/100 [00:00<00:00, 106.30it/s] 56%|█████▌    | 56/100 [00:00<00:00, 108.40it/s] 68%|██████▊   | 68/100 [00:00<00:00, 109.76it/s] 80%|████████  | 80/100 [00:00<00:00, 110.51it/s] 92%|█████████▏| 92/100 [00:00<00:00, 111.07it/s]100%|██████████| 100/100 [00:00<00:00, 109.18it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 92.97it/s] 21%|██        | 21/100 [00:00<00:00, 97.85it/s] 33%|███▎      | 33/100 [00:00<00:00, 105.81it/s] 45%|████▌     | 45/100 [00:00<00:00, 109.89it/s] 57%|█████▋    | 57/100 [00:00<00:00, 112.24it/s] 69%|██████▉   | 69/100 [00:00<00:00, 113.18it/s] 81%|████████  | 81/100 [00:00<00:00, 114.40it/s] 93%|█████████▎| 93/100 [00:00<00:00, 115.15it/s]100%|██████████| 100/100 [00:00<00:00, 111.63it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  9%|▉         | 9/100 [00:00<00:01, 85.58it/s] 21%|██        | 21/100 [00:00<00:00, 102.68it/s] 33%|███▎      | 33/100 [00:00<00:00, 108.17it/s] 45%|████▌     | 45/100 [00:00<00:00, 110.83it/s] 57%|█████▋    | 57/100 [00:00<00:00, 112.39it/s] 69%|██████▉   | 69/100 [00:00<00:00, 113.27it/s] 81%|████████  | 81/100 [00:00<00:00, 113.81it/s] 93%|█████████▎| 93/100 [00:00<00:00, 114.18it/s]100%|██████████| 100/100 [00:00<00:00, 111.45it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  6%|▌         | 6/100 [00:00<00:01, 59.17it/s] 15%|█▌        | 15/100 [00:00<00:01, 73.75it/s] 27%|██▋       | 27/100 [00:00<00:00, 91.53it/s] 39%|███▉      | 39/100 [00:00<00:00, 99.91it/s] 51%|█████     | 51/100 [00:00<00:00, 104.46it/s] 62%|██████▏   | 62/100 [00:00<00:00, 105.41it/s] 73%|███████▎  | 73/100 [00:00<00:00, 106.73it/s] 85%|████████▌ | 85/100 [00:00<00:00, 108.59it/s] 97%|█████████▋| 97/100 [00:00<00:00, 109.85it/s]100%|██████████| 100/100 [00:00<00:00, 102.83it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 111.38it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.95it/s] 36%|███▌      | 36/100 [00:00<00:00, 114.22it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.74it/s] 60%|██████    | 60/100 [00:00<00:00, 115.15it/s] 72%|███████▏  | 72/100 [00:00<00:00, 115.37it/s] 84%|████████▍ | 84/100 [00:00<00:00, 115.51it/s] 96%|█████████▌| 96/100 [00:00<00:00, 115.61it/s]100%|██████████| 100/100 [00:00<00:00, 115.00it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  4%|▍         | 4/100 [00:00<00:02, 38.07it/s] 14%|█▍        | 14/100 [00:00<00:01, 73.30it/s] 26%|██▌       | 26/100 [00:00<00:00, 90.76it/s] 38%|███▊      | 38/100 [00:00<00:00, 98.76it/s] 50%|█████     | 50/100 [00:00<00:00, 103.59it/s] 62%|██████▏   | 62/100 [00:00<00:00, 106.91it/s] 74%|███████▍  | 74/100 [00:00<00:00, 109.02it/s] 86%|████████▌ | 86/100 [00:00<00:00, 110.37it/s] 98%|█████████▊| 98/100 [00:00<00:00, 111.39it/s]100%|██████████| 100/100 [00:00<00:00, 102.94it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 109.97it/s] 23%|██▎       | 23/100 [00:00<00:00, 112.66it/s] 35%|███▌      | 35/100 [00:00<00:00, 113.67it/s] 47%|████▋     | 47/100 [00:00<00:00, 114.07it/s] 59%|█████▉    | 59/100 [00:00<00:00, 114.36it/s] 71%|███████   | 71/100 [00:00<00:00, 114.55it/s] 83%|████████▎ | 83/100 [00:00<00:00, 111.09it/s] 95%|█████████▌| 95/100 [00:00<00:00, 112.20it/s]100%|██████████| 100/100 [00:00<00:00, 112.86it/s]
+  0%|          | 0/100 [00:00<?, ?it/s]  8%|▊         | 8/100 [00:00<00:01, 74.79it/s] 20%|██        | 20/100 [00:00<00:00, 96.80it/s] 32%|███▏      | 32/100 [00:00<00:00, 103.84it/s] 44%|████▍     | 44/100 [00:00<00:00, 107.12it/s] 56%|█████▌    | 56/100 [00:00<00:00, 109.11it/s] 68%|██████▊   | 68/100 [00:00<00:00, 110.21it/s] 80%|████████  | 80/100 [00:00<00:00, 110.91it/s] 92%|█████████▏| 92/100 [00:00<00:00, 111.36it/s]100%|██████████| 100/100 [00:00<00:00, 107.99it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 11%|█         | 11/100 [00:00<00:00, 107.10it/s] 23%|██▎       | 23/100 [00:00<00:00, 110.36it/s] 35%|███▌      | 35/100 [00:00<00:00, 111.49it/s] 47%|████▋     | 47/100 [00:00<00:00, 112.01it/s] 59%|█████▉    | 59/100 [00:00<00:00, 112.43it/s] 71%|███████   | 71/100 [00:00<00:00, 112.68it/s] 83%|████████▎ | 83/100 [00:00<00:00, 112.87it/s] 95%|█████████▌| 95/100 [00:00<00:00, 113.00it/s]100%|██████████| 100/100 [00:00<00:00, 112.30it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+  0%|          | 0/100 [00:00<?, ?it/s]  7%|▋         | 7/100 [00:00<00:01, 69.65it/s] 18%|█▊        | 18/100 [00:00<00:00, 92.47it/s] 30%|███       | 30/100 [00:00<00:00, 102.48it/s] 41%|████      | 41/100 [00:00<00:00, 104.35it/s] 52%|█████▏    | 52/100 [00:00<00:00, 105.99it/s] 64%|██████▍   | 64/100 [00:00<00:00, 108.92it/s] 76%|███████▌  | 76/100 [00:00<00:00, 110.65it/s] 88%|████████▊ | 88/100 [00:00<00:00, 111.73it/s]100%|██████████| 100/100 [00:00<00:00, 112.51it/s]100%|██████████| 100/100 [00:00<00:00, 107.35it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 110.80it/s] 24%|██▍       | 24/100 [00:00<00:00, 112.83it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.60it/s] 48%|████▊     | 48/100 [00:00<00:00, 114.05it/s] 60%|██████    | 60/100 [00:00<00:00, 114.37it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.55it/s] 84%|████████▍ | 84/100 [00:00<00:00, 114.70it/s] 96%|█████████▌| 96/100 [00:00<00:00, 114.53it/s]100%|██████████| 100/100 [00:00<00:00, 114.12it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 10%|█         | 10/100 [00:00<00:00, 97.48it/s] 22%|██▏       | 22/100 [00:00<00:00, 107.68it/s] 34%|███▍      | 34/100 [00:00<00:00, 111.15it/s] 46%|████▌     | 46/100 [00:00<00:00, 112.75it/s] 58%|█████▊    | 58/100 [00:00<00:00, 113.75it/s] 70%|███████   | 70/100 [00:00<00:00, 114.26it/s] 82%|████████▏ | 82/100 [00:00<00:00, 114.56it/s] 94%|█████████▍| 94/100 [00:00<00:00, 114.71it/s]100%|██████████| 100/100 [00:00<00:00, 113.07it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 12%|█▏        | 12/100 [00:00<00:00, 112.18it/s] 24%|██▍       | 24/100 [00:00<00:00, 113.14it/s] 36%|███▌      | 36/100 [00:00<00:00, 113.61it/s] 48%|████▊     | 48/100 [00:00<00:00, 113.73it/s] 60%|██████    | 60/100 [00:00<00:00, 113.96it/s] 72%|███████▏  | 72/100 [00:00<00:00, 114.09it/s] 84%|████████▍ | 84/100 [00:00<00:00, 114.16it/s] 96%|█████████▌| 96/100 [00:00<00:00, 114.10it/s]100%|██████████| 100/100 [00:00<00:00, 113.85it/s]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(

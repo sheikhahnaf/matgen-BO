@@ -1,0 +1,135 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'base': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/scratch/user/ahnafalvi/matinvent-bo/src/mattergen/mattergen/common/utils/data_classes.py:95: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  with initialize_config_dir(str(self.model_path)):
+/scratch/user/ahnafalvi/matinvent-pristine/models/mattergen/pl_module.py:115: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=map_location)
+/scratch/user/ahnafalvi/matinvent-pristine/models/mattergen/sample.py:264: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  with hydra.initialize_config_dir(os.path.abspath(str(sampling_config_path))):
+Generating samples:   0%|          | 0/1 [00:00<?, ?it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s][A
+  0%|          | 0/1000 [00:18<?, ?it/s][A
+  0%|          | 1/1000 [00:57<15:50:47, 57.10s/it][A
+  1%|          | 6/1000 [01:03<2:14:10,  8.10s/it] [A
+  1%|          | 11/1000 [01:09<1:10:22,  4.27s/it][A
+  2%|▏         | 16/1000 [01:15<47:52,  2.92s/it]  [A
+  2%|▏         | 21/1000 [01:21<36:59,  2.27s/it][A
+  3%|▎         | 26/1000 [01:27<30:49,  1.90s/it][A
+  3%|▎         | 31/1000 [01:33<26:59,  1.67s/it][A
+  4%|▎         | 36/1000 [01:40<24:33,  1.53s/it][A
+  4%|▍         | 41/1000 [01:46<22:59,  1.44s/it][A
+  5%|▍         | 46/1000 [01:52<21:53,  1.38s/it][A
+  5%|▌         | 51/1000 [01:58<21:06,  1.33s/it][A
+  6%|▌         | 56/1000 [02:04<20:33,  1.31s/it][A
+  6%|▌         | 60/1000 [02:09<20:16,  1.29s/it][A
+  6%|▋         | 64/1000 [02:15<20:02,  1.29s/it][A
+  7%|▋         | 68/1000 [02:20<19:51,  1.28s/it][A
+  7%|▋         | 72/1000 [02:25<19:41,  1.27s/it][A
+  8%|▊         | 76/1000 [02:30<19:32,  1.27s/it][A
+  8%|▊         | 80/1000 [02:44<29:25,  1.92s/it][A
+  8%|▊         | 84/1000 [02:49<26:18,  1.72s/it][A
+  9%|▉         | 89/1000 [02:55<23:37,  1.56s/it][A
+  9%|▉         | 94/1000 [03:01<21:56,  1.45s/it][A
+ 10%|▉         | 98/1000 [03:06<21:01,  1.40s/it][A
+ 10%|█         | 102/1000 [03:11<20:21,  1.36s/it][A
+ 11%|█         | 106/1000 [03:16<19:49,  1.33s/it][A
+ 11%|█         | 111/1000 [03:22<19:17,  1.30s/it][A
+ 12%|█▏        | 115/1000 [03:27<19:01,  1.29s/it][A
+ 12%|█▏        | 119/1000 [03:32<18:50,  1.28s/it][A
+ 12%|█▏        | 123/1000 [03:38<18:42,  1.28s/it][A
+ 13%|█▎        | 127/1000 [03:43<18:33,  1.28s/it][A
+ 13%|█▎        | 131/1000 [03:48<18:27,  1.27s/it][A
+ 14%|█▎        | 135/1000 [03:53<18:23,  1.28s/it][A
+ 14%|█▍        | 139/1000 [03:58<18:18,  1.28s/it][A
+ 14%|█▍        | 143/1000 [04:03<18:13,  1.28s/it][A
+ 15%|█▍        | 147/1000 [04:08<18:08,  1.28s/it][A
+ 15%|█▌        | 151/1000 [04:13<18:05,  1.28s/it][A
+ 16%|█▌        | 155/1000 [04:18<18:01,  1.28s/it][A
+ 16%|█▌        | 159/1000 [04:23<17:55,  1.28s/it][A
+ 16%|█▋        | 163/1000 [04:29<17:50,  1.28s/it][A
+ 17%|█▋        | 167/1000 [04:34<17:47,  1.28s/it][A
+ 17%|█▋        | 171/1000 [04:39<17:42,  1.28s/it][A
+ 18%|█▊        | 175/1000 [04:44<17:38,  1.28s/it][A
+ 18%|█▊        | 179/1000 [04:49<17:33,  1.28s/it][A
+ 18%|█▊        | 183/1000 [04:55<17:44,  1.30s/it][A
+ 19%|█▊        | 187/1000 [05:00<17:40,  1.30s/it][A
+ 19%|█▉        | 191/1000 [05:05<17:29,  1.30s/it][A
+ 20%|█▉        | 195/1000 [05:10<17:26,  1.30s/it][A
+ 20%|█▉        | 199/1000 [05:15<17:23,  1.30s/it][A
+ 20%|██        | 203/1000 [05:21<17:15,  1.30s/it][A
+ 21%|██        | 207/1000 [05:26<17:07,  1.30s/it][A
+ 21%|██        | 211/1000 [05:31<16:59,  1.29s/it][A
+ 22%|██▏       | 215/1000 [05:36<16:55,  1.29s/it][A
+ 22%|██▏       | 219/1000 [05:42<17:29,  1.34s/it][A
+ 22%|██▏       | 223/1000 [05:47<17:12,  1.33s/it][A
+ 23%|██▎       | 227/1000 [05:53<17:40,  1.37s/it][A
+ 23%|██▎       | 231/1000 [05:58<17:15,  1.35s/it][A
+ 23%|██▎       | 234/1000 [06:03<18:14,  1.43s/it][A
+ 24%|██▍       | 238/1000 [06:08<17:29,  1.38s/it][A
+ 24%|██▍       | 242/1000 [06:13<16:57,  1.34s/it][A
+ 25%|██▍       | 246/1000 [06:18<16:38,  1.32s/it][A
+ 25%|██▌       | 250/1000 [06:24<16:23,  1.31s/it][A
+ 25%|██▌       | 254/1000 [06:29<16:09,  1.30s/it][A
+ 26%|██▌       | 258/1000 [06:34<16:00,  1.29s/it][A
+ 26%|██▌       | 262/1000 [06:39<15:49,  1.29s/it][A
+ 27%|██▋       | 266/1000 [06:44<15:40,  1.28s/it][A
+ 27%|██▋       | 270/1000 [06:49<15:37,  1.28s/it][A
+ 27%|██▋       | 274/1000 [06:54<15:29,  1.28s/it][A
+ 28%|██▊       | 278/1000 [06:59<15:21,  1.28s/it][A
+ 28%|██▊       | 282/1000 [07:04<15:15,  1.27s/it][A
+ 29%|██▊       | 286/1000 [07:09<15:09,  1.27s/it][A
+ 29%|██▉       | 290/1000 [07:14<15:05,  1.28s/it][A
+ 29%|██▉       | 294/1000 [07:20<15:01,  1.28s/it][A
+ 30%|██▉       | 298/1000 [07:25<14:56,  1.28s/it][A
+ 30%|███       | 302/1000 [07:30<14:54,  1.28s/it][A
+ 31%|███       | 306/1000 [07:35<14:52,  1.29s/it][A
+ 31%|███       | 310/1000 [07:40<14:47,  1.29s/it][A
+ 31%|███▏      | 314/1000 [07:45<14:38,  1.28s/it][A
+ 32%|███▏      | 318/1000 [07:50<14:34,  1.28s/it][A
+ 32%|███▏      | 322/1000 [07:56<14:39,  1.30s/it][A
+ 33%|███▎      | 326/1000 [08:01<14:32,  1.29s/it][A
+ 33%|███▎      | 330/1000 [08:06<14:26,  1.29s/it][A
+ 33%|███▎      | 334/1000 [08:11<14:21,  1.29s/it][A
+ 34%|███▍      | 338/1000 [08:16<14:17,  1.30s/it][A
+ 34%|███▍      | 342/1000 [08:22<14:11,  1.29s/it][A
+ 35%|███▍      | 346/1000 [08:27<14:07,  1.30s/it][A
+ 35%|███▌      | 350/1000 [08:32<14:02,  1.30s/it][A
+ 35%|███▌      | 354/1000 [08:37<13:56,  1.30s/it][A
+ 36%|███▌      | 358/1000 [08:42<13:51,  1.29s/it][A
+ 36%|███▌      | 362/1000 [08:48<13:45,  1.29s/it][A
+ 37%|███▋      | 366/1000 [08:53<13:39,  1.29s/it][A
+ 37%|███▋      | 370/1000 [08:58<13:34,  1.29s/it][A
+ 37%|███▋      | 374/1000 [09:03<13:27,  1.29s/it][A
+ 38%|███▊      | 378/1000 [09:08<13:18,  1.28s/it][A
+ 38%|███▊      | 382/1000 [09:13<13:09,  1.28s/it][A
+ 39%|███▊      | 386/1000 [09:18<13:02,  1.27s/it][A
+ 39%|███▉      | 390/1000 [09:23<12:56,  1.27s/it][A
+ 39%|███▉      | 394/1000 [09:28<12:52,  1.28s/it][A
+ 40%|███▉      | 398/1000 [09:33<12:47,  1.28s/it][A
+ 40%|████      | 402/1000 [09:39<12:45,  1.28s/it][A
+ 41%|████      | 406/1000 [09:44<12:43,  1.28s/it][A
+ 41%|████      | 410/1000 [09:49<12:40,  1.29s/it][A
+ 41%|████      | 411/1000 [10:12<33:19,  3.39s/it][A
+ 42%|████▏     | 415/1000 [10:17<25:41,  2.64s/it][A
+ 42%|████▏     | 419/1000 [10:22<21:04,  2.18s/it][A
+ 42%|████▏     | 423/1000 [10:27<18:06,  1.88s/it][A
+ 43%|████▎     | 427/1000 [10:32<16:08,  1.69s/it][A
+ 43%|████▎     | 431/1000 [10:38<14:48,  1.56s/it][A
+ 44%|████▎     | 435/1000 [10:43<13:52,  1.47s/it][A
+ 44%|████▍     | 439/1000 [10:48<13:13,  1.42s/it][A
+ 44%|████▍     | 443/1000 [10:53<12:46,  1.38s/it][A
+ 45%|████▍     | 447/1000 [11:10<20:59,  2.28s/it][A
+ 45%|████▌     | 451/1000 [11:15<18:04,  1.98s/it][A
+ 46%|████▌     | 455/1000 [11:20<15:59,  1.76s/it][A
+ 46%|████▌     | 459/1000 [11:26<14:33,  1.61s/it][A
+ 46%|████▋     | 463/1000 [11:31<13:32,  1.51s/it][A
+ 47%|████▋     | 467/1000 [11:36<12:46,  1.44s/it][A[2026-04-29T18:43:53.629] error: *** JOB 3001395 ON fc102 CANCELLED AT 2026-04-29T18:43:53 DUE to SIGNAL Terminated ***

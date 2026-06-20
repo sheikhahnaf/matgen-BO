@@ -1,0 +1,19 @@
+# CrystalFlow as the MatInvent agent (Phase-3 RL coupling).
+# Loads the upstream pretrained DNG-mp-20 checkpoint via CrystalFlowSuite.
+# CSPNet decoder shared with DiffCSP; only the noise schedule + target differ
+# (CFM linear interpolation + velocity field instead of DDPM Gaussian + score).
+_target_: src.p3_models.crystalflow_suite.CrystalFlowSuite
+model_name: crystalflow_mp20
+model_path: ${oc.env:SCRATCH}/checkpoints/crystalflow/ckpt-v1.0.0/DNG-mp-20
+
+sample_cfg:
+  batch_size: ${eval_size}
+  num_batches: 1
+
+finetune_cfg:
+  lr: 1.0e-5
+  epochs: 3
+  batch_size: ${eval_size}
+  timesteps: 4              # CFM trains on continuous t — we use 4 bins per step
+  accum_steps: 1
+  sigma: 1.0e-3             # KL regularization weight (matches MatterGen scale)

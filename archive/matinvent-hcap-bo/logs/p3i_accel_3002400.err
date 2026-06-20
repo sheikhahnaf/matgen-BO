@@ -1,0 +1,314 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'base': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[GPRouted] queued 160 warm-start samples from /scratch/user/ahnafalvi/matinvent-hcap-bo/data/ltm_seed_pool.parquet (re-embed at first calc)
+/scratch/user/ahnafalvi/matinvent-bo/src/mattergen/mattergen/common/utils/data_classes.py:95: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  with initialize_config_dir(str(self.model_path)):
+/scratch/user/ahnafalvi/matinvent-pristine/models/mattergen/pl_module.py:115: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=map_location)
+/scratch/user/ahnafalvi/matinvent-pristine/models/mattergen/sample.py:264: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  with hydra.initialize_config_dir(os.path.abspath(str(sampling_config_path))):
+Generating samples:   0%|          | 0/1 [00:00<?, ?it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s][A
+  0%|          | 0/1000 [00:15<?, ?it/s][A
+  0%|          | 1/1000 [00:21<5:50:45, 21.07s/it][A
+  0%|          | 5/1000 [00:26<1:11:08,  4.29s/it][A
+  1%|          | 9/1000 [00:31<44:18,  2.68s/it]  [A
+  1%|▏         | 13/1000 [00:37<34:38,  2.11s/it][A
+  2%|▏         | 17/1000 [00:42<29:55,  1.83s/it][A
+  2%|▏         | 21/1000 [00:48<27:15,  1.67s/it][A
+  2%|▎         | 25/1000 [00:54<25:38,  1.58s/it][A
+  3%|▎         | 29/1000 [00:59<24:34,  1.52s/it][A
+  3%|▎         | 33/1000 [01:05<23:50,  1.48s/it][A
+  4%|▎         | 37/1000 [01:10<23:19,  1.45s/it][A
+  4%|▍         | 41/1000 [01:16<22:57,  1.44s/it][A
+  4%|▍         | 45/1000 [01:22<22:42,  1.43s/it][A
+  5%|▍         | 49/1000 [01:27<22:32,  1.42s/it][A
+  5%|▌         | 53/1000 [01:33<22:24,  1.42s/it][A
+  6%|▌         | 57/1000 [01:38<22:18,  1.42s/it][A
+  6%|▌         | 61/1000 [01:44<22:13,  1.42s/it][A
+  6%|▋         | 65/1000 [01:50<22:09,  1.42s/it][A
+  7%|▋         | 69/1000 [01:56<22:07,  1.43s/it][A
+  7%|▋         | 73/1000 [02:01<22:04,  1.43s/it][A
+  8%|▊         | 77/1000 [02:07<22:01,  1.43s/it][A
+  8%|▊         | 81/1000 [02:13<21:58,  1.43s/it][A
+  8%|▊         | 85/1000 [02:19<21:55,  1.44s/it][A
+  9%|▉         | 89/1000 [02:24<21:51,  1.44s/it][A
+  9%|▉         | 93/1000 [02:30<21:47,  1.44s/it][A
+ 10%|▉         | 97/1000 [02:36<21:44,  1.44s/it][A
+ 10%|█         | 101/1000 [02:42<21:42,  1.45s/it][A
+ 10%|█         | 105/1000 [02:48<21:40,  1.45s/it][A
+ 11%|█         | 109/1000 [02:54<21:37,  1.46s/it][A
+ 11%|█▏        | 113/1000 [02:59<21:34,  1.46s/it][A
+ 12%|█▏        | 117/1000 [03:05<21:28,  1.46s/it][A
+ 12%|█▏        | 121/1000 [03:11<21:23,  1.46s/it][A
+ 12%|█▎        | 125/1000 [03:17<21:20,  1.46s/it][A
+ 13%|█▎        | 129/1000 [03:23<21:15,  1.46s/it][A
+ 13%|█▎        | 133/1000 [03:29<21:08,  1.46s/it][A
+ 14%|█▎        | 137/1000 [03:35<21:01,  1.46s/it][A
+ 14%|█▍        | 141/1000 [03:40<20:57,  1.46s/it][A
+ 14%|█▍        | 145/1000 [03:46<20:50,  1.46s/it][A
+ 15%|█▍        | 149/1000 [03:52<20:44,  1.46s/it][A
+ 15%|█▌        | 153/1000 [03:58<20:39,  1.46s/it][A
+ 16%|█▌        | 157/1000 [04:04<20:34,  1.46s/it][A
+ 16%|█▌        | 161/1000 [04:10<20:28,  1.46s/it][A
+ 16%|█▋        | 165/1000 [04:16<20:24,  1.47s/it][A
+ 17%|█▋        | 169/1000 [04:21<20:18,  1.47s/it][A
+ 17%|█▋        | 173/1000 [04:27<20:12,  1.47s/it][A
+ 18%|█▊        | 177/1000 [04:33<20:08,  1.47s/it][A
+ 18%|█▊        | 181/1000 [04:39<20:05,  1.47s/it][A
+ 18%|█▊        | 185/1000 [06:55<2:32:21, 11.22s/it][A
+ 19%|█▊        | 186/1000 [07:00<2:24:04, 10.62s/it][A
+ 19%|█▉        | 190/1000 [07:05<1:38:55,  7.33s/it][A
+ 19%|█▉        | 194/1000 [07:11<1:11:31,  5.32s/it][A
+ 20%|█▉        | 198/1000 [07:17<54:04,  4.05s/it]  [A
+ 20%|██        | 202/1000 [07:22<42:37,  3.20s/it][A
+ 21%|██        | 206/1000 [07:28<34:53,  2.64s/it][A
+ 21%|██        | 210/1000 [07:33<29:40,  2.25s/it][A
+ 21%|██▏       | 214/1000 [07:39<26:04,  1.99s/it][A
+ 22%|██▏       | 218/1000 [07:44<23:37,  1.81s/it][A
+ 22%|██▏       | 222/1000 [07:50<21:57,  1.69s/it][A
+ 23%|██▎       | 226/1000 [07:56<20:47,  1.61s/it][A
+ 23%|██▎       | 230/1000 [08:02<19:59,  1.56s/it][A
+ 23%|██▎       | 234/1000 [08:07<19:25,  1.52s/it][A
+ 24%|██▍       | 238/1000 [08:13<18:58,  1.49s/it][A
+ 24%|██▍       | 242/1000 [08:19<18:37,  1.47s/it][A
+ 25%|██▍       | 246/1000 [08:24<18:20,  1.46s/it][A
+ 25%|██▌       | 250/1000 [08:30<18:08,  1.45s/it][A
+ 25%|██▌       | 254/1000 [08:36<18:01,  1.45s/it][A
+ 26%|██▌       | 258/1000 [08:42<17:57,  1.45s/it][A
+ 26%|██▌       | 262/1000 [08:48<17:52,  1.45s/it][A
+ 27%|██▋       | 266/1000 [08:53<17:45,  1.45s/it][A
+ 27%|██▋       | 270/1000 [08:59<17:40,  1.45s/it][A
+ 27%|██▋       | 274/1000 [09:05<17:34,  1.45s/it][A
+ 28%|██▊       | 278/1000 [09:11<17:29,  1.45s/it][A
+ 28%|██▊       | 282/1000 [09:17<17:25,  1.46s/it][A
+ 29%|██▊       | 286/1000 [09:23<17:21,  1.46s/it][A
+ 29%|██▉       | 290/1000 [09:29<18:03,  1.53s/it][A
+ 29%|██▉       | 294/1000 [09:35<17:44,  1.51s/it][A
+ 30%|██▉       | 298/1000 [09:41<17:30,  1.50s/it][A
+ 30%|███       | 302/1000 [09:47<17:15,  1.48s/it][A
+ 31%|███       | 306/1000 [09:53<17:05,  1.48s/it][A
+ 31%|███       | 310/1000 [09:59<16:57,  1.47s/it][A
+ 31%|███▏      | 314/1000 [10:04<16:49,  1.47s/it][A
+ 32%|███▏      | 318/1000 [10:10<16:42,  1.47s/it][A
+ 32%|███▏      | 322/1000 [10:16<16:35,  1.47s/it][A
+ 33%|███▎      | 326/1000 [10:22<16:26,  1.46s/it][A
+ 33%|███▎      | 330/1000 [10:28<16:20,  1.46s/it][A
+ 33%|███▎      | 334/1000 [10:34<16:12,  1.46s/it][A
+ 34%|███▍      | 338/1000 [10:40<16:07,  1.46s/it][A
+ 34%|███▍      | 342/1000 [10:45<16:00,  1.46s/it][A
+ 35%|███▍      | 346/1000 [10:51<15:53,  1.46s/it][A
+ 35%|███▌      | 350/1000 [10:57<15:48,  1.46s/it][A
+ 35%|███▌      | 354/1000 [11:03<15:44,  1.46s/it][A
+ 36%|███▌      | 358/1000 [11:09<15:39,  1.46s/it][A
+ 36%|███▌      | 362/1000 [11:15<15:35,  1.47s/it][A
+ 37%|███▋      | 366/1000 [11:20<15:28,  1.46s/it][A
+ 37%|███▋      | 370/1000 [11:26<15:22,  1.46s/it][A
+ 37%|███▋      | 374/1000 [11:33<16:04,  1.54s/it][A
+ 38%|███▊      | 378/1000 [11:39<15:54,  1.54s/it][A
+ 38%|███▊      | 380/1000 [11:47<20:25,  1.98s/it][A
+ 38%|███▊      | 384/1000 [11:53<18:42,  1.82s/it][A
+ 39%|███▉      | 388/1000 [12:00<17:38,  1.73s/it][A
+ 39%|███▉      | 392/1000 [12:05<16:40,  1.65s/it][A
+ 40%|███▉      | 396/1000 [12:11<15:58,  1.59s/it][A
+ 40%|████      | 400/1000 [12:17<15:29,  1.55s/it][A
+ 40%|████      | 404/1000 [12:23<15:08,  1.52s/it][A
+ 41%|████      | 408/1000 [12:29<14:50,  1.50s/it][A
+ 41%|████      | 412/1000 [12:35<15:13,  1.55s/it][A
+ 42%|████▏     | 416/1000 [12:41<14:49,  1.52s/it][A
+ 42%|████▏     | 420/1000 [12:47<14:30,  1.50s/it][A
+ 42%|████▏     | 424/1000 [12:53<14:17,  1.49s/it][A
+ 43%|████▎     | 428/1000 [12:59<14:05,  1.48s/it][A
+ 43%|████▎     | 432/1000 [13:05<13:56,  1.47s/it][A
+ 44%|████▎     | 436/1000 [13:10<13:48,  1.47s/it][A
+ 44%|████▍     | 440/1000 [13:16<13:41,  1.47s/it][A
+ 44%|████▍     | 444/1000 [13:22<13:35,  1.47s/it][A
+ 45%|████▍     | 448/1000 [13:28<13:28,  1.47s/it][A
+ 45%|████▌     | 452/1000 [13:34<13:23,  1.47s/it][A
+ 46%|████▌     | 456/1000 [13:40<13:16,  1.46s/it][A
+ 46%|████▌     | 460/1000 [13:46<13:09,  1.46s/it][A
+ 46%|████▋     | 464/1000 [13:51<13:06,  1.47s/it][A
+ 47%|████▋     | 468/1000 [13:57<13:00,  1.47s/it][A
+ 47%|████▋     | 472/1000 [14:03<12:54,  1.47s/it][A
+ 48%|████▊     | 476/1000 [14:09<12:48,  1.47s/it][A
+ 48%|████▊     | 480/1000 [14:15<12:41,  1.46s/it][A
+ 48%|████▊     | 484/1000 [14:21<12:34,  1.46s/it][A
+ 49%|████▉     | 488/1000 [14:27<12:28,  1.46s/it][A
+ 49%|████▉     | 492/1000 [14:32<12:22,  1.46s/it][A
+ 50%|████▉     | 496/1000 [14:38<12:17,  1.46s/it][A
+ 50%|█████     | 500/1000 [14:44<12:12,  1.46s/it][A
+ 50%|█████     | 504/1000 [14:50<12:05,  1.46s/it][A
+ 51%|█████     | 508/1000 [14:56<11:59,  1.46s/it][A
+ 51%|█████     | 512/1000 [15:02<11:53,  1.46s/it][A
+ 52%|█████▏    | 516/1000 [15:08<11:47,  1.46s/it][A
+ 52%|█████▏    | 520/1000 [15:13<11:41,  1.46s/it][A
+ 52%|█████▏    | 524/1000 [15:19<11:33,  1.46s/it][A
+ 53%|█████▎    | 528/1000 [15:25<11:25,  1.45s/it][A
+ 53%|█████▎    | 532/1000 [15:31<11:20,  1.45s/it][A
+ 54%|█████▎    | 536/1000 [15:37<11:13,  1.45s/it][A
+ 54%|█████▍    | 540/1000 [15:42<11:08,  1.45s/it][A
+ 54%|█████▍    | 544/1000 [15:48<11:03,  1.45s/it][A
+ 55%|█████▍    | 548/1000 [15:54<10:56,  1.45s/it][A
+ 55%|█████▌    | 552/1000 [16:00<10:49,  1.45s/it][A
+ 56%|█████▌    | 556/1000 [16:06<10:43,  1.45s/it][A
+ 56%|█████▌    | 560/1000 [16:12<10:57,  1.49s/it][A
+ 56%|█████▋    | 564/1000 [16:18<10:46,  1.48s/it][A
+ 57%|█████▋    | 568/1000 [16:24<10:44,  1.49s/it][A
+ 57%|█████▋    | 572/1000 [16:30<10:34,  1.48s/it][A
+ 58%|█████▊    | 576/1000 [16:35<10:23,  1.47s/it][A
+ 58%|█████▊    | 580/1000 [16:41<10:14,  1.46s/it][A
+ 58%|█████▊    | 584/1000 [16:47<10:09,  1.46s/it][A
+ 59%|█████▊    | 587/1000 [16:53<10:53,  1.58s/it][A
+ 59%|█████▉    | 589/1000 [16:59<12:50,  1.88s/it][A
+ 59%|█████▉    | 593/1000 [17:05<12:00,  1.77s/it][A
+ 60%|█████▉    | 597/1000 [17:12<11:19,  1.69s/it][A
+ 60%|██████    | 601/1000 [17:17<10:40,  1.60s/it][A
+ 60%|██████    | 605/1000 [17:23<10:11,  1.55s/it][A
+ 61%|██████    | 609/1000 [17:29<09:51,  1.51s/it][A
+ 61%|██████▏   | 613/1000 [17:34<09:33,  1.48s/it][A
+ 62%|██████▏   | 617/1000 [17:40<09:21,  1.47s/it][A
+ 62%|██████▏   | 621/1000 [17:46<09:09,  1.45s/it][A
+ 62%|██████▎   | 625/1000 [17:51<08:58,  1.44s/it][A
+ 63%|██████▎   | 629/1000 [17:57<08:47,  1.42s/it][A
+ 63%|██████▎   | 633/1000 [18:02<08:37,  1.41s/it][A
+ 64%|██████▎   | 637/1000 [18:08<08:28,  1.40s/it][A
+ 64%|██████▍   | 641/1000 [18:14<08:22,  1.40s/it][A
+ 64%|██████▍   | 645/1000 [18:19<08:17,  1.40s/it][A
+ 65%|██████▍   | 649/1000 [18:25<08:09,  1.39s/it][A
+ 65%|██████▌   | 653/1000 [18:30<08:02,  1.39s/it][A
+ 66%|██████▌   | 657/1000 [18:36<07:58,  1.39s/it][A
+ 66%|██████▌   | 661/1000 [18:41<07:53,  1.40s/it][A
+ 66%|██████▋   | 665/1000 [18:47<07:48,  1.40s/it][A
+ 67%|██████▋   | 669/1000 [18:53<07:43,  1.40s/it][A
+ 67%|██████▋   | 673/1000 [18:58<07:39,  1.40s/it][A
+ 68%|██████▊   | 677/1000 [19:04<07:33,  1.40s/it][A
+ 68%|██████▊   | 681/1000 [19:10<07:27,  1.40s/it][A
+ 68%|██████▊   | 685/1000 [19:15<07:20,  1.40s/it][A
+ 69%|██████▉   | 689/1000 [19:21<07:14,  1.40s/it][A
+ 69%|██████▉   | 693/1000 [19:26<07:06,  1.39s/it][A
+ 70%|██████▉   | 697/1000 [19:32<06:59,  1.38s/it][A
+ 70%|███████   | 701/1000 [19:37<06:53,  1.38s/it][A
+ 70%|███████   | 705/1000 [19:43<06:49,  1.39s/it][A
+ 71%|███████   | 709/1000 [19:48<06:44,  1.39s/it][A
+ 71%|███████▏  | 713/1000 [19:54<06:39,  1.39s/it][A
+ 72%|███████▏  | 717/1000 [20:00<06:34,  1.40s/it][A
+ 72%|███████▏  | 721/1000 [20:05<06:31,  1.40s/it][A
+ 72%|███████▎  | 725/1000 [20:11<06:26,  1.41s/it][A
+ 73%|███████▎  | 729/1000 [20:17<06:20,  1.41s/it][A
+ 73%|███████▎  | 733/1000 [20:22<06:15,  1.41s/it][A
+ 74%|███████▎  | 737/1000 [20:28<06:09,  1.40s/it][A
+ 74%|███████▍  | 741/1000 [20:33<06:03,  1.40s/it][A
+ 74%|███████▍  | 745/1000 [20:39<05:58,  1.40s/it][A
+ 75%|███████▍  | 749/1000 [20:45<05:51,  1.40s/it][A
+ 75%|███████▌  | 753/1000 [20:50<05:46,  1.40s/it][A
+ 76%|███████▌  | 757/1000 [20:56<05:40,  1.40s/it][A
+ 76%|███████▌  | 761/1000 [21:01<05:32,  1.39s/it][A
+ 76%|███████▋  | 765/1000 [21:07<05:25,  1.38s/it][A
+ 77%|███████▋  | 769/1000 [21:12<05:18,  1.38s/it][A
+ 77%|███████▋  | 773/1000 [21:51<05:28,  1.45s/it][A
+ 77%|███████▋  | 774/1000 [23:05<43:48, 11.63s/it][A
+ 78%|███████▊  | 778/1000 [23:11<29:26,  7.96s/it][A
+ 78%|███████▊  | 782/1000 [23:16<20:44,  5.71s/it][A
+ 79%|███████▊  | 786/1000 [23:21<15:15,  4.28s/it][A
+ 79%|███████▉  | 790/1000 [23:26<11:39,  3.33s/it][A
+ 79%|███████▉  | 794/1000 [23:31<09:15,  2.70s/it][A
+ 80%|███████▉  | 798/1000 [23:36<07:37,  2.26s/it][A
+ 80%|████████  | 802/1000 [23:42<06:29,  1.97s/it][A
+ 81%|████████  | 806/1000 [23:47<05:42,  1.77s/it][A
+ 81%|████████  | 810/1000 [23:52<05:08,  1.62s/it][A
+ 81%|████████▏ | 814/1000 [23:57<04:44,  1.53s/it][A
+ 82%|████████▏ | 818/1000 [24:03<04:26,  1.47s/it][A
+ 82%|████████▏ | 822/1000 [24:08<04:13,  1.43s/it][A
+ 83%|████████▎ | 826/1000 [24:13<04:02,  1.39s/it][A
+ 83%|████████▎ | 830/1000 [24:19<03:53,  1.38s/it][A
+ 83%|████████▎ | 834/1000 [24:24<03:45,  1.36s/it][A
+ 84%|████████▍ | 838/1000 [24:29<03:38,  1.35s/it][A
+ 84%|████████▍ | 842/1000 [24:34<03:32,  1.35s/it][A
+ 85%|████████▍ | 846/1000 [24:40<03:27,  1.35s/it][A
+ 85%|████████▌ | 850/1000 [24:45<03:23,  1.35s/it][A
+ 85%|████████▌ | 854/1000 [24:51<03:18,  1.36s/it][A
+ 86%|████████▌ | 858/1000 [24:56<03:13,  1.37s/it][A
+ 86%|████████▌ | 862/1000 [25:02<03:09,  1.37s/it][A
+ 87%|████████▋ | 866/1000 [25:07<03:04,  1.37s/it][A
+ 87%|████████▋ | 870/1000 [25:13<02:58,  1.37s/it][A
+ 87%|████████▋ | 874/1000 [25:18<02:53,  1.38s/it][A
+ 88%|████████▊ | 878/1000 [25:24<02:47,  1.37s/it][A
+ 88%|████████▊ | 882/1000 [25:29<02:41,  1.37s/it][A
+ 89%|████████▊ | 886/1000 [25:35<02:35,  1.37s/it][A
+ 89%|████████▉ | 890/1000 [25:40<02:29,  1.36s/it][A
+ 89%|████████▉ | 894/1000 [25:45<02:23,  1.35s/it][A
+ 90%|████████▉ | 898/1000 [25:51<02:17,  1.35s/it][A
+ 90%|█████████ | 902/1000 [25:56<02:11,  1.34s/it][A
+ 91%|█████████ | 906/1000 [26:02<02:06,  1.34s/it][A
+ 91%|█████████ | 910/1000 [26:07<02:00,  1.34s/it][A
+ 91%|█████████▏| 914/1000 [26:12<01:55,  1.34s/it][A
+ 92%|█████████▏| 918/1000 [26:18<01:50,  1.34s/it][A
+ 92%|█████████▏| 922/1000 [26:23<01:44,  1.34s/it][A
+ 93%|█████████▎| 926/1000 [26:28<01:39,  1.34s/it][A
+ 93%|█████████▎| 930/1000 [26:34<01:34,  1.34s/it][A
+ 93%|█████████▎| 934/1000 [26:39<01:28,  1.35s/it][A
+ 94%|█████████▍| 938/1000 [26:45<01:23,  1.34s/it][A
+ 94%|█████████▍| 942/1000 [26:50<01:17,  1.34s/it][A
+ 95%|█████████▍| 946/1000 [26:55<01:12,  1.34s/it][A
+ 95%|█████████▌| 950/1000 [27:01<01:07,  1.34s/it][A
+ 95%|█████████▌| 954/1000 [27:06<01:01,  1.35s/it][A
+ 96%|█████████▌| 958/1000 [27:11<00:56,  1.35s/it][A
+ 96%|█████████▌| 962/1000 [27:17<00:51,  1.35s/it][A
+ 97%|█████████▋| 966/1000 [27:22<00:45,  1.35s/it][A
+ 97%|█████████▋| 970/1000 [27:28<00:40,  1.34s/it][A
+ 97%|█████████▋| 974/1000 [27:33<00:34,  1.34s/it][A
+ 98%|█████████▊| 978/1000 [27:38<00:29,  1.34s/it][A
+ 98%|█████████▊| 982/1000 [27:44<00:24,  1.34s/it][A
+ 99%|█████████▊| 986/1000 [27:49<00:18,  1.34s/it][A
+ 99%|█████████▉| 990/1000 [27:54<00:13,  1.34s/it][A
+ 99%|█████████▉| 994/1000 [28:00<00:08,  1.34s/it][A
+100%|█████████▉| 998/1000 [28:05<00:02,  1.34s/it][A100%|██████████| 1000/1000 [28:08<00:00,  1.69s/it]
+Generating samples: 100%|██████████| 1/1 [28:13<00:00, 1693.27s/it]Generating samples: 100%|██████████| 1/1 [28:13<00:00, 1693.27s/it]
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
+  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/utils.py:30: UserWarning: Setting global torch default dtype to torch.float32.
+  warnings.warn(f"Setting global torch default dtype to {torch_dtype}.")
+W0430 21:24:02.651000 327449 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] torch._dynamo hit config.cache_size_limit (8)
+W0430 21:24:02.651000 327449 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    function: 'forward' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/forcefield/gns.py:476)
+W0430 21:24:02.651000 327449 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    last reason: 0/0: tensor 'L['batch'][0]' size mismatch at index 0. expected 1156, actual 464
+W0430 21:24:02.651000 327449 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0430 21:24:02.651000 327449 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/ltm.py:106: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self._df = pd.concat([self._df, new_df], ignore_index=True)
+[GPRouted] re-embedded 160 warm-start rows under fresh PCA basis
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/escn/so3.py:23: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/scn/spherical_harmonics.py:23: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/equiformer_v2/wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/common/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem/core/models/esen/esen.py:91: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  Jd_list = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+[LocalESEN] imaginary modes detected
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/calculators/local_esen_gp_routed.py:331: RuntimeWarning: Mean of empty slice
+  pi_mean = float(np.nanmean(pi)) if pi.size else float("nan")
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/calculators/local_esen_gp_routed.py:332: RuntimeWarning: All-NaN slice encountered
+  pi_max = float(np.nanmax(pi)) if pi.size and np.isfinite(np.nanmax(pi)) else float("nan")
+/scratch/user/ahnafalvi/matinvent-pristine/pipeline/mat_invent.py:256: RuntimeWarning: Mean of empty slice.
+  logging.info(f'buffer reward mean={self.replay.buffer["reward"].values.mean()}')
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[2026-04-30T22:10:48.415] error: *** JOB 3002400 ON fc101 CANCELLED AT 2026-04-30T22:10:48 DUE to SIGNAL Terminated ***

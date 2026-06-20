@@ -1,0 +1,12 @@
+Phase 0 smoke test starting at Tue Apr 28 02:33:37 CDT 2026 on fc026
+Python: /scratch/user/ahnafalvi/envs/matinvent-hcap-bo/bin/python 3.10.19 | packaged by conda-forge | (main, Jan 26 2026, 23:45:08) [GCC 14.3.0]
+NVIDIA A100-PCIE-40GB, 40960 MiB, 580.126.20
+[smoke] device=cuda
+[smoke] built 80 toy bulk crystals (train=60, query=20)
+[smoke] featurized 60 in 110.4s, Z=(60, 50), raw_dim=256
+[smoke] surrogate fitted on 60 points
+[smoke] predicted on 20: mu mean=0.003  sigma mean=0.875
+[smoke] qLogNEI top-8 (with k-DPP) = [19, 1, 15, 7, 8, 5, 3, 18]
+[smoke] ENCE=0.472  PICP90=0.80  NLL=0.779
+[smoke] saved featurizer + surrogate to /scratch/user/ahnafalvi/matinvent-hcap-bo/results/smoke_2999685
+Smoke test finished at Tue Apr 28 02:35:48 CDT 2026

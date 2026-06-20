@@ -1,0 +1,53 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\subsection{Crystal Structure Featurisation}
+
+The representation of crystal structures as numerical feature vectors has evolved through three distinct generations.
+The first generation comprises hand-crafted atomic descriptors: atom-centred symmetry functions (ACSFs)~\cite{behler2011atom}, the Coulomb matrix~\cite{rupp2012fast}, and SOAP~\cite{bartok2013representing}.
+These descriptors encode local atomic environments within a fixed cutoff radius and satisfy essential physical symmetries (rotational, translational, permutational invariance), but their functional forms are chosen \emph{a priori} and cannot adapt to the target property.
+The second generation introduced compositional and statistical descriptors such as Magpie~\cite{ward2016general} and the matminer feature suite~\cite{ward2018matminer}, which aggregate element-level properties (electronegativity, atomic radius, valence electron count) into fixed-length vectors.
+These are fast to compute but discard all structural information beyond composition.
+
+The third generation---graph neural networks (GNNs) trained end-to-end---emerged with CGCNN~\cite{xie2018crystal}, SchNet~\cite{schutt2018schnet}, and MEGNet~\cite{chen2019graph}.
+These models learn both the representation and the property prediction jointly, but each model must be retrained for each new property, limiting their use as general-purpose featurisers.
+Our work sits at the intersection of the first and third generations: we use pre-trained GNN models as \emph{fixed} feature extractors, combining the generality of learned representations with the simplicity of plug-in featurisation.
+
+
+\subsection{Foundation Models for Materials}
+
+The concept of ``foundation models'' for materials science has crystallised rapidly since 2022.
+MACE-MP-0~\cite{batatia2022mace,batatia2024foundation} demonstrated that an equivariant message-passing network pre-trained on the Materials Project trajectory dataset could serve as a universal interatomic potential.
+M3GNet~\cite{chen2022m3gnet} pursued a similar goal with a graph network architecture, while CHGNet~\cite{deng2023chgnet} additionally incorporated magnetic moment information.
+The GNoME project~\cite{merchant2023scaling} scaled graph network training to 48~million structures, discovering 2.2~million new stable crystals.
+
+ORB~\cite{orb2024} and UMA/eSEN~\cite{uma2025} represent the current frontier.
+ORB's pre-training on $\sim$120~million configurations from the Alexandria and MPTrj datasets gives it the broadest chemical coverage of any published model.
+UMA/eSEN from Meta FAIR targets universality across the periodic table through a scalable equivariant architecture.
+
+While these models were designed as force field surrogates (predicting energies, forces, and stresses), their learned hidden representations encode rich structural information that can, in principle, transfer to arbitrary downstream properties.
+Several works have explored this transfer learning paradigm for materials~\cite{yamada2019predicting}, but none has systematically compared multiple foundation model embeddings as drop-in featurisers for probabilistic surrogates across diverse property types.
+
+
+\subsection{Surrogates for Materials Bayesian Optimisation}
+
+Gaussian processes have been the default surrogate in BO since the seminal EGO algorithm~\cite{jones1998efficient}.
+Frazier~\cite{frazier2018tutorial} provides a comprehensive tutorial on GP-based BO, covering acquisition functions, kernel design, and convergence properties.
+In materials science, GP surrogates have been applied to crystal structure prediction~\cite{todorovic2019bayesian}, catalyst design, and alloy optimisation~\cite{wen2019machine}.
+
+Multi-task GPs~\cite{bonilla2007multi} extend the framework to jointly model correlated properties through the intrinsic coregionalisation model (ICM).
+Swersky \emph{et al.}~\cite{swersky2013multi} applied multi-task BO to hyperparameter optimisation, demonstrating that sharing information across related tasks can accelerate convergence.
+However, the effectiveness of MTGP for materials properties---where task correlations are dictated by physical relationships rather than statistical convenience---remains underexplored.
+
+Deep Gaussian processes~\cite{damianou2013deep} compose multiple GP layers to model non-Gaussian, non-stationary functions.
+Dutordoir \emph{et al.}~\cite{dutordoir2021deep} showed that variational DGPs can be trained efficiently with modern auto-differentiation frameworks.
+The BoTorch implementation~\cite{balandat2020botorch} makes DGPs accessible within the same API as standard GPs, enabling the fair comparison we conduct here.
+
+
+\subsection{Benchmarking in Materials Machine Learning}
+
+Matbench~\cite{dunn2020benchmarking} established the standard benchmark for materials property prediction, evaluating deterministic models (random forests, neural networks) on 13~regression and classification tasks.
+JARVIS-ML~\cite{choudhary2020joint} provides a complementary benchmark with properties computed from JARVIS-DFT.
+However, both benchmarks focus on point prediction accuracy and do not evaluate probabilistic surrogates, uncertainty quantification, or the effect of embedding choice on surrogate performance.
+
+Our benchmark differs in three key respects: (i)~we evaluate \emph{probabilistic} surrogates where uncertainty quality matters as much as point accuracy; (ii)~we systematically vary the embedding method as an independent factor rather than fixing it; and (iii)~we operate in the \emph{low-data} regime ($\ntrain \leq 500$) relevant to BO campaigns, rather than the large-data regime ($\ntrain > 5{,}000$) typical of Matbench.

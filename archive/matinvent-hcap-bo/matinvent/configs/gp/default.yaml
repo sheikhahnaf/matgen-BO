@@ -1,0 +1,36 @@
+# GP Training Configuration for Online Learning during RL
+
+# Property to optimize (must match router configuration)
+task: bulk_modulus
+
+# Calibration phase (for learning noise levels)
+calibration_steps: 10              # First 10 steps query all calculators
+calibration_batch_size: null       # null = use all structures, or specify subset size
+
+# Noise estimation (for heteroscedastic GP)
+calculator_hierarchy:              # Fidelity order (highest first)
+  - vasp                           # Use VASP as ground truth if available
+  - orb                            # Otherwise use ORB
+  - alignn                         # ALIGNN is lowest fidelity
+min_paired_samples: 20             # Minimum paired samples to estimate noise
+correct_systematic_bias: false     # Include bias in noise estimate (simpler)
+noise_floor: 0.1                   # Minimum noise level
+
+# GP retraining frequency (every N RL steps)
+retrain_frequency: 5
+
+# Minimum samples before first GP training
+min_samples: 10
+
+# PCA components for ORB feature reduction
+n_components: 50
+
+# Validation split for GP evaluation
+validation_split: 0.2
+
+# Save GP training metrics
+save_metrics: true
+
+# Optional: Save GP models periodically
+save_models: false
+model_save_frequency: 10

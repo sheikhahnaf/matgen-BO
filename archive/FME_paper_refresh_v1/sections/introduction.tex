@@ -1,0 +1,59 @@
+\section{Introduction}
+\label{sec:introduction}
+
+The discovery and design of novel materials is increasingly framed as a sequential decision-making problem: compute or synthesise a candidate, measure its properties, learn from the outcome, and suggest the next candidate~\cite{frazier2018tutorial}.
+Bayesian optimisation (BO) has emerged as the engine of this design loop, offering a principled framework for balancing the exploration of unknown chemical space against the exploitation of promising regions~\cite{jones1998efficient,todorovic2019bayesian}.
+At the heart of any BO campaign lies a \emph{surrogate model}---typically a Gaussian process (GP)---that approximates the expensive property-evaluation function and quantifies predictive uncertainty to guide acquisition.
+However, the effectiveness of a surrogate depends critically on two upstream choices: \emph{what features represent the crystal structure}, and \emph{what probabilistic model maps those features to properties}.
+These two choices interact combinatorially, yet no systematic study has evaluated their joint effect across the diversity of material property domains that real design campaigns must navigate.
+
+That diversity is substantial.
+Materials design targets span mechanical properties such as elastic moduli and Poisson's ratio, where the structure--property relationship is dominated by local bonding geometry; electronic properties such as band gap and dielectric constants, where orbital hybridisation and many-body screening play essential roles; and vibrational properties such as phonon spectra and phonon-derived dielectric response, which depend on the potential energy surface beyond the harmonic regime.
+A surrogate pipeline that excels on bulk modulus prediction may fail entirely on dielectric constants---not because the model is poorly trained, but because the feature representation lacks the information content needed for the target physical phenomenon.
+Understanding which featuriser--surrogate combinations transfer across this property spectrum is therefore a prerequisite for deploying BO in realistic, multi-objective materials design campaigns.
+
+On the featurisation side, the materials science community has historically relied on hand-crafted structural descriptors.
+The Smooth Overlap of Atomic Positions (SOAP)~\cite{bartok2013representing} encodes local atomic environments as power spectra of smooth densities, atom-centred symmetry functions (ACSFs)~\cite{behler2011atom} provide another local perspective, and compositional feature sets like Magpie~\cite{ward2016general} and matminer~\cite{ward2018matminer} aggregate element-level statistics.
+While effective within their design scope, these descriptors share fundamental limitations: they are hand-crafted with fixed functional forms, operate within fixed receptive fields (typically 4--8~\AA{} cutoffs), and encode no transferable pre-training knowledge.
+Each new materials system or target property may require descriptor redesign, hyperparameter tuning, or domain-specific feature engineering---a bottleneck that compounds across the diverse property domains described above.
+
+The emergence of foundation models for atomistic simulation represents a paradigm shift.
+Models such as MACE~\cite{batatia2022mace,batatia2024foundation}, ORB~\cite{orb2024}, and UMA/eSEN~\cite{uma2025} have been pre-trained on millions of density functional theory (DFT) calculations spanning broad swaths of chemical space.
+Their learned representations encode rich structural and chemical information---not just local bond geometry, but also long-range ordering, charge transfer tendencies, and composition-dependent energy landscapes.
+The key insight is that these representations can be \emph{repurposed}: just as ImageNet-trained convolutional neural networks produce features that transfer to medical imaging or satellite classification, materials foundation models produce embeddings that may serve as general-purpose featurisers for downstream property prediction.
+The appeal is immediate: instead of designing a new descriptor for each property domain, one simply extracts embeddings from a pre-trained model and feeds them to a surrogate.
+Whether this promise holds across the full spectrum of material properties---from mechanical to electronic to vibrational---is an open question.
+
+On the surrogate side, the Bayesian optimisation community has developed several probabilistic modelling approaches beyond the standard single-task GP~\cite{rasmussen2006gaussian}.
+Multi-task GPs (MTGPs)~\cite{bonilla2007multi,swersky2013multi} extend the framework to jointly model multiple correlated properties, sharing statistical strength across tasks through the intrinsic coregionalisation model (ICM) kernel.
+Deep GPs (DGPs)~\cite{damianou2013deep,dutordoir2021deep} stack multiple GP layers to capture non-linear input--output relationships that a single-layer GP cannot represent---a capability that may prove essential for properties with complex, non-linear dependence on structure.
+The BoTorch framework~\cite{balandat2020botorch}, built on GPyTorch~\cite{gardner2018gpytorch}, provides unified implementations of all three surrogate families, enabling fair comparison under identical training and evaluation protocols.
+Each surrogate brings distinct trade-offs: the GP offers stability and interpretability, the DGP offers expressive power at the cost of configuration sensitivity, and the MTGP offers inter-task transfer that may compensate for weak individual predictions.
+
+A further subtlety, often overlooked in surrogate benchmarking, concerns \emph{what metric we use to judge surrogate quality}.
+The coefficient of determination (\Rtwo{}) is the standard regression metric, but BO acquisition functions---Expected Improvement, Upper Confidence Bound, Thompson Sampling---depend fundamentally on the surrogate's ability to \emph{rank} candidates relative to the current best, not to predict their exact property values.
+A surrogate that correctly orders material A above material B will guide the acquisition function to evaluate A first, regardless of whether it predicts A's property as 150~GPa or 180~GPa.
+This observation suggests that Spearman rank correlation ($\rho$) may be a more informative metric for evaluating BO surrogates than \Rtwo{}---a hypothesis that, as we will show, has profound consequences for how we assess surrogate utility across different property domains.
+
+Despite the rapid progress on both fronts---foundation model embeddings and advanced surrogates---\emph{no systematic study has evaluated the cross-product of these choices across diverse material property domains}.
+Existing works typically evaluate one featuriser with one surrogate~\cite{batatia2024foundation}, or benchmark multiple models but only with fixed descriptors~\cite{dunn2020benchmarking}.
+The practical materials scientist faces a combinatorial design space of featuriser $\times$ surrogate $\times$ dimensionality $\times$ training budget $\times$ property type, with no clear guidance on which combinations work best under which conditions.
+
+In this paper, we fill this gap with the largest cross-factorial benchmark to date for probabilistic surrogate evaluation in materials science.
+Our contributions are fourfold:
+\begin{enumerate}[nosep]
+    \item \textbf{First systematic combinatorial benchmark across diverse property domains.}
+    We evaluate 4~featurisers (SOAP, MACE, ORB, UMA/eSEN) $\times$ 3~surrogates (GP, MTGP, DGP) $\times$ 3~PCA dimensionalities $\times$ 3~training sizes across 3~materials property datasets---elastic tensor (8~mechanical properties), dielectric constant (4~electronic properties), and phonon dielectric (3~vibrational/electronic properties)---totalling over 8{,}640 cross-validated experiments spanning 15~target properties.
+    \item \textbf{Ranking accuracy as a primary evaluation metric.}
+    We discover that Spearman rank correlation ($\rho$) systematically and substantially exceeds \Rtwo{} across all datasets, with the gap widening as properties become more difficult to predict.
+    Surrogates with $\bar{R}^2 = 0.303$ can still achieve $\bar{\rho} = 0.824$, and the most extreme case---eps\_electronic with $R^2 = -0.001$ but $\rho = 0.930$---demonstrates that surrogates dismissed by conventional regression metrics can be highly effective for BO.
+    We argue that Spearman correlation should be adopted as a primary metric for BO surrogate evaluation.
+    \item \textbf{ORB embeddings as the universal default featuriser.}
+    ORB outperforms all alternatives on every dataset and every surrogate, achieving $\bar{R}^2 / \bar{\rho}$ of $0.803 / 0.842$ (elastic), $0.336 / 0.778$ (dielectric), and $0.303 / 0.824$ (phonon) at its best configurations.
+    This universality stems from ORB's large pre-training corpus ($\sim$120M configurations) and its graph attention architecture optimised for periodic crystals.
+    \item \textbf{Practical pipeline configuration guidelines.}
+    We characterise the DGP as a powerful surrogate when properly configured---achieving the best \Rtwo{} on both elastic ($\bar{R}^2 = 0.807$) and dielectric ($\bar{R}^2 = 0.336$) datasets---but one that requires PCA dimensionality as a carefully tuned hyperparameter (PCA\,$\leq$\,25).
+    The GP remains the robust default, and the MTGP helps selectively when tasks are few, correlated, and individually hard to predict.
+\end{enumerate}
+
+We release the complete pipeline as open-source software, providing a community benchmark for future featuriser and surrogate development in materials design.

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 41, in <module>
+    sys.exit(main())
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 36, in main
+    mod = importlib.import_module(_PHASES[args.phase])
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/smoke.py", line 20, in <module>
+    from src.surrogate import HCapSurrogate
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/surrogate.py", line 23, in <module>
+    from botorch.models import SingleTaskGP, FixedNoiseGP
+ImportError: cannot import name 'FixedNoiseGP' from 'botorch.models' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/__init__.py)

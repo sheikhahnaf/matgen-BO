@@ -1,0 +1,63 @@
+# MatInvent pipeline with GP-based calculator routing
+_target_: pipeline.mat_invent.MatInvent
+
+# global
+rl_epoch: ${rl_epoch}
+device: ${device}
+
+# saving
+save_dir: ./
+save_freq: 100  # for agent model
+
+# sampling
+sample_cfg: ${sample_cfg}
+
+topk_ratio: 0.5
+
+# experience replay
+replay: True
+replay_args:
+  buffer_size: 100
+  sample_size: 10
+  reward_cutoff: 0.1
+
+# diversity filter
+div_filter: True
+df_args:
+  tol: 3
+  buff: 6
+
+# finetune
+finetune_cfg:
+  batch_size: ${eval_size}
+  accum_steps: 50  # accumulation_steps
+  epochs: 3
+  sigma: 0.025
+  lr: 0.0001
+
+# GP routing configuration (NEW)
+gp_config:
+  task: bulk_modulus                        # Property name (must match reward config)
+
+  # Calibration phase (for learning noise levels)
+  calibration_steps: 10                     # First 10 steps query both ORB and ALIGNN
+  calibration_batch_size: null              # null = use all structures
+
+  # Noise estimation (for heteroscedastic GP)
+  calculator_hierarchy:                     # Fidelity order (highest first)
+    - orb                                   # Use ORB as ground truth (no VASP available)
+    - alignn                                # ALIGNN compared against ORB
+  min_paired_samples: 20                    # Minimum paired samples to estimate noise
+  correct_systematic_bias: false            # Include bias in noise estimate (simpler)
+  noise_floor: 0.1                          # Minimum noise level
+
+  # GP retraining
+  retrain_frequency: 5                      # Retrain GP every N RL steps
+  min_samples: 10                           # Min samples before first GP training
+
+  # Feature processing
+  n_components: 50                          # PCA components for ORB features
+
+  # Validation
+  validation_split: 0.2                     # Validation fraction for GP evaluation
+  save_metrics: true                        # Save GP training metrics to CSV

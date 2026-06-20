@@ -1,0 +1,63 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/utils.py:30: UserWarning: Setting global torch default dtype to torch.float32.
+  warnings.warn(f"Setting global torch default dtype to {torch_dtype}.")
+W0429 19:45:24.774000 246470 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] torch._dynamo hit config.cache_size_limit (8)
+W0429 19:45:24.774000 246470 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    function: 'forward' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/forcefield/gns.py:476)
+W0429 19:45:24.774000 246470 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    last reason: 0/0: tensor 'L['batch'][0]' size mismatch at index 0. expected 294, actual 766
+W0429 19:45:24.774000 246470 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0429 19:45:24.774000 246470 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/ltm.py:106: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self._df = pd.concat([self._df, new_df], ignore_index=True)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0954], device='cuda:0', dtype=torch.float64), mean = tensor([2.4055e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=6, median sigma=4.26e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0607], device='cuda:0', dtype=torch.float64), mean = tensor([3.4540e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=9, median sigma=8.09e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0445], device='cuda:0', dtype=torch.float64), mean = tensor([4.4409e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=12, median sigma=7.63e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0351], device='cuda:0', dtype=torch.float64), mean = tensor([4.7370e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=15, median sigma=7.51e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0290], device='cuda:0', dtype=torch.float64), mean = tensor([-9.8686e-17], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=18, median sigma=7.62e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0260], device='cuda:0', dtype=torch.float64), mean = tensor([1.5543e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=20, median sigma=7.47e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0247], device='cuda:0', dtype=torch.float64), mean = tensor([-1.4803e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=21, median sigma=7.29e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0215], device='cuda:0', dtype=torch.float64), mean = tensor([-3.3307e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/acquisition.py:94: UserWarning: Falling back to UCB selection (n_train=24, median sigma=7.60e-02).
+  warnings.warn(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:271: InputDataWarning: Data (input features) is not contained to the unit cube. Please consider min-max scaling the input data.
+  check_min_max_scaling(
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/botorch/models/utils/assorted.py:274: InputDataWarning: Data (outcome observations) is not standardized (std = tensor([1.0184], device='cuda:0', dtype=torch.float64), mean = tensor([-4.4409e-16], device='cuda:0', dtype=torch.float64)).Please consider scaling the input to zero mean and unit variance.
+  check_standardization(Y=train_Y, raise_on_fail=raise_on_fail)

@@ -1,0 +1,332 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why ORB Embeddings Win}
+\label{sec:why_orb}
+
+ORB's consistent dominance across all three datasets, all surrogates, and nearly every individual property demands explanation.
+On the elastic tensor dataset, ORB achieves $\bar{R}^2 = 0.803$ with the GP---a margin of $\Delta R^2 \approx 0.07$ over UMA (0.734) and MACE (0.731).
+On the dielectric dataset, ORB\,+\,DGP at PCA\,=\,10 reaches $\bar{R}^2 = 0.336$, outperforming the next best (MACE\,+\,DGP, 0.239) by nearly 0.10 absolute points.
+On the phonon dataset, the gap narrows to $\Delta R^2 \approx 0.03$ (ORB 0.303 vs.\ UMA 0.272), yet ORB never cedes the top position.
+We attribute this universality to three factors.
+
+First, \emph{pre-training data scale and diversity}.
+ORB was trained on the combined Alexandria and MPTrj datasets, comprising approximately 120~million atomic configurations spanning most of the periodic table.
+This is roughly three orders of magnitude larger than MACE-MP-0's training set ($\sim$150{,}000 structures) and gives ORB broader chemical coverage.
+The analogy is instructive: just as a language model trained on all of Wikipedia produces richer sentence embeddings than one trained on a single textbook, even if both share the same architecture, the sheer diversity of ORB's pre-training corpus endows its embeddings with a more comprehensive map of chemical space.
+
+Second, \emph{architectural design for periodic systems}.
+ORB's graph attention mechanism with explicit edge features is specifically designed for crystalline materials with periodic boundary conditions.
+While MACE's equivariant message passing captures many-body interactions through tensor products, ORB's attention mechanism learns which atomic interactions matter most, effectively performing a soft feature selection during pre-training.
+This architectural difference may explain why ORB's advantage is largest on the elastic dataset, where long-range elastic interactions between atoms contribute to bulk properties.
+
+Third, \emph{embedding compactness}.
+When we reduce ORB embeddings via PCA, even the first 10~components capture sufficient variance to outperform SOAP at PCA\,=\,50 on the elastic dataset (ORB: $\bar{R}^2 = 0.736$ vs.\ SOAP: $\bar{R}^2 = 0.445$).
+On the phonon dataset, the same comparison holds: ORB at PCA\,=\,10 achieves $\bar{R}^2 = 0.281$ versus SOAP's best of 0.235 at PCA\,=\,50.
+This implies that ORB's raw embedding space is more structured and informative, with the principal axes aligning naturally with property-relevant structural variation.
+
+The near-parity between UMA and MACE across datasets ($\bar{R}^2 \approx 0.73$ for both at GP\,+\,PCA\,=\,50 on elastic; $\bar{R}^2 \approx 0.27$ on phonon) is also noteworthy.
+Despite different architectures (eSCN-based vs.\ equivariant message passing) and different pre-training data, they converge on similar embedding quality.
+This convergence hints at a ``representational ceiling'' that can only be broken by substantially larger pre-training corpora---precisely the advantage that ORB exploits.
+
+One notable exception to ORB dominance is the dielectric dataset under GP and MTGP, where SOAP achieves higher \Rtwo{} than ORB (SOAP\,+\,MTGP: $\bar{R}^2 = 0.177$ vs.\ ORB\,+\,MTGP: 0.121; SOAP\,+\,GP: 0.132 vs.\ ORB\,+\,GP: 0.096).
+This reversal occurs because dielectric response depends heavily on local bonding chemistry and electronic polarisability---features that SOAP's explicit encoding of local environments captures, while foundation model embeddings, optimised for energy and forces, may under-represent.
+However, ORB recovers its lead under DGP ($\bar{R}^2 = 0.336$ vs.\ SOAP's $-0.016$), and critically, ORB's Spearman correlations are consistently higher ($\bar{\rho} = 0.746$--$0.778$ vs.\ SOAP's 0.019--0.583), indicating that ORB preserves material \emph{rankings} even when its absolute \Rtwo{} is lower.
+
+\FloatBarrier
+\subsection{PCA Sensitivity and DGP Configuration}
+\label{sec:pca_sensitivity_discussion}
+
+PCA dimensionality is a key hyperparameter in our pipeline, and its effect varies substantially across surrogates and datasets.
+The GP and MTGP are generally robust to PCA dimension: increasing from 10 to 50 produces monotonic improvement or near-plateau on all datasets.
+On the elastic data, GP\,+\,ORB improves from $\bar{R}^2 = 0.736$ (PCA\,=\,10) to 0.803 (PCA\,=\,50), while on the phonon data the equivalent gain is 0.281 to 0.303.
+MACE is the most PCA-robust featuriser on the elastic dataset, varying by only $\Delta R^2 = 0.005$ across PCA levels.
+SOAP benefits the most from higher PCA dimensions: on the elastic data, its $\bar{R}^2$ more than doubles from 0.197 (PCA\,=\,10) to 0.445 (PCA\,=\,50), reflecting the high intrinsic dimensionality of the SOAP descriptor.
+
+The DGP requires more careful PCA selection but rewards it with strong performance.
+On the elastic dataset, ORB\,+\,DGP at PCA\,=\,25 achieves the single best averaged $\bar{R}^2$ of 0.807---surpassing all GP and MTGP configurations.
+On the dielectric dataset, DGP\,+\,ORB at PCA\,=\,10 achieves $\bar{R}^2 = 0.336$, substantially outperforming both GP ($0.096$) and MTGP ($0.121$).
+On the phonon dataset, DGP\,+\,ORB at PCA\,=\,25 matches the GP ($\bar{R}^2 = 0.302$ vs.\ $0.303$).
+Figure~\ref{fig:cross_surrogate} summarises this pattern: the DGP delivers the best \Rtwo{} on two of three datasets (elastic and dielectric), while the GP leads on the phonon dataset.
+These results demonstrate that the DGP is a powerful surrogate when properly configured, not a fragile one.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/fig_cross_surrogate_r2_pptx.png}
+    \caption{Best averaged \Rtwo{} per surrogate across all three datasets (ORB descriptor, $\ntrain = 500$, best PCA per surrogate). The DGP achieves the highest \Rtwo{} on the elastic and dielectric datasets, while the GP leads on the phonon dataset. This complementary pattern supports using DGP for non-linear properties and GP as a robust default.}
+    \label{fig:cross_surrogate}
+\end{figure}
+
+The learning curves for the dielectric and phonon datasets (Figures~\ref{fig:learning_curves_dielectric} and~\ref{fig:learning_curves_phonon}) add a temporal dimension to this analysis.
+On the dielectric dataset, the DGP's \Rtwo{} remains relatively stable across training sizes while the GP and MTGP actually \emph{degrade}---a consequence of the heavy-tailed property distributions introducing more outliers as the dataset grows.
+On the phonon dataset, all surrogates improve modestly, with the DGP catching up to the GP at $\ntrain = 500$.
+These trends confirm that the DGP's non-linear capacity is most valuable when the property distribution is complex or when the training set is large enough to support its variational parameters.
+
+The DGP's sensitivity to PCA dimension is a practical consideration rather than a fundamental limitation.
+At PCA\,=\,50 with $\ntrain = 500$, the two-layer variational architecture must estimate $O(d^2)$ parameters in the hidden layer, pushing the data-to-parameter ratio below the threshold needed for stable ELBO optimisation.
+At PCA\,$\leq$\,25, this ratio is favourable, and the DGP's non-linear feature transformations can capture structure--property relationships that the linear GP cannot.
+This is most evident for elastic anisotropy, where DGP\,+\,ORB achieves $R^2 = 0.746$ versus GP\,+\,ORB's $0.582$---a 0.16-point advantage attributable to the DGP's ability to model complex, non-linear mappings.
+
+\emph{Practical guideline:} Treat PCA dimension as a first-class hyperparameter when using DGP.
+The combination PCA\,$\in\{10, 25\}$ with $\ntrain \geq 300$ yields strong, reliable results across all three datasets.
+For GP and MTGP, PCA\,=\,50 is a safe default.
+
+\FloatBarrier
+\subsection{Multi-Task GP: When Correlation Helps}
+\label{sec:mtgp_discussion}
+
+The MTGP's performance across our three datasets reveals an instructive pattern about when multi-task learning adds value for materials property prediction.
+
+On the elastic dataset, MTGP consistently underperforms the independent GP: MTGP\,+\,ORB achieves $\bar{R}^2 = 0.780$ versus the GP's 0.803.
+This is surprising given the strong correlations among elastic properties---$K_{\text{Voigt}}$, $K_{\text{VRH}}$, and $K_{\text{Reuss}}$ are three averaging schemes of the same underlying elastic tensor, and the shear modulus variants are similarly related.
+We identify three contributing factors.
+The ICM kernel must estimate a $T \times T$ task correlation matrix (where $T = 8$ for the elastic dataset), adding $T(T-1)/2 = 28$ parameters that introduce regularisation overhead.
+The heterogeneous property scales (bulk modulus in GPa vs.\ Poisson's ratio as a dimensionless ratio) can destabilise the shared lengthscale.
+And when each property is already well-predicted independently---as ORB\,+\,GP demonstrates---the marginal improvement from multi-task learning diminishes, a regime known as ``negative transfer''~\cite{yamada2019predicting}.
+
+On the phonon dataset, however, MTGP is essentially tied with the GP: $\bar{R}^2 = 0.302$ vs.\ 0.303, with $\bar{\rho} = 0.830$ vs.\ 0.824.
+Here the MTGP may benefit from the correlation between eps\_electronic and eps\_total (both measuring dielectric response, differing only by the ionic contribution) and between the dielectric constants and the phonon DOS peak (which reflects the lightest-atom vibrations that also influence dielectric response).
+With only 3~tasks, the correlation matrix adds just 3~extra parameters, keeping the overhead manageable.
+
+On the dielectric dataset, MTGP\,+\,SOAP achieves $\bar{R}^2 = 0.177$ versus SOAP\,+\,GP's $0.132$---a 34\% relative improvement.
+This suggests that multi-task learning can compensate for weaker featurisers when property correlations are strong (band gap and refractive index are physically related through the electronic structure).
+With ORB, the MTGP benefit is smaller but still present in terms of Spearman correlation ($\bar{\rho} = 0.773$ vs.\ 0.746).
+
+The emerging pattern is that MTGP helps most when the number of tasks is small ($T \leq 4$), the per-task prediction is weak (leaving room for multi-task transfer to fill in), and properties share a common physical origin.
+It helps least when tasks are numerous, individually well-predicted, or span disparate physical phenomena.
+
+\FloatBarrier
+\subsection{Dataset Difficulty Spectrum}
+\label{sec:difficulty_spectrum}
+
+The three datasets span a wide difficulty spectrum that illuminates the fundamental limits of geometric embedding-based surrogates.
+Elastic properties are the easiest ($\bar{R}^2$ up to 0.807), phonon dielectric properties are intermediate ($\bar{R}^2$ up to 0.303), and electronic dielectric properties occupy the hardest regime ($\bar{R}^2$ up to 0.336 overall, but with individual properties ranging from $R^2 = 0.852$ for band gap to $R^2 < 0$ for polycrystalline electronic dielectric constant).
+
+This hierarchy has a clear physical explanation grounded in the ``information distance'' between crystal geometry and the target property.
+
+\textbf{Elastic properties} depend primarily on bond stiffness, atomic packing density, and nearest-neighbour distances---precisely the features that geometric embeddings encode most directly.
+Bulk modulus ($K$) is an isotropic measure of resistance to uniform compression, and its high predictability ($R^2 > 0.91$ for all three Voigt/VRH/Reuss variants) confirms that foundation model embeddings capture local bonding information effectively.
+The energy landscape for elastic deformation is smooth and dominated by harmonic contributions near equilibrium, making it well-suited to the linear kernel of the GP.
+Shear modulus ($G$) introduces directional dependence ($R^2 = 0.78$--$0.83$), while elastic anisotropy and Poisson's ratio ($R^2 = 0.66$--$0.75$) require global structural understanding beyond local atomic environments.
+
+\textbf{Phonon properties} involve the vibrational modes of the crystal lattice, which depend on the potential energy surface (PES) beyond the harmonic regime.
+The last phonon DOS peak is well-predicted ($R^2 = 0.911$) because the highest-frequency vibrational mode is strongly determined by the lightest atoms and their bond stiffness---information directly accessible from geometric embeddings.
+However, the dielectric constants derived from phonon calculations (eps\_electronic, eps\_total) yield $R^2 \approx -0.001$ for all methods, reflecting the fact that dielectric response involves the collective, many-body polarisation of the electron density, which is far removed from geometric descriptors.
+The high Spearman correlations ($\rho = 0.930$ for eps\_electronic) indicate that the \emph{ordering} is preserved even when absolute predictions fail.
+
+\textbf{Dielectric properties} require electronic structure information---band gaps, orbital hybridisation, and many-body screening effects---that geometric embeddings capture only indirectly through correlations between bonding geometry and electronic structure.
+Band gap is reasonably predictable ($R^2 = 0.852$) because it correlates with electronegativity differences, bond ionicity, and coordination environment, all of which leave geometric fingerprints.
+The polycrystalline dielectric constants ($R^2 < 0$), however, depend on the full frequency-dependent polarisability tensor, which has no simple geometric proxy.
+
+This difficulty gradient has practical implications: for properties near the ``geometric'' end of the spectrum (mechanical, thermal conductivity, phonon frequencies), our pipeline is immediately applicable.
+For properties near the ``electronic'' end (optical gaps, dielectric response, magnetic moments), the Spearman correlations suggest that the surrogates can still guide Bayesian optimisation through reliable ranking, but absolute property predictions require electronic-structure-aware embeddings or hybrid featurisation strategies.
+
+\FloatBarrier
+\subsection{Ranking Accuracy Matters More Than Regression Accuracy}
+\label{sec:spearman_r2}
+
+We argue that the most practically important finding of this benchmark is the systematic and large discrepancy between Spearman rank correlation ($\rho$) and coefficient of determination (\Rtwo{}) across all three datasets.
+This discrepancy fundamentally changes how we should evaluate surrogates for materials design, and suggests that the dielectric and phonon surrogates are far more useful than their \Rtwo{} values imply.
+
+The numbers are striking.
+On the elastic dataset, the gap is modest: $\bar{\rho} = 0.842$ vs.\ $\bar{R}^2 = 0.803$ for ORB\,+\,GP.
+On the dielectric dataset, it widens: $\bar{\rho} = 0.778$ vs.\ $\bar{R}^2 = 0.336$ for ORB\,+\,DGP.
+On the phonon dataset, it becomes dramatic: $\bar{\rho} = 0.824$ vs.\ $\bar{R}^2 = 0.303$ for ORB\,+\,GP.
+The most extreme individual case is eps\_electronic in the phonon dataset, where $R^2 = -0.001$ coexists with $\rho = 0.930$---a surrogate that by conventional regression standards is \emph{worse than predicting the mean}, yet correctly orders 93\% of material pairs.
+
+This discrepancy arises because \Rtwo{} is dominated by absolute prediction error and is sensitive to outliers, while Spearman correlation measures only monotonic association.
+Figure~\ref{fig:metric_disagreement} shows where this happens. eps\_electronic and poly\_electronic sit in the high-$\rho$, low-\Rtwo{} zone: a handful of materials with dielectric constants orders of magnitude above the median dominates the squared-error sum and drags \Rtwo{} below zero, even though the surrogate still ranks the bulk of materials in the right order.
+This is not a failure of the embedding or the surrogate---it is an artefact of heavy-tailed property distributions interacting with a scale-sensitive metric.
+
+\textbf{Why this matters for Bayesian optimisation.}
+In materials design, the goal is not to predict exact property values but to \emph{discover materials with extreme properties}---the highest bulk modulus, the widest band gap, the lowest thermal conductivity.
+Acquisition functions such as Expected Improvement, Upper Confidence Bound, and Thompson Sampling depend on the surrogate's ability to \emph{rank} candidates relative to the current best observation.
+A surrogate that correctly ranks material A above material B will guide the acquisition function to evaluate A first, regardless of whether it predicts A's property value as 150~GPa or 180~GPa.
+Conversely, a surrogate with high \Rtwo{} but scrambled rankings (e.g., from systematic bias in one region of property space) would mislead the acquisition function despite its apparent regression accuracy.
+
+The practical consequence is profound: with $\bar{\rho} > 0.80$ across all three datasets for ORB\,+\,GP, the surrogate reliably identifies the top decile of materials---the set most likely to contain the global optimum.
+Even on the phonon dataset, where $\bar{R}^2 = 0.303$ might lead a practitioner to dismiss the surrogate as inadequate, $\bar{\rho} = 0.824$ means the surrogate correctly orders more than 80\% of material pairs.
+This ranking accuracy is more than sufficient to guide iterative BO search toward optimal candidates.
+On the dielectric dataset, the DGP's $\bar{\rho} = 0.778$ translates to reliable identification of the top quartile, enabling efficient BO even for properties where absolute prediction is poor.
+
+\textbf{Implications for surrogate evaluation practice.}
+We therefore recommend that the materials informatics community adopt Spearman rank correlation (or equivalently, Kendall's $\tau$) as a \emph{primary} evaluation metric for surrogates destined for BO, alongside but not subordinate to \Rtwo{}.
+Reporting only \Rtwo{} can lead to premature dismissal of surrogates that are in fact highly effective for their intended use in ranked search.
+The eps\_electronic case ($\rho = 0.930$, $R^2 = -0.001$) is perhaps the clearest illustration: this surrogate is not broken---it is miscalibrated in scale but excellent in ordinality.
+
+The learning curves reinforce this message.
+On the dielectric dataset (Figure~\ref{fig:learning_curves_dielectric}), the Spearman correlations remain stable or improve with training size even as \Rtwo{} \emph{decreases}---a striking illustration that ranking accuracy and regression accuracy can decouple entirely.
+On the phonon dataset (Figure~\ref{fig:learning_curves_phonon}), Spearman correlations improve steadily to $\bar{\rho} > 0.83$, while \Rtwo{} plateaus near $0.30$.
+This divergent scaling behaviour across training sizes provides dynamic evidence that Spearman is the more reliable indicator of surrogate utility for BO.
+
+\textbf{Preprocessing to close the gap.}
+For heavy-tailed properties (dielectric constants, formation energies of highly metastable compounds), log-transforming or robust-scaling the target variable before training could substantially improve \Rtwo{} without sacrificing the ranking accuracy already captured by high Spearman correlations.
+The eps\_electronic distribution spans several orders of magnitude, and a simple $\log(1 + y)$ transform would compress the outlier range, allowing the GP to fit both the bulk and tails of the distribution.
+This is a calibration problem, not a representation problem---the embeddings already encode the relevant structural information, as evidenced by $\rho = 0.930$.
+
+\FloatBarrier
+\subsection{Practical Recommendations}
+\label{sec:practical_recommendations}
+
+Our cross-dataset benchmark yields an updated recipe for practitioners setting up surrogate-assisted materials design campaigns.
+
+\emph{Default stack:} ORB\,+\,GP\,+\,PCA\,=\,50.
+This combination offers the best balance of accuracy, stability, and computational efficiency across all three datasets.
+On elastic properties, it achieves $\bar{R}^2 = 0.803$ and $\bar{\rho} = 0.842$.
+On phonon properties, $\bar{R}^2 = 0.303$ and $\bar{\rho} = 0.824$.
+On dielectric properties, $\bar{R}^2 = 0.096$ but $\bar{\rho} = 0.746$---sufficient for BO ranking.
+The GP trains in seconds on a single GPU and requires no hyperparameter tuning beyond the standard marginal likelihood optimisation.
+
+\emph{When to upgrade to DGP:} The DGP is the best-performing surrogate on both the elastic and dielectric datasets when configured at PCA\,$\leq$\,25.
+If your target property is suspected to have a non-linear relationship with structural features (e.g., elastic anisotropy, dielectric constants), has sufficient training data ($\ntrain \geq 300$), and you can afford to treat PCA dimension as a tuned hyperparameter, the DGP can provide substantial gains---up to $\Delta R^2 = 0.24$ on dielectric properties (DGP\,+\,ORB at PCA\,=\,10 vs.\ GP\,+\,ORB at PCA\,=\,50).
+We recommend sweeping PCA\,$\in \{10, 25\}$ with multiple optimiser restarts.
+
+\emph{When to use MTGP:} Multi-task GPs are beneficial when predicting a small number ($T \leq 4$) of physically correlated properties, especially with weaker featurisers.
+On the dielectric dataset, MTGP\,+\,SOAP improves over GP\,+\,SOAP by $\Delta R^2 = 0.045$.
+On the phonon dataset, MTGP achieves the highest Spearman correlation ($\bar{\rho} = 0.830$).
+For large task sets ($T = 8$) or independently well-predicted properties, the independent GP is preferable.
+
+\emph{Featuriser budget:} If computational cost for featurisation is a concern (e.g., for very large virtual libraries), ORB and MACE are roughly comparable in inference speed.
+SOAP is the fastest featuriser but pays a substantial accuracy penalty on most datasets, with the notable exception of dielectric properties under GP and MTGP.
+UMA/eSEN offers an intermediate option with accuracy near MACE.
+
+\emph{PCA dimension:} For GP and MTGP, PCA\,=\,50 is the safe default across all datasets.
+For DGP, PCA\,$\in \{10, 25\}$ is strongly recommended; PCA\,=\,50 should be avoided at $\ntrain = 500$.
+
+\FloatBarrier
+\subsection{Implications for Bayesian Optimisation in Materials Design}
+\label{sec:bo_implications}
+
+The surrogate quality findings reported here translate directly to expectations for closed-loop Bayesian optimisation campaigns.
+Three aspects deserve particular attention.
+
+First, as argued in Section~\ref{sec:spearman_r2}, the high Spearman correlations across all three datasets ($\bar{\rho} > 0.80$ for ORB\,+\,GP) mean that these surrogates are substantially more useful for BO than their \Rtwo{} values suggest.
+A concrete way to quantify this: if we define ``BO-useful'' as $\bar{\rho} > 0.75$ (i.e., the surrogate correctly ranks three out of four material pairs), then our pipeline qualifies on \emph{all three datasets} with GP, MTGP, and DGP alike.
+By contrast, the \Rtwo{}\,$> 0.75$ threshold is met only on the elastic dataset.
+This difference in pass rate---100\% vs.\ 33\%---illustrates how much surrogate utility is underestimated by conventional regression metrics.
+
+Second, the DGP's superior non-linear modelling on properties like elastic anisotropy ($R^2 = 0.746$ vs.\ GP's 0.582) and dielectric constants ($\bar{R}^2 = 0.336$ vs.\ 0.096) suggests that DGP-based surrogates could be particularly effective for BO on complex, non-linear target properties.
+The DGP's richer posterior also provides more informative uncertainty estimates in regions of feature space where the structure--property relationship deviates from linearity, potentially improving exploration--exploitation balance.
+
+Third, the data efficiency of ORB embeddings---matching SOAP\,+\,GP at $\ntrain = 500$ with only $\ntrain = 100$---has profound implications for BO campaign length.
+A typical materials BO campaign runs for 50--200 iterations.
+If each evaluation corresponds to a DFT calculation requiring hours of compute time, saving 400 initial evaluations translates to weeks of wall-clock time.
+The combination of ORB's pre-trained representations and a GP surrogate allows the BO loop to start with a stronger prior, requiring fewer ``warm-up'' evaluations before the acquisition function begins making useful suggestions.
+
+We note, however, that surrogate accuracy is a necessary but not sufficient condition for efficient BO.
+Uncertainty calibration---how well the predicted confidence intervals match actual errors---is equally important for acquisition function performance.
+Over-confident surrogates under-explore and miss optima; under-confident surrogates over-explore and waste evaluations.
+Our benchmark does not assess calibration, which we leave to future work.
+
+\FloatBarrier
+\subsection{Lessons from the Closed-Loop Probe}
+\label{sec:diffusion_lessons}
+
+The closed-loop runs in Section~\ref{sec:closed_loop_probe} place a Gaussian Process surrogate inside the published MatInvent~\cite{chen2025matinvent} workflow without otherwise modifying it.
+This sits naturally within two open directions named by MatInvent's own discussion: incorporating ``uncertainty-aware property predictors to provide informative gradients and enhance learning robustness,'' and integrating the workflow toward closed-loop materials discovery.
+A GP is one such uncertainty-aware predictor; the EI\,+\,DPP gate is one minimal closed-loop step.
+Reviews of RL fine-tuning of diffusion models~\cite{uehara2024rldiffusion} catalogue several policy-gradient and value-based families but do not, to our reading, include a Bayesian-optimisation acquisition step; recent surveys of generative AI for crystal structures~\cite{generative_review_2025} likewise survey the design space without devoting a section to online, closed-loop surrogate gating, while still noting Qi et al.'s offline, latent-space conservative surrogate (LCOM~\cite{qi2023lcom}) as a related precedent.
+Concurrent benchmark efforts on closed-loop materials discovery~\cite{made_benchmark} and on cross-model evaluation of crystal generators~\cite{lematbench2025} are complementary in scope: they provide the environments and metrics; we report a specific gating method run end-to-end across three architecturally distinct pretrained priors.
+
+The closed-loop runs let us test a few claims that the static benchmark only suggests.
+
+The static-benchmark prediction holds in the loop.
+Both targets in the closed-loop probe sit in the high-$\rho$, low-\Rtwo{} regime that Section~\ref{sec:spearman_r2} identified as benign for BO, and the GP-gated policy (ACC) tops vanilla REINFORCE (BASE) in MatterGen and ADiT for both $C_p$ and $K_{\text{VRH}}$.
+The GP's CV5 RMSE on its accumulated oracled training set stays flat across cycles (Figure~\ref{fig:closed_loop_surrogate}), so the loop at least does not collapse the surrogate's self-consistency---a necessary, not sufficient, signal that the gating step is operating in a sane regime.
+We do not log a held-out RMSE on the next cycle's fresh diffusion proposals, so we cannot directly attribute ACC's lift to GP generalisation; what we can say is that the lift is consistent with the static-benchmark prediction and is not accompanied by surrogate breakdown on the points the GP is trained on.
+
+Best-of-30 hides backbone variance; mean top-3 is the more honest comparator.
+Best-value bars in Figure~\ref{fig:closed_loop_per_model} make MatterGen and CrystalFlow look interchangeable on $C_p$ (both saturate at the 2.0~J/g/K oracle ceiling on a few seeds) and ADiT look like a clear winner on $K_{\text{VRH}}$ thanks to a single 375~GPa MoN polymorph.
+Mean top-3 collapses those gaps: on $C_p$ the three backbones land at 1.11~$\pm$~0.56, 0.89~$\pm$~0.40, and 0.80~$\pm$~0.18~J/g/K with overlapping error bars; on $K_{\text{VRH}}$ at 273~$\pm$~37, 224~$\pm$~43, and 259~$\pm$~45~GPa, again overlapping.
+The implication is that for a closed-loop benchmark with limited compute budget, reporting only the best hit per backbone over-states real differences---practitioners should report distributions over seeds, not maxima.
+
+The three priors disagree on geometry more than on property.
+The crystal-system histograms in Figure~\ref{fig:closed_loop_spacegroup} show that CrystalFlow and ADiT pull most of their top hits from triclinic and monoclinic systems, while MatterGen produces the only tetragonal hits and a substantially flatter distribution.
+This matches each prior's training: MatterGen was trained on Materials Project ground states (symmetry-rich) and the diffusion update lets it stay in those modes; CrystalFlow's vector-field parameterisation and ADiT's latent DiT both default to lower-symmetry structures because the unconstrained learned manifold contains many more low-symmetry states than high-symmetry ones.
+A useful corollary: when the target property correlates with high symmetry (e.g.\ cubic structures for high $K_{\text{VRH}}$), MatterGen-style symmetric priors are an asset; when the target is symmetry-agnostic, they are not.
+
+What the GP gate actually buys.
+ACC's lift over BASE is consistent but modest---the discovery curves separate by 0.1--0.2~J/g/K on $C_p$ and 30--50~GPa on $K_{\text{VRH}}$.
+The size of the gap is set by how much the prior already concentrates in the right region of property space.
+For a prior that produces high-$C_p$ structures at most cycles (MatterGen), the GP gate amplifies that signal cleanly.
+For a prior with high seed-to-seed variance (CrystalFlow), the GP gate cannot rescue runs where the diffusion samples never enter the right region in the first place.
+This is the same trade-off that motivates using stronger priors with weaker exploration policies, or weaker priors with stronger exploration---the closed-loop probe reproduces it in the diffusion-+-RL setting.
+
+The headline efficiency number is conditional, not uniform.
+The GP gate caps oracle calls at $K=4$ per cycle (= 92 calls per 20-cycle run including warm-start), so it pays off whenever the unfiltered SUN-survivor rate exceeds 4 per cycle.
+That condition holds for MatterGen on both targets and for all three backbones on $K_{\text{VRH}}$, where ACC reduces oracle calls by $1.8$--$3.5\times$ relative to BASE (Section~\ref{sec:cl_oracle}, Figure~\ref{fig:closed_loop_oracle_savings}).
+It does \emph{not} hold for CrystalFlow and ADiT on $C_p$, where the unfiltered REINFORCE produces fewer than 4 SUN-passing candidates per cycle on average; in those cases ACC's fixed $K$ slightly raises the oracle call count.
+The honest framing is that the gate \emph{bounds} oracle cost rather than monotonically reducing it: ACC trades a guaranteed top-$K$ EI\,+\,DPP selection for a fixed per-cycle budget, and the size of the saving depends on how often the unfiltered policy would have hit the oracle anyway.
+
+Pretrained-only is not enough to beat the prior's ceiling.
+The $\sim$1.2~J/g/K plateau in $C_p$ and the $\sim$310~GPa plateau in mean $K_{\text{VRH}}$ both reflect what each pretrained backbone can sample without parametric updates beyond REINFORCE rollouts on a few hundred candidates.
+Pushing past those ceilings will require either fine-tuning the diffusion priors against the target property (so the support of the prior shifts towards the high-property region) or a more exploratory acquisition rule than EI\,+\,DPP.
+The probe rules in the GP+diffusion+RL pipeline as a working unit; it does not yet rule in any particular backbone or oracle for production use.
+
+\FloatBarrier
+\subsection{Extension to Other Materials Systems}
+\label{sec:alloy_extension}
+
+A central question for the materials design community is how this pipeline transfers beyond the crystalline benchmark datasets studied here.
+We outline adaptation strategies for three important materials classes.
+
+\subsubsection{High-Entropy Alloys (HEAs)}
+
+HEAs present a unique challenge: their compositional disorder means that a single composition can produce many distinct atomic arrangements, each yielding a different embedding.
+The adaptation requires computing ORB embeddings on multiple special quasirandom structure (SQS) supercells per composition and averaging to obtain a disorder-averaged representation.
+\emph{Dataset:} AFLOW~\cite{curtarolo2012aflow} or custom VASP/LAMMPS calculations for specific alloy families (e.g., CrMnFeCoNi, refractory HEAs), with 200--500 unique compositions and 5--10 SQS cells each.
+\emph{Input/output:} PCA\,=\,25 averaged embeddings $\rightarrow$ scalar property (formation energy, yield strength, hardness).
+\emph{Training:} 5-fold CV, $\ntrain \in \{50, 100, 200, 500\}$; 1$\times$~A100 for $\sim$2~hours (GP) or $\sim$6~hours (DGP).
+\emph{Benchmarks:} matminer compositional features\,+\,Random Forest~\cite{ward2016general}, CGCNN~\cite{xie2018crystal}, MEGNet~\cite{chen2019graph}, CHGNet embeddings~\cite{deng2023chgnet}.
+\emph{Current SOTA:} GNoME embeddings~\cite{merchant2023scaling}\,+\,GP where available.
+
+Our results suggest that the ORB advantage may be reduced for HEAs if the compositional disorder produces embeddings with high variance across SQS realisations, effectively adding noise to the averaged representation.
+The DGP's non-linear capacity might prove especially valuable here, as the composition--property relationship in HEAs is known to be highly non-linear.
+
+\subsubsection{Inorganic Glasses}
+
+Amorphous materials lack the periodicity that crystalline foundation models are optimised for, presenting a test case where classical descriptors might regain competitiveness.
+\emph{Dataset:} MD-generated structures from LAMMPS or the GlassNet database; target properties include glass transition temperature ($T_g$), elastic modulus, and fragility index; 100--500 compositions.
+\emph{Key hypothesis:} SOAP may outperform foundation model embeddings for glasses, because the local atomic order (coordination shells, bond angle distributions) that determines glass properties is precisely what SOAP encodes, while models trained on crystalline data may introduce periodic biases.
+Our dielectric dataset finding that SOAP\,+\,MTGP outperforms ORB\,+\,GP in \Rtwo{} (0.177 vs.\ 0.096) hints that when properties depend on local chemistry rather than long-range structure, SOAP can be competitive.
+
+\subsubsection{Metal--Organic Frameworks (MOFs)}
+
+MOFs present a scalability challenge: unit cells containing 100+ atoms push the computational cost of message-passing featurisers.
+\emph{Dataset:} CoRE MOF database or hMOF hypothetical database; target properties: CO$_2$ uptake, H$_2$ storage capacity, band gap, thermal stability.
+\emph{Key adaptation:} Compute embeddings on the inorganic node and organic linker separately, then combine them---analogous to sentence embeddings from word embeddings.
+\emph{Benchmarks:} MOFTransformer, CGCNN-MOF variants, and textual descriptor approaches.
+Our observation that band gap is well-predicted across datasets ($R^2 = 0.852$ on the dielectric set) suggests that MOF band gap prediction is tractable with this pipeline, though pore-geometry-dependent properties (gas uptake) may require augmenting geometric embeddings with topological descriptors.
+
+\FloatBarrier
+\subsection{Limitations}
+\label{sec:limitations}
+
+We identify several limitations that should temper interpretation of our results.
+
+\emph{Dataset scope.}
+Our benchmark comprises three datasets with up to 500~training samples each.
+While these span mechanical, electronic, and vibrational property domains, they are all drawn from Matminer's curated collections of ordered crystalline structures.
+Disordered alloys, amorphous materials, interfaces, and defected structures---where materials design campaigns are increasingly focused---are not represented.
+
+\emph{No closed-loop BO evaluation.}
+We evaluate surrogate quality in a static, one-shot regression setting.
+Actual BO performance depends on the interplay between surrogate accuracy, uncertainty calibration, and acquisition function, which may not track \Rtwo{} or even Spearman correlation monotonically.
+A surrogate with slightly lower accuracy but better-calibrated uncertainty may outperform a more accurate but overconfident surrogate in closed-loop discovery.
+
+\emph{No uncertainty calibration assessment.}
+We do not evaluate the quality of predicted confidence intervals, which is critical for BO acquisition functions.
+The GP provides analytically tractable posterior variances, while the DGP and MTGP use approximate inference, potentially producing differently calibrated uncertainties.
+This difference could offset or amplify the \Rtwo{} advantages reported here.
+
+\emph{No fine-tuning.}
+All foundation model embeddings are used as frozen, pre-trained representations.
+Task-specific fine-tuning---even a lightweight linear probe on top of the frozen embeddings---could potentially close the gap between ORB and MACE/UMA, or between foundation model embeddings and electronic-structure-aware models for dielectric properties.
+
+\emph{Fixed training protocol.}
+We use a single training protocol (marginal likelihood for GP/MTGP, ELBO for DGP) without extensive hyperparameter search.
+The DGP's sensitivity to PCA dimension suggests that its performance ceiling may be higher with adaptive learning rate schedules, warm restarts, or alternative variational inference schemes.
+
+\emph{Sample size ceiling.}
+With $\ntrain \leq 500$, we operate in the low-data regime that characterises early-stage BO campaigns.
+At larger sample sizes ($\ntrain > 1{,}000$), the surrogate ranking may shift: the MTGP may benefit more from inter-task transfer with richer correlation estimates, and the DGP may tolerate higher PCA dimensions.

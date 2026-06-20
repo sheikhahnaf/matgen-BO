@@ -1,0 +1,19 @@
+Phase 2 ACCELERATED (LocalESEN_GPRouted) starting at Tue Apr 28 07:21:05 CDT 2026 on fc023
+Tesla T4, 16384 MiB
+MODELS_PROJECT_ROOT: /scratch/user/ahnafalvi/matinvent-bo/src/mattergen/mattergen
+[2026-04-28 07:23:52,001][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/jwchen25/MatInvent/resolve/main/reference_MP2020correction.gz "HTTP/1.1 302 Found"
+[2026-04-28 07:24:18,933][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/checkpoints/last.ckpt "HTTP/1.1 302 Found"
+[2026-04-28 07:24:18,993][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/config.yaml "HTTP/1.1 307 Temporary Redirect"
+[2026-04-28 07:24:19,006][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/mattergen/ea430eab64b80855029c2941b9fda15f245a771a/checkpoints%2Fmattergen_base%2Fconfig.yaml "HTTP/1.1 200 OK"
+[2026-04-28 07:24:30,832][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/checkpoints/last.ckpt "HTTP/1.1 302 Found"
+[2026-04-28 07:24:30,898][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/config.yaml "HTTP/1.1 307 Temporary Redirect"
+[2026-04-28 07:24:30,910][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/mattergen/ea430eab64b80855029c2941b9fda15f245a771a/checkpoints%2Fmattergen_base%2Fconfig.yaml "HTTP/1.1 200 OK"
+[2026-04-28 07:24:34,335][root][INFO] - *****   RL START   *****
+[2026-04-28 07:24:34,336][root][INFO] - *****   LOOP 0 START   *****
+[2026-04-28 07:24:34,336][root][INFO] - SAMPLE:
+[32m2026-04-28 07:47:18.796[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-04-28 08:00:17,116][root][INFO] - Number of filtered samples: 24
+[2026-04-28 08:00:17,135][root][INFO] - avg_energy_above_hull_per_atom: 0.067995, avg_rmsd_from_relaxation: 0.081265, frac_novel_unique_stable_structures: 0.444444, frac_stable_structures: 0.851852, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.592593, frac_novel_systems: 0.055556, frac_novel_unique_structures: 0.592593, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.407407, recall: 0.000072
+[2026-04-28 08:00:17,146][root][INFO] - SCORE:
+[2026-04-28 08:00:56,107][cached_path][INFO] - cache of https://orbitalmaterials-public-models.s3.us-west-1.amazonaws.com/forcefields/orb-v3/orb-v3-conservative-inf-omat-20250404.ckpt is up-to-date
+Closing LMDB environment /tmp/job.2999708/tmp849b0unv/reference_MP2020correction

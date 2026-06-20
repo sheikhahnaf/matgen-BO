@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 43, in <module>
+    sys.exit(main())
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 39, in main
+    return int(mod.run(config_path=args.config, output_dir=args.output_dir) or 0)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/oracle_smoke.py", line 50, in run
+    cp, mask = oracle.evaluate(atoms_list)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle_fairchem.py", line 93, in evaluate
+    raise RuntimeError(
+RuntimeError: FairChem runner failed (code 1). stderr:
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle_fairchem_runner.py", line 28, in <module>
+    from quacc.recipes.mlp.core import relax_job
+ModuleNotFoundError: No module named 'quacc'
+

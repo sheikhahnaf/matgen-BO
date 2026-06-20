@@ -1,0 +1,250 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{frazier2018tutorial}
+\citation{jones1998efficient,todorovic2019bayesian}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{Introduction}{section.1}{}}
+\citation{bartok2013representing}
+\citation{behler2011atom}
+\citation{ward2016general}
+\citation{ward2018matminer}
+\citation{batatia2022mace,batatia2024foundation}
+\citation{orb2024}
+\citation{uma2025}
+\citation{rasmussen2006gaussian}
+\citation{bonilla2007multi,swersky2013multi}
+\citation{damianou2013deep,dutordoir2021deep}
+\citation{balandat2020botorch}
+\citation{gardner2018gpytorch}
+\citation{batatia2024foundation}
+\citation{dunn2020benchmarking}
+\citation{behler2011atom}
+\citation{rupp2012fast}
+\citation{bartok2013representing}
+\citation{ward2016general}
+\citation{ward2018matminer}
+\citation{xie2018crystal}
+\citation{schutt2018schnet}
+\citation{chen2019graph}
+\citation{batatia2022mace,batatia2024foundation}
+\citation{chen2022m3gnet}
+\citation{deng2023chgnet}
+\citation{merchant2023scaling}
+\citation{orb2024}
+\citation{uma2025}
+\citation{yamada2019predicting}
+\citation{jones1998efficient}
+\citation{frazier2018tutorial}
+\citation{todorovic2019bayesian}
+\citation{wen2019machine}
+\citation{bonilla2007multi}
+\citation{swersky2013multi}
+\citation{damianou2013deep}
+\citation{dutordoir2021deep}
+\citation{balandat2020botorch}
+\citation{dunn2020benchmarking}
+\citation{choudhary2020joint}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\newlabel{sec:related_work}{{2}{3}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Crystal Structure Featurisation}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Foundation Models for Materials}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Surrogates for Materials Bayesian Optimisation}{3}{subsection.2.3}\protected@file@percent }
+\citation{larsen2017atomic}
+\citation{ward2018matminer}
+\citation{jain2013materials}
+\citation{jain2013materials}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Benchmarking in Materials Machine Learning}{4}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{4}{section.3}\protected@file@percent }
+\newlabel{sec:methods}{{3}{4}{Methods}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Pipeline Overview}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:pipeline}{{3.1}{4}{Pipeline Overview}{subsection.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Modular pipeline for foundation-model-based surrogate modelling. Crystal structures are featurised by one of four embedding methods (SOAP, MACE, ORB, UMA/eSEN), projected to lower dimensions via PCA, and fed into a probabilistic surrogate model (GP, MTGP, or DGP). Each component can be independently swapped, enabling systematic cross-factorial evaluation.\relax }}{4}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:pipeline}{{1}{4}{Modular pipeline for foundation-model-based surrogate modelling. Crystal structures are featurised by one of four embedding methods (SOAP, MACE, ORB, UMA/eSEN), projected to lower dimensions via PCA, and fed into a probabilistic surrogate model (GP, MTGP, or DGP). Each component can be independently swapped, enabling systematic cross-factorial evaluation.\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Datasets}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:datasets}{{3.2}{4}{Datasets}{subsection.3.2}{}}
+\citation{deJong2015elastic}
+\citation{petousis2017high}
+\citation{bartok2013representing}
+\citation{batatia2022mace,batatia2024foundation}
+\citation{orb2024}
+\citation{uma2025}
+\citation{bartok2013representing}
+\citation{dscribe2020}
+\citation{batatia2022mace,batatia2024foundation}
+\citation{batatia2024foundation}
+\citation{orb2024}
+\citation{uma2025}
+\citation{jolliffe2002principal}
+\citation{balandat2020botorch}
+\citation{gardner2018gpytorch}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of the four featurisation methods. Foundation model embeddings (MACE, ORB, UMA/eSEN) are extracted from pre-trained models without fine-tuning. The raw embedding dimensionality is reduced via PCA before surrogate training.\relax }}{5}{table.caption.3}\protected@file@percent }
+\newlabel{tab:featurizers}{{2}{5}{Comparison of the four featurisation methods. Foundation model embeddings (MACE, ORB, UMA/eSEN) are extracted from pre-trained models without fine-tuning. The raw embedding dimensionality is reduced via PCA before surrogate training.\relax }{table.caption.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of the three benchmark datasets. All datasets are sourced from \texttt  {matminer} and contain DFT-computed properties from the Materials Project\nobreakspace  {}\cite  {jain2013materials}.\relax }}{5}{table.caption.2}\protected@file@percent }
+\newlabel{tab:datasets}{{1}{5}{Summary of the three benchmark datasets. All datasets are sourced from \texttt {matminer} and contain DFT-computed properties from the Materials Project~\cite {jain2013materials}.\relax }{table.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Featurizers}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:featurizers}{{3.3}{5}{Featurizers}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Dimensionality Reduction}{5}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:pca}{{3.4}{5}{Dimensionality Reduction}{subsection.3.4}{}}
+\citation{rasmussen2006gaussian}
+\citation{bonilla2007multi}
+\citation{damianou2013deep}
+\citation{dutordoir2021deep}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Surrogate Models}{6}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:surrogates}{{3.5}{6}{Surrogate Models}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Experimental Protocol}{6}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:protocol}{{3.6}{6}{Experimental Protocol}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{6}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Featurizer Ranking Across Datasets}{6}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:featurizer_ranking}{{4.1}{6}{Featurizer Ranking Across Datasets}{subsection.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Best configuration per featuriser--surrogate pair on the dielectric constant dataset ($n_{\text  {train}}= 500$).\relax }}{6}{table.caption.6}\protected@file@percent }
+\newlabel{tab:best_configs_dielectric}{{4}{6}{Best configuration per featuriser--surrogate pair on the dielectric constant dataset ($\ntrain = 500$).\relax }{table.caption.6}{}}
+\newlabel{fig:bar_elastic}{{2a}{7}{Elastic tensor (8 properties)\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:bar_elastic}{{a}{7}{Elastic tensor (8 properties)\relax }{figure.caption.4}{}}
+\newlabel{fig:bar_dielectric}{{2b}{7}{Dielectric constant (4 properties)\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:bar_dielectric}{{b}{7}{Dielectric constant (4 properties)\relax }{figure.caption.4}{}}
+\newlabel{fig:bar_phonon}{{2c}{7}{Phonon dielectric (3 properties)\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:bar_phonon}{{c}{7}{Phonon dielectric (3 properties)\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Averaged R$^{2}${} across all target properties at $n_{\text  {train}}= 500$, grouped by featuriser and surrogate model, for each of the three benchmark datasets. ORB embeddings dominate on all datasets. Note the different $y$-axis scales reflecting the vastly different prediction difficulty across domains.\relax }}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:bar_r2_all}{{2}{7}{Averaged \Rtwo {} across all target properties at $\ntrain = 500$, grouped by featuriser and surrogate model, for each of the three benchmark datasets. ORB embeddings dominate on all datasets. Note the different $y$-axis scales reflecting the vastly different prediction difficulty across domains.\relax }{figure.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Best configuration per featuriser--surrogate pair on the elastic tensor dataset ($n_{\text  {train}}= 500$). For each combination, we report the PCA dimensionality that maximises averaged R$^{2}${} across all 8\nobreakspace  {}properties, together with the corresponding averaged RMSE and Spearman\nobreakspace  {}$\rho $.\relax }}{7}{table.caption.5}\protected@file@percent }
+\newlabel{tab:best_configs_elastic}{{3}{7}{Best configuration per featuriser--surrogate pair on the elastic tensor dataset ($\ntrain = 500$). For each combination, we report the PCA dimensionality that maximises averaged \Rtwo {} across all 8~properties, together with the corresponding averaged RMSE and Spearman~$\rho $.\relax }{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Best configuration per featuriser--surrogate pair on the phonon dielectric dataset ($n_{\text  {train}}= 500$). RMSE omitted; values dominated by extreme dielectric constant outliers.\relax }}{7}{table.caption.7}\protected@file@percent }
+\newlabel{tab:best_configs_phonon}{{5}{7}{Best configuration per featuriser--surrogate pair on the phonon dielectric dataset ($\ntrain = 500$). RMSE omitted; values dominated by extreme dielectric constant outliers.\relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Surrogate Model Comparison}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:surrogate_comparison}{{4.2}{7}{Surrogate Model Comparison}{subsection.4.2}{}}
+\newlabel{fig:heatmap_elastic}{{3a}{8}{Elastic tensor\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:heatmap_elastic}{{a}{8}{Elastic tensor\relax }{figure.caption.8}{}}
+\newlabel{fig:heatmap_dielectric}{{3b}{8}{Dielectric constant\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:heatmap_dielectric}{{b}{8}{Dielectric constant\relax }{figure.caption.8}{}}
+\newlabel{fig:heatmap_phonon}{{3c}{8}{Phonon dielectric\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:heatmap_phonon}{{c}{8}{Phonon dielectric\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Heatmaps of averaged R$^{2}${} for each featuriser--surrogate combination at $n_{\text  {train}}= 500$ across all three datasets. Rows represent descriptor--PCA combinations; columns represent surrogate models. The DGP column shows a stark bimodal pattern across all datasets: strong at low PCA, catastrophic at PCA\,=\,50.\relax }}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:heatmap_all}{{3}{8}{Heatmaps of averaged \Rtwo {} for each featuriser--surrogate combination at $\ntrain = 500$ across all three datasets. Rows represent descriptor--PCA combinations; columns represent surrogate models. The DGP column shows a stark bimodal pattern across all datasets: strong at low PCA, catastrophic at PCA\,=\,50.\relax }{figure.caption.8}{}}
+\newlabel{fig:pca_elastic}{{4a}{8}{Elastic tensor\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:pca_elastic}{{a}{8}{Elastic tensor\relax }{figure.caption.9}{}}
+\newlabel{fig:pca_dielectric}{{4b}{8}{Dielectric constant\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:pca_dielectric}{{b}{8}{Dielectric constant\relax }{figure.caption.9}{}}
+\newlabel{fig:pca_phonon}{{4c}{8}{Phonon dielectric\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:pca_phonon}{{c}{8}{Phonon dielectric\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Effect of PCA dimensionality on averaged R$^{2}${} at $n_{\text  {train}}= 500$ across all three datasets. GP and MTGP show monotonic improvement or robustness as PCA increases. DGP (dashed lines) exhibits catastrophic failure at PCA\,=\,50 across all datasets.\relax }}{8}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:pca_all}{{4}{8}{Effect of PCA dimensionality on averaged \Rtwo {} at $\ntrain = 500$ across all three datasets. GP and MTGP show monotonic improvement or robustness as PCA increases. DGP (dashed lines) exhibits catastrophic failure at PCA\,=\,50 across all datasets.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}PCA Sensitivity Analysis}{8}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:pca_sensitivity}{{4.3}{8}{PCA Sensitivity Analysis}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Learning Curves}{9}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:learning_curves}{{4.4}{9}{Learning Curves}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Learning curves showing averaged R$^{2}${} as a function of training set size for all featuriser--surrogate combinations on the elastic tensor dataset. ORB\,+\,GP at $n_{\text  {train}}= 100$ approaches the performance of SOAP\,+\,GP at $n_{\text  {train}}= 500$.\relax }}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:learning_curves}{{5}{9}{Learning curves showing averaged \Rtwo {} as a function of training set size for all featuriser--surrogate combinations on the elastic tensor dataset. ORB\,+\,GP at $\ntrain = 100$ approaches the performance of SOAP\,+\,GP at $\ntrain = 500$.\relax }{figure.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Learning curve summary for ORB embeddings across all three surrogates on the elastic tensor dataset. R$^{2}${} values are averaged across all 8\nobreakspace  {}elastic properties at the best PCA setting for each configuration.\relax }}{9}{table.caption.11}\protected@file@percent }
+\newlabel{tab:learning_curves}{{6}{9}{Learning curve summary for ORB embeddings across all three surrogates on the elastic tensor dataset. \Rtwo {} values are averaged across all 8~elastic properties at the best PCA setting for each configuration.\relax }{table.caption.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Dielectric and Phonon Learning Curves}{9}{subsubsection.4.4.1}\protected@file@percent }
+\newlabel{sec:learning_curves_dielectric_phonon}{{4.4.1}{9}{Dielectric and Phonon Learning Curves}{subsubsection.4.4.1}{}}
+\newlabel{fig:lc_dielectric_r2}{{6a}{9}{Averaged \Rtwo {}\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:lc_dielectric_r2}{{a}{9}{Averaged \Rtwo {}\relax }{figure.caption.12}{}}
+\newlabel{fig:lc_dielectric_spearman}{{6b}{9}{Averaged Spearman $\rho $\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:lc_dielectric_spearman}{{b}{9}{Averaged Spearman $\rho $\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Learning curves for the dielectric constant dataset (ORB descriptor, best PCA per surrogate). GP and MTGP R$^{2}${} values decrease with training size due to heavy-tailed property distributions, while Spearman correlations remain stable, reinforcing the finding that ranking accuracy is more robust than regression accuracy for electronically complex properties.\relax }}{9}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:learning_curves_dielectric}{{6}{9}{Learning curves for the dielectric constant dataset (ORB descriptor, best PCA per surrogate). GP and MTGP \Rtwo {} values decrease with training size due to heavy-tailed property distributions, while Spearman correlations remain stable, reinforcing the finding that ranking accuracy is more robust than regression accuracy for electronically complex properties.\relax }{figure.caption.12}{}}
+\newlabel{fig:diff_elastic}{{8a}{10}{Elastic tensor\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:diff_elastic}{{a}{10}{Elastic tensor\relax }{figure.caption.14}{}}
+\newlabel{fig:diff_dielectric}{{8b}{10}{Dielectric constant\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:diff_dielectric}{{b}{10}{Dielectric constant\relax }{figure.caption.14}{}}
+\newlabel{fig:diff_phonon}{{8c}{10}{Phonon dielectric\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:diff_phonon}{{c}{10}{Phonon dielectric\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Property difficulty matrices showing the best-achievable R$^{2}${} per property across all featuriser--PCA combinations at $n_{\text  {train}}= 500$, broken down by surrogate model. (a)\nobreakspace  {}Elastic: bulk modulus variants are easiest; anisotropy and Poisson's ratio are hardest. (b)\nobreakspace  {}Dielectric: band gap is easiest; polycrystalline dielectric constants are hardest. (c)\nobreakspace  {}Phonon: last phonon DOS peak is well predicted; dielectric constants are essentially unpredictable.\relax }}{10}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:difficulty_all}{{8}{10}{Property difficulty matrices showing the best-achievable \Rtwo {} per property across all featuriser--PCA combinations at $\ntrain = 500$, broken down by surrogate model. (a)~Elastic: bulk modulus variants are easiest; anisotropy and Poisson's ratio are hardest. (b)~Dielectric: band gap is easiest; polycrystalline dielectric constants are hardest. (c)~Phonon: last phonon DOS peak is well predicted; dielectric constants are essentially unpredictable.\relax }{figure.caption.14}{}}
+\newlabel{fig:lc_phonon_r2}{{7a}{10}{Averaged \Rtwo {}\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:lc_phonon_r2}{{a}{10}{Averaged \Rtwo {}\relax }{figure.caption.13}{}}
+\newlabel{fig:lc_phonon_spearman}{{7b}{10}{Averaged Spearman $\rho $\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:lc_phonon_spearman}{{b}{10}{Averaged Spearman $\rho $\relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Learning curves for the phonon dielectric dataset (ORB descriptor, best PCA per surrogate). All surrogates show modest improvement with training size. DGP achieves the best R$^{2}${} at $n_{\text  {train}}= 500$ but with large variance. MTGP shows the strongest Spearman scaling, reaching $\bar  {\rho } > 0.83$ at $n_{\text  {train}}= 500$.\relax }}{10}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:learning_curves_phonon}{{7}{10}{Learning curves for the phonon dielectric dataset (ORB descriptor, best PCA per surrogate). All surrogates show modest improvement with training size. DGP achieves the best \Rtwo {} at $\ntrain = 500$ but with large variance. MTGP shows the strongest Spearman scaling, reaching $\bar {\rho } > 0.83$ at $\ntrain = 500$.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Per-Property Difficulty Analysis}{10}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:property_analysis}{{4.5}{10}{Per-Property Difficulty Analysis}{subsection.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Property difficulty ranking on the elastic tensor dataset ($n_{\text  {train}}= 500$). Each row reports the best R$^{2}${} achieved across all featuriser and PCA combinations.\relax }}{10}{table.caption.16}\protected@file@percent }
+\newlabel{tab:property_difficulty_elastic}{{7}{10}{Property difficulty ranking on the elastic tensor dataset ($\ntrain = 500$). Each row reports the best \Rtwo {} achieved across all featuriser and PCA combinations.\relax }{table.caption.16}{}}
+\newlabel{fig:radar_elastic}{{9a}{11}{Elastic tensor\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:radar_elastic}{{a}{11}{Elastic tensor\relax }{figure.caption.15}{}}
+\newlabel{fig:radar_dielectric}{{9b}{11}{Dielectric constant\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:radar_dielectric}{{b}{11}{Dielectric constant\relax }{figure.caption.15}{}}
+\newlabel{fig:radar_phonon}{{9c}{11}{Phonon dielectric\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:radar_phonon}{{c}{11}{Phonon dielectric\relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Radar charts showing ORB's per-property R$^{2}${} across GP, MTGP, and DGP at $n_{\text  {train}}= 500$ for each dataset. The elastic dataset shows the most uniform performance across properties; the dielectric and phonon datasets exhibit extreme asymmetry between easy and hard properties.\relax }}{11}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:radar_all}{{9}{11}{Radar charts showing ORB's per-property \Rtwo {} across GP, MTGP, and DGP at $\ntrain = 500$ for each dataset. The elastic dataset shows the most uniform performance across properties; the dielectric and phonon datasets exhibit extreme asymmetry between easy and hard properties.\relax }{figure.caption.15}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Property difficulty ranking on the dielectric constant dataset ($n_{\text  {train}}= 500$).\relax }}{11}{table.caption.17}\protected@file@percent }
+\newlabel{tab:property_difficulty_dielectric}{{8}{11}{Property difficulty ranking on the dielectric constant dataset ($\ntrain = 500$).\relax }{table.caption.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Property difficulty ranking on the phonon dielectric dataset ($n_{\text  {train}}= 500$). Despite $R^2 \approx -0.001$ for dielectric properties, the high Spearman correlations indicate useful ranking capability.\relax }}{11}{table.caption.18}\protected@file@percent }
+\newlabel{tab:property_difficulty_phonon}{{9}{11}{Property difficulty ranking on the phonon dielectric dataset ($\ntrain = 500$). Despite $R^2 \approx -0.001$ for dielectric properties, the high Spearman correlations indicate useful ranking capability.\relax }{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Parity Plots}{11}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:parity_plots}{{4.6}{11}{Parity Plots}{subsection.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Parity plots for the elastic tensor dataset (ORB\,+\,GP, PCA\,=\,50, $n_{\text  {train}}= 500$, split\nobreakspace  {}1). Left: easy property with tight clustering around the diagonal. Right: hard property with wider scatter but preserved monotonic trend.\relax }}{11}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:parity_elastic}{{10}{11}{Parity plots for the elastic tensor dataset (ORB\,+\,GP, PCA\,=\,50, $\ntrain = 500$, split~1). Left: easy property with tight clustering around the diagonal. Right: hard property with wider scatter but preserved monotonic trend.\relax }{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Cross-dataset comparison at $n_{\text  {train}}= 500$. For each dataset, we report the best configuration and its averaged metrics, together with the easiest and hardest properties.\relax }}{12}{table.caption.22}\protected@file@percent }
+\newlabel{tab:cross_dataset}{{10}{12}{Cross-dataset comparison at $\ntrain = 500$. For each dataset, we report the best configuration and its averaged metrics, together with the easiest and hardest properties.\relax }{table.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Parity plots for the dielectric constant dataset (ORB\,+\,GP, PCA\,=\,50, $n_{\text  {train}}= 500$, split\nobreakspace  {}1). Left: band gap is well predicted. Right: poly\_electronic shows that the model defaults to predicting the mean.\relax }}{12}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:parity_dielectric}{{11}{12}{Parity plots for the dielectric constant dataset (ORB\,+\,GP, PCA\,=\,50, $\ntrain = 500$, split~1). Left: band gap is well predicted. Right: poly\_electronic shows that the model defaults to predicting the mean.\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Parity plots for the phonon dielectric dataset (ORB\,+\,GP, PCA\,=\,50, $n_{\text  {train}}= 500$, split\nobreakspace  {}1). Left: phonon DOS peak is well predicted. Right: eps\_electronic shows extreme outliers dominating the error despite correct ranking of most materials ($\rho = 0.930$).\relax }}{12}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:parity_phonon}{{12}{12}{Parity plots for the phonon dielectric dataset (ORB\,+\,GP, PCA\,=\,50, $\ntrain = 500$, split~1). Left: phonon DOS peak is well predicted. Right: eps\_electronic shows extreme outliers dominating the error despite correct ranking of most materials ($\rho = 0.930$).\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Cross-Dataset Synthesis}{12}{subsection.4.7}\protected@file@percent }
+\newlabel{sec:cross_dataset}{{4.7}{12}{Cross-Dataset Synthesis}{subsection.4.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{12}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{12}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Why ORB Embeddings Win}{12}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:why_orb}{{5.1}{12}{Why ORB Embeddings Win}{subsection.5.1}{}}
+\newlabel{fig:cross_desc_r2}{{13a}{13}{Best \Rtwo {} per descriptor (label = best surrogate)\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:cross_desc_r2}{{a}{13}{Best \Rtwo {} per descriptor (label = best surrogate)\relax }{figure.caption.23}{}}
+\newlabel{fig:cross_desc_spearman}{{13b}{13}{Best Spearman~$\rho $ per descriptor (label = best surrogate)\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:cross_desc_spearman}{{b}{13}{Best Spearman~$\rho $ per descriptor (label = best surrogate)\relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Cross-dataset comparison of best achievable performance per descriptor at $n_{\text  {train}}= 500$. Each bar shows the best R$^{2}${} (a) or Spearman\nobreakspace  {}$\rho $ (b) across all surrogate--PCA combinations, with the winning surrogate name overlaid. ORB achieves the highest R$^{2}${} on all three datasets. Spearman correlations are consistently $>$0.7 for ORB across all datasets, confirming its utility for BO even when R$^{2}${} is low.\relax }}{13}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:cross_descriptor}{{13}{13}{Cross-dataset comparison of best achievable performance per descriptor at $\ntrain = 500$. Each bar shows the best \Rtwo {} (a) or Spearman~$\rho $ (b) across all surrogate--PCA combinations, with the winning surrogate name overlaid. ORB achieves the highest \Rtwo {} on all three datasets. Spearman correlations are consistently $>$0.7 for ORB across all datasets, confirming its utility for BO even when \Rtwo {} is low.\relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}PCA Sensitivity and DGP Configuration}{13}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:pca_sensitivity_discussion}{{5.2}{13}{PCA Sensitivity and DGP Configuration}{subsection.5.2}{}}
+\citation{yamada2019predicting}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Best averaged R$^{2}${} per surrogate across all three datasets (ORB descriptor, $n_{\text  {train}}= 500$, best PCA per surrogate). The DGP achieves the highest R$^{2}${} on the elastic and dielectric datasets, while the GP leads on the phonon dataset. This complementary pattern supports using DGP for non-linear properties and GP as a robust default.\relax }}{14}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:cross_surrogate}{{14}{14}{Best averaged \Rtwo {} per surrogate across all three datasets (ORB descriptor, $\ntrain = 500$, best PCA per surrogate). The DGP achieves the highest \Rtwo {} on the elastic and dielectric datasets, while the GP leads on the phonon dataset. This complementary pattern supports using DGP for non-linear properties and GP as a robust default.\relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Multi-Task GP: When Correlation Helps}{14}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:mtgp_discussion}{{5.3}{14}{Multi-Task GP: When Correlation Helps}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Dataset Difficulty Spectrum}{14}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:difficulty_spectrum}{{5.4}{14}{Dataset Difficulty Spectrum}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Ranking Accuracy Matters More Than Regression Accuracy}{15}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:spearman_r2}{{5.5}{15}{Ranking Accuracy Matters More Than Regression Accuracy}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Practical Recommendations}{16}{subsection.5.6}\protected@file@percent }
+\newlabel{sec:practical_recommendations}{{5.6}{16}{Practical Recommendations}{subsection.5.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Implications for Bayesian Optimisation in Materials Design}{16}{subsection.5.7}\protected@file@percent }
+\newlabel{sec:bo_implications}{{5.7}{16}{Implications for Bayesian Optimisation in Materials Design}{subsection.5.7}{}}
+\citation{curtarolo2012aflow}
+\citation{ward2016general}
+\citation{xie2018crystal}
+\citation{chen2019graph}
+\citation{deng2023chgnet}
+\citation{merchant2023scaling}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Extension to Other Materials Systems}{17}{subsection.5.8}\protected@file@percent }
+\newlabel{sec:alloy_extension}{{5.8}{17}{Extension to Other Materials Systems}{subsection.5.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.1}High-Entropy Alloys (HEAs)}{17}{subsubsection.5.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.2}Inorganic Glasses}{17}{subsubsection.5.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.3}Metal--Organic Frameworks (MOFs)}{17}{subsubsection.5.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9}Limitations}{17}{subsection.5.9}\protected@file@percent }
+\newlabel{sec:limitations}{{5.9}{17}{Limitations}{subsection.5.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{18}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{18}{Conclusion}{section.6}{}}
+\citation{ward2018matminer}
+\bibstyle{unsrtnat}
+\bibdata{refs}
+\gdef \@abspage@last{19}

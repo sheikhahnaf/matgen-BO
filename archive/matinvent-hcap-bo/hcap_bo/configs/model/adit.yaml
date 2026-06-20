@@ -1,0 +1,18 @@
+# ADiT (latent diffusion DiT) as the MatInvent agent — Phase-3 RL coupling.
+# Loads both VAE (frozen) + DiT (fine-tuned via REINFORCE).
+_target_: src.p3_models.adit_suite.ADiTSuite
+model_name: adit_mp20
+vae_checkpoint: ${oc.env:SCRATCH}/checkpoints/adit/vae.ckpt
+dit_checkpoint: ${oc.env:SCRATCH}/checkpoints/adit/ldm.ckpt
+
+sample_cfg:
+  batch_size: ${eval_size}
+  num_batches: 1
+
+finetune_cfg:
+  lr: 1.0e-5
+  epochs: 3
+  batch_size: ${eval_size}
+  timesteps: 4               # sample 4 random t per batch per epoch
+  accum_steps: 1
+  sigma: 1.0e-3              # KL regularization weight

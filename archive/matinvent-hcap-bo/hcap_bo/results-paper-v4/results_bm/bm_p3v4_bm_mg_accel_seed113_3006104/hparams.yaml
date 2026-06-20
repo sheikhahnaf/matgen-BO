@@ -1,0 +1,69 @@
+pipeline:
+  _target_: pipeline.mat_invent.MatInvent
+  rl_epoch: ${rl_epoch}
+  device: ${device}
+  save_dir: ./
+  save_freq: 100
+  sample_cfg: ${sample_cfg}
+  topk_ratio: 0.5
+  replay: true
+  replay_args:
+    buffer_size: 100
+    sample_size: 10
+    reward_cutoff: 0.1
+  div_filter: true
+  df_args:
+    tol: 3
+    buff: 6
+  finetune_cfg:
+    batch_size: ${eval_size}
+    accum_steps: 50
+    epochs: 3
+    sigma: 0.025
+model:
+  _target_: models.suite.MatterGenSuite
+  model_name: mattergen_base
+  device: ${device}
+  sample_cfg:
+    batch_size: ${calc:'${eval_size} * 4'}
+    num_batches: 1
+  finetune_cfg:
+    batch_size: ${eval_size}
+    timesteps: 1000
+    lr: 1.0e-05
+reward:
+  _target_: rewards.reward.Reward
+  root_dir: rewards
+  prop_cfg:
+  - name: bulk_modulus
+    calculator:
+      _target_: src.calculators.LocalESEN_BM_GPRoutedV4
+      root_dir: rewards/bulk_modulus
+      task: bulk_modulus
+      env_name: null
+      worker: 1
+    target: ascending
+    minv: 20.0
+    maxv: 400.0
+  reward_threshold: 0.8
+logger:
+  _target_: pipeline.utils.logger.CSVLogger
+  save_dir: ./
+expname: bm_p3v4_bm_mg_accel_seed113_3006104
+results_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results_bm
+device: cuda
+rl_epoch: 20
+sample_cfg:
+  num_batches: 1
+  max_num: ${eval_size}
+  filter:
+    _target_: pipeline.filters.opt_filter.OptFilter
+    metrics:
+    - validity
+    - novel
+    - unique
+    - stable
+    device: ${device}
+    silent: true
+eval_size: 16
+seed: 113

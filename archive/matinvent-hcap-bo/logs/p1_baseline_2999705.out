@@ -1,0 +1,197 @@
+Phase 1 baseline (exact MatInvent Cp config + LocalESEN override) starting at Tue Apr 28 06:20:26 CDT 2026 on fc023
+Tesla T4, 16384 MiB
+MODELS_PROJECT_ROOT: /scratch/user/ahnafalvi/matinvent-bo/src/mattergen/mattergen
+[2026-04-28 06:26:51,315][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/jwchen25/MatInvent/resolve/main/reference_MP2020correction.gz "HTTP/1.1 302 Found"
+[2026-04-28 06:26:54,188][httpx][INFO] - HTTP Request: GET https://huggingface.co/api/models/jwchen25/MatInvent/xet-read-token/b192d079a52d16403fcbbb26b73078d23f9e86c2 "HTTP/1.1 200 OK"
+[2026-04-28 06:27:23,622][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/checkpoints/last.ckpt "HTTP/1.1 302 Found"
+[2026-04-28 06:27:23,767][httpx][INFO] - HTTP Request: GET https://huggingface.co/api/models/microsoft/mattergen/xet-read-token/ea430eab64b80855029c2941b9fda15f245a771a "HTTP/1.1 200 OK"
+[2026-04-28 06:27:26,785][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/config.yaml "HTTP/1.1 307 Temporary Redirect"
+[2026-04-28 06:27:26,847][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/mattergen/ea430eab64b80855029c2941b9fda15f245a771a/checkpoints%2Fmattergen_base%2Fconfig.yaml "HTTP/1.1 200 OK"
+[2026-04-28 06:27:26,921][httpx][INFO] - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/mattergen/ea430eab64b80855029c2941b9fda15f245a771a/checkpoints%2Fmattergen_base%2Fconfig.yaml "HTTP/1.1 200 OK"
+[2026-04-28 06:27:41,034][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/checkpoints/last.ckpt "HTTP/1.1 302 Found"
+[2026-04-28 06:27:41,107][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/microsoft/mattergen/resolve/main/checkpoints/mattergen_base/config.yaml "HTTP/1.1 307 Temporary Redirect"
+[2026-04-28 06:27:41,118][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/mattergen/ea430eab64b80855029c2941b9fda15f245a771a/checkpoints%2Fmattergen_base%2Fconfig.yaml "HTTP/1.1 200 OK"
+[2026-04-28 06:27:44,788][root][INFO] - *****   RL START   *****
+[2026-04-28 06:27:44,789][root][INFO] - *****   LOOP 0 START   *****
+[2026-04-28 06:27:44,789][root][INFO] - SAMPLE:
+[32m2026-04-28 06:35:07.492[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m884[0m - [1mThe pre-trained model is not found locally, attempting to download it from the server.[0m
+[32m2026-04-28 06:35:07.492[0m | [1mINFO    [0m | [36mmattersim.utils.download_utils[0m:[36mdownload_file[0m:[36m20[0m - [1mDownloading file from https://raw.githubusercontent.com/microsoft/mattersim/main/pretrained_models/mattersim-v1.0.0-5M.pth to /home/ahnafalvi/.local/mattersim/pretrained_models/mattersim-v1.0.0-5M.pth[0m
+[32m2026-04-28 06:35:09.467[0m | [1mINFO    [0m | [36mmattersim.utils.download_utils[0m:[36mdownload_file[0m:[36m26[0m - [1mFile downloaded to /home/ahnafalvi/.local/mattersim/pretrained_models/mattersim-v1.0.0-5M.pth[0m
+[32m2026-04-28 06:35:09.469[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-04-28 06:44:48,528][root][INFO] - Number of filtered samples: 5
+[2026-04-28 06:44:48,548][root][INFO] - avg_energy_above_hull_per_atom: 0.097609, avg_rmsd_from_relaxation: 0.072444, frac_novel_unique_stable_structures: 0.312500, frac_stable_structures: 0.812500, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.500000, frac_novel_systems: 0.125000, frac_novel_unique_structures: 0.500000, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.500000, recall: 0.000012
+[2026-04-28 06:44:48,562][root][INFO] - SCORE:
+[2026-04-28 06:44:48,720][root][INFO] - Project root: /scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem
+[2026-04-28 06:44:50,156][root][INFO] - Checking local cache: /scratch/user/ahnafalvi/.cache/huggingface for model eSEN-30M-OAM
+[2026-04-28 06:44:50,285][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[2026-04-28 06:44:53,055][root][INFO] - local rank base: 0
+[2026-04-28 06:44:53,297][root][INFO] - amp: false
+cmd:
+  checkpoint_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p1_baseline_2999705/checkpoints/2026-04-28-06-44-00
+  commit: core:None,experimental:NA
+  identifier: ''
+  logs_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p1_baseline_2999705/logs/wandb/2026-04-28-06-44-00
+  print_every: 100
+  results_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p1_baseline_2999705/results/2026-04-28-06-44-00
+  seed: null
+  timestamp_id: 2026-04-28-06-44-00
+  version: 1.10.0
+dataset:
+  a2g_args:
+    r_energy: true
+    r_forces: true
+    r_stress: true
+  format: ase_db
+  metadata_path: ''
+  transforms:
+    element_references: ''
+    normalizer:
+      energy:
+        mean: 0.0
+        stdev: 0.6274358
+      forces:
+        mean: 0.0
+        stdev: 0.6274358
+      stress:
+        mean: 0.0
+        stdev: 0.6274358
+evaluation_metrics:
+  metrics:
+    energy:
+    - mae
+    - per_atom_mae
+    forces:
+    - mae
+    - cosine_similarity
+    stress:
+    - mae
+  primary_metric: forces_mae
+gp_gpus: null
+gpus: 1
+logger: wandb
+loss_functions:
+- energy:
+    coefficient: 20
+    fn: per_atom_mae
+- forces:
+    coefficient: 20
+    fn: l2mae
+- stress:
+    coefficient: 5
+    fn: mae
+model:
+  backbone:
+    act_type: gate
+    cutoff: 6.0
+    direct_forces: false
+    distance_function: gaussian
+    edge_channels: 128
+    hidden_channels: 128
+    lmax: 3
+    max_neighbors: 300
+    max_num_elements: 100
+    mlp_type: spectral
+    mmax: 2
+    model: esen_backbone
+    norm_type: rms_norm_sh
+    num_distance_basis: 64
+    num_layers: 10
+    otf_graph: true
+    regress_forces: true
+    regress_stress: true
+    sphere_channels: 128
+    use_envelope: true
+    use_pbc: true
+    use_pbc_single: true
+  heads:
+    mptrj:
+      module: esen_mlp_efs_head
+  name: hydra
+  otf_graph: true
+  pass_through_head_outputs: true
+optim:
+  batch_size: 4
+  clip_grad_norm: 100
+  ema_decay: 0.999
+  eval_batch_size: 4
+  eval_every: 5000
+  load_balancing: atoms
+  lr_initial: 0.0004
+  max_epochs: 1
+  num_workers: 4
+  optimizer: AdamW
+  optimizer_params:
+    weight_decay: 0.001
+  scheduler: LambdaLR
+  scheduler_params:
+    epochs: 85271
+    lambda_type: cosine
+    lr: 0.0004
+    lr_min_factor: 0.1
+    warmup_epochs: 8527
+    warmup_factor: 0.2
+outputs:
+  energy:
+    level: system
+    property: energy
+  forces:
+    eval_on_free_atoms: true
+    level: atom
+    property: forces
+    train_on_free_atoms: true
+  stress:
+    level: system
+    property: stress
+relax_dataset: {}
+slurm: {}
+task: {}
+test_dataset: {}
+trainer: ocp
+val_dataset: {}
+
+[2026-04-28 06:44:53,297][root][INFO] - Loading model: hydra
+[2026-04-28 06:44:56,586][root][INFO] - Loaded HydraModel with 30161153 parameters.
+[2026-04-28 06:44:56,586][root][INFO] - Loading checkpoint in inference-only mode, not loading keys associated with trainer state!
+[2026-04-28 06:44:56,625][root][WARNING] - No seed has been set in modelcheckpoint or OCPCalculator! Results may not be reproducible on re-run
+[2026-04-28 06:53:23,293][root][INFO] - Evaluation costs to date: 4
+[2026-04-28 06:53:23,300][root][INFO] - Number of samples that successfully obtained rewards: 2
+[2026-04-28 06:53:23,301][root][INFO] - reward mean=0.0564 std=0.0564
+[2026-04-28 06:53:23,301][root][INFO] - heat_capacity mean=0.3424 std=0.1050
+[2026-04-28 06:53:23,482][root][INFO] - 2 crystals generated so far, 2 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-04-28 06:53:23,510][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-04-28 06:53:23,513][root][INFO] - replay buffer size=1
+[2026-04-28 06:53:23,513][root][INFO] - buffer reward mean=0.11281916174245943
+[2026-04-28 06:53:23,513][root][INFO] - FINETUNE:
+[2026-04-28 06:55:35,821][root][INFO] - Epoch 0: loss: 0.0238, loss_diff: 0.0235, loss_kl: 0.0106
+[2026-04-28 06:57:50,281][root][INFO] - Epoch 1: loss: 0.0243, loss_diff: 0.0227, loss_kl: 0.0636
+[2026-04-28 07:00:01,393][root][INFO] - Epoch 2: loss: 0.0296, loss_diff: 0.0257, loss_kl: 0.1573
+[2026-04-28 07:00:01,395][root][INFO] - *****   LOOP 0 FINISH   *****
+[2026-04-28 07:00:01,395][root][INFO] - Total time taken: 32.28 min.
+
+
+[2026-04-28 07:00:01,395][root][INFO] - *****   LOOP 1 START   *****
+[2026-04-28 07:00:01,396][root][INFO] - SAMPLE:
+[32m2026-04-28 07:07:28.201[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-04-28 07:07:50,798][root][INFO] - Number of filtered samples: 3
+[2026-04-28 07:07:50,805][root][INFO] - avg_energy_above_hull_per_atom: 0.071423, avg_rmsd_from_relaxation: 0.029876, frac_novel_unique_stable_structures: 0.214286, frac_stable_structures: 0.642857, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.500000, frac_novel_systems: 0.000000, frac_novel_unique_structures: 0.500000, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.500000, recall: 0.000012
+[2026-04-28 07:07:50,809][root][INFO] - SCORE:
+[2026-04-28 07:09:54,691][root][INFO] - Evaluation costs to date: 7
+[2026-04-28 07:09:54,692][root][INFO] - Number of samples that successfully obtained rewards: 3
+[2026-04-28 07:09:54,692][root][INFO] - reward mean=0.0120 std=0.0170
+[2026-04-28 07:09:54,692][root][INFO] - heat_capacity mean=0.2313 std=0.0626
+[2026-04-28 07:09:54,721][root][INFO] - 5 crystals generated so far, 5 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-04-28 07:09:54,741][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-04-28 07:09:54,750][root][INFO] - replay buffer size=1
+[2026-04-28 07:09:54,750][root][INFO] - buffer reward mean=0.11281916174245943
+[2026-04-28 07:09:54,750][root][INFO] - FINETUNE:
+[2026-04-28 07:12:26,987][root][INFO] - Epoch 0: loss: 0.0227, loss_diff: 0.0206, loss_kl: 0.0834
+[2026-04-28 07:14:59,731][root][INFO] - Epoch 1: loss: 0.0331, loss_diff: 0.0203, loss_kl: 0.5118
+[2026-04-28 07:18:24,173][root][INFO] - Epoch 2: loss: 0.0444, loss_diff: 0.0201, loss_kl: 0.9710
+[2026-04-28 07:18:24,195][root][INFO] - *****   LOOP 1 FINISH   *****
+[2026-04-28 07:18:24,195][root][INFO] - Total time taken: 18.38 min.
+
+
+[2026-04-28 07:18:24,508][root][INFO] - *****   RL END   *****
+[2026-04-28 07:18:24,508][root][INFO] - Total time taken: 3039 s.
+Closing LMDB environment /tmp/job.2999705/tmp739wi2g1/reference_MP2020correction
+Phase 1 baseline finished at Tue Apr 28 07:18:32 CDT 2026

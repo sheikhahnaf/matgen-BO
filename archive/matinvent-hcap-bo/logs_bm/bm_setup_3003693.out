@@ -1,0 +1,44 @@
+===== Step 1: build BM seed pool from elastic_tensor_2015 =====
+Loading matminer elastic_tensor_2015 ...
+Fetching elastic_tensor_2015.json.gz from https://ndownloader.figshare.com/files/13220603 to /scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/matminer/datasets/elastic_tensor_2015.json.gz
+  raw rows: 1181  columns include K_VRH=True
+  after dropna: 1181
+  K_VRH range: 6.5 .. 435.7 GPa  median=130.4
+  standardized: 1181  failed: 0
+  sampled: 500
+Featurizing with ORB-PCA50 ...
+  Z shape: (500, 50)
+
+Wrote /scratch/user/ahnafalvi/matinvent-hcap-bo/data/bm/ltm_bm_seed_pool.parquet
+  rows: 500
+  K_VRH min=7.5  median=124.1  max=385.2  GPa
+
+Top 10 by K_VRH:
+formula       y_cp
+     CW 385.194240
+  Ir6W2 351.265171
+     Ir 346.322761
+   C4W8 334.175446
+  Ir3Ta 324.702260
+    CTa 323.936233
+  Ir3Nb 313.421050
+    Ru2 307.524165
+      W 303.938014
+    Tc2 300.187337
+
+===== Step 2: validate BM oracle on 7 known materials =====
+  material   predicted   reference     rel_err  status
+------------------------------------------------------------
+   diamond      439.66       443.0        0.8%  OK
+        Si       86.52        97.6       11.3%  OK
+        Cu      136.64       137.0        0.3%  OK
+        Al       87.90        76.0       15.7%  OK
+       MgO      153.37       160.0        4.1%  OK
+      NaCl       23.29        24.0        2.9%  OK
+       GaN      170.53       210.0       18.8%  OK
+
+Wrote /scratch/user/ahnafalvi/matinvent-hcap-bo/results_bm/_validation/bm_oracle_validation.csv
+
+✅ All 7 materials within ±25%.
+
+===== Setup finished at Sun May  3 06:06:48 CDT 2026 =====

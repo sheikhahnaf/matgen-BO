@@ -1,0 +1,12 @@
+# SymmCD (Levy, Panigrahi et al., ICLR 2025) — symmetry-preserving crystal diffusion.
+# https://github.com/sibasmarak/SymmCD
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: symmcd
+    adapter_kwargs:
+      checkpoint: ${oc.env:SCRATCH}/checkpoints/symmcd/mp20.ckpt
+      device: cuda
+      space_group: null  # null = unconditional over all 230 SGs
+    timeout_seconds: 1800

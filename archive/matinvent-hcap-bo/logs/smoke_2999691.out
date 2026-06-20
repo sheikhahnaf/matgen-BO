@@ -1,0 +1,12 @@
+Phase 0 smoke test starting at Tue Apr 28 02:48:42 CDT 2026 on fc023
+Python: /scratch/user/ahnafalvi/envs/matinvent-hcap-bo/bin/python 3.10.19 | packaged by conda-forge | (main, Jan 26 2026, 23:45:08) [GCC 14.3.0]
+Tesla T4, 16384 MiB, 580.126.20
+[smoke] device=cuda
+[smoke] built 80 toy bulk crystals (train=60, query=20)
+[smoke] featurized 60 in 138.0s, Z=(60, 50), raw_dim=256
+[smoke] surrogate fitted on 60 points
+[smoke] predicted on 20: mu mean=0.124  sigma mean=0.934
+[smoke] qLogNEI top-8 (with k-DPP) = [19, 5, 1, 15, 7, 8, 3, 18]
+[smoke] ENCE=0.470  PICP90=0.80  NLL=0.834
+[smoke] saved featurizer + surrogate to /scratch/user/ahnafalvi/matinvent-hcap-bo/results/smoke_2999691
+Smoke test finished at Tue Apr 28 02:52:53 CDT 2026

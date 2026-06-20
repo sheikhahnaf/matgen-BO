@@ -1,0 +1,54 @@
+Oracle 3-way starting at Tue Apr 28 04:45:18 CDT 2026 on fc023
+Tesla T4, 16384 MiB
+[3way] 5 structures × 3 oracles
+
+[3way] === ESEN ===
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+[esen] relax failed: FAIRChemCalculator.from_model_checkpoint() got an unexpected keyword argument 'model_name'
+[esen] relax failed: FAIRChemCalculator.from_model_checkpoint() got an unexpected keyword argument 'model_name'
+[esen] relax failed: FAIRChemCalculator.from_model_checkpoint() got an unexpected keyword argument 'model_name'
+[esen] relax failed: FAIRChemCalculator.from_model_checkpoint() got an unexpected keyword argument 'model_name'
+[esen] relax failed: FAIRChemCalculator.from_model_checkpoint() got an unexpected keyword argument 'model_name'
+
+  Si-diamond          FAIL
+  MgO-rocksalt        FAIL
+  Cu-fcc              FAIL
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] === ORB ===
+  Si-diamond          0.7118 J/g/K
+  MgO-rocksalt        0.9406 J/g/K
+  Cu-fcc              0.3721 J/g/K
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] === UMA ===
+  Si-diamond          0.7136 J/g/K
+  MgO-rocksalt        0.9399 J/g/K
+  Cu-fcc              0.3710 J/g/K
+  AlN-wurtzite        0.7559 J/g/K
+  CaF2-fluorite       0.8530 J/g/K
+
+[3way] Cp (J/g/K) — wide table:
+oracle              orb       uma
+formula                          
+AlN-wurtzite        NaN  0.755945
+CaF2-fluorite       NaN  0.852994
+Cu-fcc         0.372098  0.371011
+MgO-rocksalt   0.940595  0.939862
+Si-diamond     0.711785  0.713632
+
+[3way] pairwise summary:
+{
+  "orb_vs_uma": {
+    "n": 3,
+    "mean_abs_diff": 0.0012223333333333437,
+    "mean_rel_diff_pct": 0.20993008971216912,
+    "max_abs_diff": 0.001847000000000043
+  },
+  "_failed_oracles": [
+    "esen"
+  ]
+}
+Oracle 3-way finished at Tue Apr 28 04:50:27 CDT 2026

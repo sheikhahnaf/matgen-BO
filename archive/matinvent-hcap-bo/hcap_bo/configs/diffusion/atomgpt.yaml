@@ -1,0 +1,11 @@
+# AtomGPT (Choudhary et al., NIST) — autoregressive LM-style generator over crystals.
+# https://github.com/atomgptlab/atomgpt
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: atomgpt
+    adapter_kwargs:
+      checkpoint: ${oc.env:SCRATCH}/checkpoints/atomgpt/mp20.pt
+      device: cuda
+    timeout_seconds: 1800

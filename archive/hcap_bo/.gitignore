@@ -1,0 +1,25 @@
+# Local-only artifacts
+data/*.parquet
+data/*.csv
+data/*.h5
+data/raw/
+results/
+logs/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.env
+.venv/
+*.egg-info/
+
+# Large model checkpoints — keep on FASTER
+checkpoints/
+*.ckpt
+*.pt
+
+# OS
+.DS_Store
+
+# Notebook outputs (keep .ipynb cleaned)
+notebooks/*-checkpoint.ipynb

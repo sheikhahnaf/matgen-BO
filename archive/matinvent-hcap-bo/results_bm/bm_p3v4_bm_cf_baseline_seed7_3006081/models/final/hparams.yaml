@@ -1,0 +1,288 @@
+data:
+  root_path: ${oc.env:PROJECT_ROOT}/data/mp_20
+  prop: formation_energy_per_atom
+  num_targets: 1
+  properties:
+  - formation_energy_per_atom
+  conditions:
+  - formation_energy_per_atom
+  niggli: true
+  primitive: false
+  graph_method: crystalnn
+  lattice_scale_method: scale_length
+  preprocess_workers: 30
+  readout: mean
+  max_atoms: 20
+  otf_graph: false
+  eval_model_name: mp20
+  tolerance: 0.1
+  use_space_group: false
+  use_pos_index: false
+  train_max_epochs: 3000
+  early_stopping_patience: 100000
+  teacher_forcing_max_epoch: 500
+  datamodule:
+    _target_: diffcsp.pl_data.datamodule.CrystDataModule
+    datasets:
+      train:
+        _target_: diffcsp.pl_data.dataset.CrystDataset
+        name: Formation energy train
+        path: ${data.root_path}/train.csv
+        save_path: ${data.root_path}/train_ori.pt
+        prop: ${data.prop}
+        properties: ${data.properties}
+        niggli: ${data.niggli}
+        primitive: ${data.primitive}
+        graph_method: ${data.graph_method}
+        tolerance: ${data.tolerance}
+        use_space_group: ${data.use_space_group}
+        use_pos_index: ${data.use_pos_index}
+        lattice_scale_method: ${data.lattice_scale_method}
+        preprocess_workers: ${data.preprocess_workers}
+      val:
+      - _target_: diffcsp.pl_data.dataset.CrystDataset
+        name: Formation energy val
+        path: ${data.root_path}/val.csv
+        save_path: ${data.root_path}/val_ori.pt
+        prop: ${data.prop}
+        properties: ${data.properties}
+        niggli: ${data.niggli}
+        primitive: ${data.primitive}
+        graph_method: ${data.graph_method}
+        tolerance: ${data.tolerance}
+        use_space_group: ${data.use_space_group}
+        use_pos_index: ${data.use_pos_index}
+        lattice_scale_method: ${data.lattice_scale_method}
+        preprocess_workers: ${data.preprocess_workers}
+      test:
+      - _target_: diffcsp.pl_data.dataset.CrystDataset
+        name: Formation energy test
+        path: ${data.root_path}/test.csv
+        save_path: ${data.root_path}/test_ori.pt
+        prop: ${data.prop}
+        properties: ${data.properties}
+        niggli: ${data.niggli}
+        primitive: ${data.primitive}
+        graph_method: ${data.graph_method}
+        tolerance: ${data.tolerance}
+        use_space_group: ${data.use_space_group}
+        use_pos_index: ${data.use_pos_index}
+        lattice_scale_method: ${data.lattice_scale_method}
+        preprocess_workers: ${data.preprocess_workers}
+    num_workers:
+      train: 0
+      val: 0
+      test: 0
+    batch_size:
+      train: 256
+      val: 128
+      test: 128
+logging:
+  val_check_interval: 1
+  progress_bar_refresh_rate: 10
+  wandb:
+    name: ${expname}
+    project: crystalflow-gridtest
+    entity: null
+    log_model: true
+    mode: online
+    group: ${expname}
+  wandb_watch:
+    log: all
+    log_freq: 500
+  lr_monitor:
+    logging_interval: step
+    log_momentum: false
+model:
+  decoder:
+    _target_: diffcsp.pl_modules.cspnet.CSPNet
+    hidden_dim: 512
+    latent_dim: 0
+    lattice_dim: 6
+    max_atoms: 100
+    num_layers: 6
+    act_fn: silu
+    dis_emb: sin
+    num_freqs: 256
+    rec_emb: sin
+    num_millers: 8
+    edge_style: fc
+    max_neighbors: ${model.max_neighbors}
+    cutoff: ${model.radius}
+    ln: true
+    ip: false
+    pred_type: true
+    smooth: ${model.decoder.pred_type}
+    na_emb: 0
+  beta_scheduler:
+    _target_: diffcsp.pl_modules.diff_utils.BetaScheduler
+    timesteps: ${model.timesteps}
+    scheduler_mode: cosine
+  sigma_scheduler:
+    _target_: diffcsp.pl_modules.diff_utils.SigmaScheduler
+    timesteps: ${model.timesteps}
+    sigma_begin: 0.005
+    sigma_end: 0.5
+  conditions:
+    cond_keys: ${data.conditions}
+    types:
+      e_above_hull:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: e_above_hull
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      energy_per_atom:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: energy_per_atom
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      enthalpy_per_atom:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: enthalpy_per_atom
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      energy:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: energy
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      enthalpy:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: enthalpy
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      formation_energy_per_atom:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: formation_energy_per_atom
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      pressure:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: pressure
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -2
+        stop: 2
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+      spgno:
+        _target_: diffcsp.pl_modules.conditioning.ScalarEmbedding
+        prop_name: spgno
+        batch_norm: false
+        no_expansion: false
+        n_basis: 50
+        start: -1
+        stop: 1
+        trainable_gaussians: false
+        no_mlp: true
+        hidden_dim: 128
+        fc_num_layers: 5
+        n_out: 128
+  _target_: src.p3_models.crystalflow_module.CrystalFlowModule
+  time_dim: 256
+  latent_dim: 0
+  cost_type: 10
+  cost_coord: 10
+  cost_lattice: 1
+  max_neighbors: 20
+  radius: 7.0
+  timesteps: 1000
+  lattice_polar: true
+  type_encoding: table
+  lattice_polar_sigma: 0.1
+optim:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.001
+    betas:
+    - 0.9
+    - 0.999
+    eps: 1.0e-08
+    weight_decay: 0
+  use_lr_scheduler: true
+  lr_scheduler:
+    _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+    factor: 0.6
+    patience: 30
+    min_lr: 0.0001
+train:
+  deterministic: true
+  random_seed: 42
+  float32_matmul_precision: medium
+  pl_trainer:
+    fast_dev_run: false
+    devices: 4
+    accelerator: gpu
+    precision: 32
+    max_epochs: ${data.train_max_epochs}
+    accumulate_grad_batches: 1
+    num_sanity_val_steps: 2
+    gradient_clip_val: 0.5
+    gradient_clip_algorithm: value
+    strategy: ddp_find_unused_parameters_true
+  monitor_metric: val_loss
+  monitor_metric_mode: min
+  early_stopping:
+    patience: ${data.early_stopping_patience}
+    verbose: false
+  model_checkpoints:
+    save_top_k: 1
+    verbose: false
+    save_last: false
+expname: abinit-BS1-LR1-WD1-RF1-K3-LW2-F1-X2-TE4-N1-H1-L1
+core:
+  version: 0.0.1
+  tags:
+  - ${now:%Y-%m-%d}

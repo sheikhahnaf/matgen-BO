@@ -1,0 +1,77 @@
+# Heat-capacity BO config (Hydra-style; loaded by src/cli.py at runtime).
+
+experiment:
+  name: hcap_bo_default
+  seed: 42
+
+phase1:
+  n_seed: 100              # number of MP structures to label (Phase 1 warm-start)
+  max_atoms: 20            # filter MP query to small unit cells (fits T4 budget)
+  e_above_hull: 0.05       # eV/atom — only stable structures
+
+target:
+  property: heat_capacity_300K
+  unit: J/g/K
+  threshold: 1.5
+  direction: maximize
+
+featurizer:
+  kind: orb
+  variant: orb_v3_conservative_inf_omat
+  pooling: mean   # mean | sum | attention
+  pca_components: 50
+  refit_every: doubling  # refit PCA each time the LTM doubles in size
+
+surrogate:
+  kind: single_task_gp
+  kernel: matern52_ard
+  fit:
+    optimizer: lbfgs
+    max_iter: 200
+  noise:
+    heteroscedastic: true
+    floor: 1.0e-4
+
+acquisition:
+  kind: qLogNEI
+  q: 16                  # K = top-K kept after Lever-1 screening
+  diversity: kdpp        # kdpp | none
+  raw_samples: 4096
+  num_restarts: 10
+  sigma_threshold: 0.05  # τ in J/g/K — Lever-2 routing cutoff (recalibrated each anchor cycle)
+
+generation:
+  source: mattergen
+  checkpoint: pretrained-uncond
+  batch_size: 64           # B' = candidates per cycle (Lever-1 input)
+  cycles: 50
+  pool_path: null          # if set, load extxyz from disk instead of generating
+  pre_filters:
+    - invalid
+    - opt_filter
+
+oracle:
+  kind: esen           # esen | orb | uma
+  task_name: omat
+  model: esen-30m-oam
+  call_via: subprocess
+  env_prefix: ${oc.env:SCRATCH}/envs/matinvent-hcap-fairchem
+  n_workers: 1
+  anchor_every: 5      # every Nth cycle, force-oracle ALL K to recalibrate τ
+
+ltm:
+  path: ${oc.env:SCRATCH}/matinvent-hcap-bo/data/ltm.parquet
+  store_features: true
+
+retrain:
+  every_cycles: 1
+  validation_split: 0.2
+  early_stop_patience: 50
+
+calibration:
+  metrics: [ence, picp_50, picp_90, nll]
+  log_every: 1
+
+logging:
+  wandb_project: matinvent-hcap-bo
+  results_dir: ${oc.env:SCRATCH}/matinvent-hcap-bo/results/${experiment.name}

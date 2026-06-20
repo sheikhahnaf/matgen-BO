@@ -1,0 +1,60 @@
+# GP-routed reward for bulk modulus with ORB + ALIGNN only (testing without VASP)
+# ORB is ground truth for noise estimation
+_target_: rewards.reward.Reward
+
+root_dir: rewards
+
+prop_cfg:
+  - name: bulk_modulus
+    use_gp_routing: true
+
+    router:
+      _target_: rewards.router.CalculatorRouter
+
+      calculators:
+        # ORB: Higher fidelity (ground truth when VASP unavailable)
+        orb:
+          _target_: rewards.calculators.ORBCalculator
+          root_dir: rewards/bulk_modulus_orb
+          task: bulk_modulus
+          device: ${device}
+          fmax: 0.05
+          model: orb-v2
+
+        # ALIGNN: Lower fidelity (cheap, fast)
+        alignn:
+          _target_: rewards.calculators.ALIGNN
+          root_dir: rewards/bulk_modulus_alignn
+          task: bulk_modulus
+          device: ${device}
+          silent: true
+
+      gp_model:
+        _target_: rewards.gp.surrogate.GPSurrogate
+        input_dim: 50  # PCA reduced ORB features
+        task: bulk_modulus
+        device: ${device}
+
+      featurizer:
+        _target_: rewards.calculators.orb.featurizer.ORBFeaturizer
+        n_components: 50
+        device: ${device}
+
+      acquisition_fn:
+        _target_: rewards.acquisition.ExpectedImprovementPerCost
+        cost_model:
+          alignn: 0.001   # Cheapest - pretrained GNN
+          orb: 0.01       # More expensive - orbital-based
+        xi: 0.01          # Exploration parameter
+
+      default_calculator: alignn  # Use cheapest by default
+      min_gp_samples: 10
+      calibration_mode: false  # Will be set by pipeline
+
+    # Target bulk modulus = 300 GPa
+    target: 300.0
+    minv: 0.0
+    maxv: 250.0
+
+reward_threshold: 0.8
+reduce: mean

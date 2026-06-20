@@ -1,0 +1,95 @@
+\documentclass[twoside, twocolumn]{article}
+
+%%% RSC Digital Discovery style approximation %%%
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{placeins}   % for \FloatBarrier
+\usepackage{stfloats}   % improved figure* placement in twocolumn
+
+% RSC-style formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    citecolor=blue!60!black,
+    urlcolor=blue!60!black
+}
+
+% Custom commands
+\newcommand{\Rtwo}{R$^{2}$}
+\newcommand{\pca}{\text{PCA}}
+\newcommand{\ntrain}{n_{\text{train}}}
+
+\title{Foundation Model Embeddings as Plug-in Featurizers for Probabilistic Surrogates in Materials Design}
+
+\author{
+    Sk Md Ahnaf Akif Alvi,$^{a,e,*}$ Jan Janssen,$^{d}$ Danny Perez,$^{f}$ Douglas Allaire,$^{b}$ and Raymundo Arr\'{o}yave$^{a,b,c}$\\[6pt]
+    \normalsize $^{a}$Department of Materials Science and Engineering, Texas A\&M University, College Station, TX 77843, USA\\
+    \normalsize $^{b}$J.\ Mike Walker '66 Department of Mechanical Engineering, Texas A\&M University, College Station, TX 77843, USA\\
+    \normalsize $^{c}$Wm Michael Barnes '64 Department of Industrial and Systems Engineering, Texas A\&M University, College Station, TX 77843, USA\\
+    \normalsize $^{d}$Max-Planck-Institute for Sustainable Materials, D\"{u}sseldorf, Germany 40237\\
+    \normalsize $^{e}$Theoretical Division T-1, Los Alamos National Laboratory, Los Alamos, NM 87544, USA\\
+    \normalsize $^{f}$X Computational Physics XCP-AI4ND, Los Alamos National Laboratory, Los Alamos, NM 87544, USA\\[3pt]
+    \normalsize $^{*}$Corresponding author. E-mail: ahnafalvi@tamu.edu
+}
+
+\date{}
+
+\begin{document}
+
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+    \begin{abstract}
+Bayesian optimisation (BO) accelerates materials discovery, but its effectiveness depends on both the surrogate model and the feature representation of crystal structures.
+Foundation models pre-trained on millions of density functional theory calculations---such as MACE, ORB, and UMA/eSEN---offer rich structural embeddings, yet no systematic study has evaluated these embeddings as plug-in featurisers for probabilistic surrogates across diverse material property domains.
+Here we present a cross-factorial benchmark of 4~featurisers $\times$ 3~surrogates (GP, MTGP, DGP) $\times$ 3~PCA levels $\times$ 3~training sizes across 3~datasets---elastic tensor (8~properties), dielectric constant (4~properties), and phonon dielectric (3~properties)---totalling 8{,}640 cross-validated experiments.
+ORB embeddings universally outperform all alternatives, achieving averaged $\bar{R}^2 / \bar{\rho}$ of $0.803 / 0.842$ (elastic), $0.336 / 0.778$ (dielectric), and $0.303 / 0.824$ (phonon).
+Our most consequential finding is that Spearman rank correlation ($\rho$) systematically exceeds \Rtwo{} across all datasets---dramatically so for difficult properties, where a surrogate with $R^2 = -0.001$ still correctly ranks 93\% of material pairs ($\rho = 0.930$).
+Since BO acquisition functions depend on candidate \emph{ranking}, not absolute prediction, these surrogates are far more useful than their \Rtwo{} values suggest.
+The deep GP achieves the highest \Rtwo{} on both elastic ($0.807$) and dielectric ($0.336$) datasets when configured at PCA\,$\leq$\,25, but requires careful dimensionality tuning; the standard GP remains the robust default.
+We recommend ORB\,+\,GP\,+\,PCA\,=\,50 as the default stack for materials BO campaigns, with Spearman $\rho$ as a primary evaluation metric.
+The full pipeline is released as open-source software.
+    \end{abstract}
+    \vspace{1cm}
+  \end{@twocolumnfalse}
+]
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\section*{Data Availability}
+All datasets used in this study are publicly available through the \texttt{matminer} library~\cite{ward2018matminer}. The complete analysis pipeline, including featurization, surrogate training, and evaluation scripts, is available at \url{https://github.com/[anonymous]/matinvent-bo}. Aggregated results in CSV format and all figures are included in the repository to enable full reproducibility.
+
+\section*{Conflicts of Interest}
+There are no conflicts of interest to declare.
+
+\section*{Acknowledgements}
+The authors acknowledge computational resources provided by the Texas A\&M High Performance Research Computing (HPRC) facility. This work was supported by [funding agency and grant number].
+
+% NOTE: Replace 'unsrtnat' with 'rsc' if you have the RSC .bst file.
+% For Overleaf, you can download rsc.bst from the RSC LaTeX template package.
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}

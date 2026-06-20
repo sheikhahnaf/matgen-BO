@@ -1,0 +1,12 @@
+# ADiT (Joshi et al., Meta FAIR, ICML 2025) — All-Atom Diffusion Transformer.
+# https://github.com/facebookresearch/all-atom-diffusion-transformer
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: adit
+    adapter_kwargs:
+      pregenerated_zip_path: ${oc.env:SCRATCH}/checkpoints/adit/ADiT_crystals_mp20.zip
+      extract_dir: ${oc.env:SCRATCH}/checkpoints/adit/ADiT_crystals_mp20
+      device: cuda
+    timeout_seconds: 600

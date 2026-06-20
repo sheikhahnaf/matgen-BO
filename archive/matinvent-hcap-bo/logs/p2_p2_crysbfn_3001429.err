@@ -1,0 +1,58 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/utils.py:30: UserWarning: Setting global torch default dtype to torch.float32.
+  warnings.warn(f"Setting global torch default dtype to {torch_dtype}.")
+W0429 19:45:23.735000 246468 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] torch._dynamo hit config.cache_size_limit (8)
+W0429 19:45:23.735000 246468 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    function: 'forward' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/forcefield/gns.py:476)
+W0429 19:45:23.735000 246468 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    last reason: 0/0: tensor 'L['batch'][0]' size mismatch at index 0. expected 444, actual 650
+W0429 19:45:23.735000 246468 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0429 19:45:23.735000 246468 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/ltm.py:106: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self._df = pd.concat([self._df, new_df], ignore_index=True)
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 45, in <module>
+    sys.exit(main())
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 41, in main
+    return int(mod.run(config_path=args.config, output_dir=args.output_dir) or 0)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/phase2_open.py", line 182, in run
+    rr = sigma_route(
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/router.py", line 98, in sigma_route
+    oracle_cp, oracle_failed = oracle.evaluate(atoms_to_oracle)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle.py", line 73, in evaluate
+    raise RuntimeError(
+RuntimeError: HCapOracle_eSEN runner failed (code -6). stderr (tail):
+
+  forces:
+    eval_on_free_atoms: true
+    level: atom
+    property: forces
+    train_on_free_atoms: true
+  stress:
+    level: system
+    property: stress
+relax_dataset: {}
+slurm: {}
+task: {}
+test_dataset: {}
+trainer: ocp
+val_dataset: {}
+
+INFO:root:Loading model: hydra
+/scratch/user/ahnafalvi/envs/matinvent-hcap-fairchem/lib/python3.11/site-packages/fairchem/core/models/esen/esen.py:91: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  Jd_list = torch.load(os.path.join(os.path.dirname(__file__), "Jd.pt"))
+INFO:root:Loaded HydraModel with 30161153 parameters.
+INFO:root:Loading checkpoint in inference-only mode, not loading keys associated with trainer state!
+WARNING:root:No seed has been set in modelcheckpoint or OCPCalculator! Results may not be reproducible on re-run
+/scratch/user/ahnafalvi/matinvent-hcap-bo/src/runners/run_esen.py:79: DeprecationWarning: Use FrechetCellFilter for better convergence w.r.t. cell variables.
+  opt = FIRE(ExpCellFilter(a), logfile=None)
+[esen] imaginary modes detected
+[esen] imaginary modes detected
+[esen] imaginary modes detected
+[esen] imaginary modes detected
+[esen] imaginary modes detected
+double free or corruption (!prev)
+

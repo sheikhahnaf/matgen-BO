@@ -1,0 +1,33 @@
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/utils.py:30: UserWarning: Setting global torch default dtype to torch.float32.
+  warnings.warn(f"Setting global torch default dtype to {torch_dtype}.")
+W0429 18:36:40.922000 218379 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] torch._dynamo hit config.cache_size_limit (8)
+W0429 18:36:40.922000 218379 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    function: 'forward' (/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/orb_models/forcefield/gns.py:476)
+W0429 18:36:40.922000 218379 site-packages/torch/_dynamo/convert_frame.py:844] [0/8]    last reason: 0/0: tensor 'L['batch'][0]' size mismatch at index 0. expected 538, actual 320
+W0429 18:36:40.922000 218379 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0429 18:36:40.922000 218379 site-packages/torch/_dynamo/convert_frame.py:844] [0/8] To diagnose recompilation issues, see https://pytorch.org/docs/main/torch.compiler_troubleshooting.html.
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 45, in <module>
+    sys.exit(main())
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 41, in main
+    return int(mod.run(config_path=args.config, output_dir=args.output_dir) or 0)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/phase2_open.py", line 182, in run
+    rr = sigma_route(
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/router.py", line 98, in sigma_route
+    oracle_cp, oracle_failed = oracle.evaluate(atoms_to_oracle)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle.py", line 73, in evaluate
+    raise RuntimeError(
+RuntimeError: HCapOracle_eSEN runner failed (code 1). stderr (tail):
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/runners/run_esen.py", line 25, in <module>
+    import torch
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-fairchem/lib/python3.11/site-packages/torch/__init__.py", line 416, in <module>
+    from torch._C import *  # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^
+ImportError: /scratch/user/ahnafalvi/envs/matinvent-hcap-fairchem/lib/python3.11/site-packages/torch/lib/libc10_cuda.so: undefined symbol: cudaGetDriverEntryPointByVersion, version libcudart.so.12
+

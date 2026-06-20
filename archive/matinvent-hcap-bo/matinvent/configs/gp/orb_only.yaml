@@ -1,0 +1,31 @@
+# GP Configuration for ORB only (simplified test without ALIGNN)
+# No heteroscedastic noise since we only have one calculator
+
+# Property to optimize
+task: bulk_modulus
+
+# No calibration needed with single calculator
+calibration_steps: 0              # Skip calibration phase
+calibration_batch_size: null
+
+# No noise estimation needed (single calculator)
+calculator_hierarchy:
+  - orb                            # Only one calculator
+min_paired_samples: 20
+correct_systematic_bias: false
+noise_floor: 0.1
+
+# GP retraining frequency (every N RL steps)
+retrain_frequency: 5
+
+# Minimum samples before first GP training
+min_samples: 10
+
+# PCA components for ORB feature reduction
+n_components: 50
+
+# Validation split for GP evaluation
+validation_split: 0.2
+
+# Save GP training metrics
+save_metrics: true

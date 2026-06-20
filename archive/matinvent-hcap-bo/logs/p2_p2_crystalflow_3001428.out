@@ -1,0 +1,23 @@
+================================================================
+Phase-2 ablation: backend=crystalflow  cycles=10  batch=64  K=8
+  output_dir = /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_crystalflow_3001428
+  node       = fc101
+  start      = Wed Apr 29 19:33:13 CDT 2026
+================================================================
+Tesla T4, 16384 MiB
+merged config saved to /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_crystalflow_3001428/config_merged.yaml
+[phase2] device=cuda
+[phase2] using diffusion adapter: remote::crystalflow
+[phase2] pool source = adapter; cycles=10, B'=64, K=8, τ₀=0.050
+[phase2] cycle 00  oracled= 8/8  ltm=  3  reward μ=0.075  τ=0.050  anchor=False  2054.0s
+[phase2] cycle 01  oracled= 8/8  ltm=  6  reward μ=0.097  τ=0.050  anchor=False  1147.7s
+[phase2] cycle 02  oracled= 8/8  ltm=  9  reward μ=0.256  τ=0.050  anchor=False  1300.1s
+[phase2] cycle 03  oracled= 8/8  ltm= 12  reward μ=0.228  τ=0.050  anchor=False  1223.8s
+[phase2] cycle 04  oracled= 8/8  ltm= 15  reward μ=0.262  τ=0.050  anchor=False  1773.4s
+[phase2] cycle 05  oracled= 8/8  ltm= 18  reward μ=0.239  τ=0.050  anchor=True  1461.2s
+[phase2] cycle 06  oracled= 8/8  ltm= 20  reward μ=0.259  τ=0.050  anchor=False  3358.1s
+[phase2] cycle 07  oracled= 8/8  ltm= 21  reward μ=0.252  τ=0.050  anchor=False  3190.4s
+[phase2] cycle 08  oracled= 8/8  ltm= 24  reward μ=0.267  τ=0.050  anchor=False  2664.3s
+[phase2] cycle 09  oracled= 8/8  ltm= 28  reward μ=0.235  τ=0.050  anchor=False  2595.1s
+[phase2] done. final LTM size = 28
+Phase-2 [crystalflow] finished at Thu Apr 30 01:26:34 CDT 2026

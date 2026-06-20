@@ -1,0 +1,610 @@
+Phase-3 CrystalFlow ACCEL (rl_epoch=10) seed=17 at Fri May  1 18:28:30 CDT 2026 on fc102
+Tesla T4, 16384 MiB
+MODELS_PROJECT_ROOT: /scratch/user/ahnafalvi/matinvent-bo/src/mattergen/mattergen
+[2026-05-01 18:39:44,427][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/jwchen25/MatInvent/resolve/main/reference_MP2020correction.gz "HTTP/1.1 302 Found"
+edge_style: fc
+[2026-05-01 18:46:38,083][hydra.utils][INFO] - Using lattice polar decomposition with sigma=0.1
+edge_style: fc
+[2026-05-01 18:46:52,764][hydra.utils][INFO] - Using lattice polar decomposition with sigma=0.1
+edge_style: fc
+[2026-05-01 18:47:07,146][hydra.utils][INFO] - Using lattice polar decomposition with sigma=0.1
+edge_style: fc
+[2026-05-01 18:47:20,891][hydra.utils][INFO] - Using lattice polar decomposition with sigma=0.1
+[2026-05-01 18:47:20,937][root][INFO] - *****   RL START   *****
+[2026-05-01 18:47:20,937][root][INFO] - *****   LOOP 0 START   *****
+[2026-05-01 18:47:20,937][root][INFO] - SAMPLE:
+[32m2026-05-01 18:49:06.686[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 19:05:25,903][root][INFO] - Number of filtered samples: 5
+[2026-05-01 19:05:26,009][root][INFO] - avg_energy_above_hull_per_atom: 0.319913, avg_rmsd_from_relaxation: 0.874728, frac_novel_unique_stable_structures: 0.106383, frac_stable_structures: 0.234043, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.851064, frac_novel_systems: 0.297872, frac_novel_unique_structures: 0.851064, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.148936, recall: 0.000017
+[2026-05-01 19:05:26,014][root][INFO] - SCORE:
+[2026-05-01 19:06:30,488][cached_path][INFO] - cache of https://orbitalmaterials-public-models.s3.us-west-1.amazonaws.com/forcefields/orb-v3/orb-v3-conservative-inf-omat-20250404.ckpt is up-to-date
+[2026-05-01 19:14:52,302][root][INFO] - Project root: /scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/site-packages/fairchem
+[2026-05-01 19:15:14,780][root][INFO] - Checking local cache: /scratch/user/ahnafalvi/.cache/huggingface for model eSEN-30M-OAM
+[2026-05-01 19:15:15,730][httpx][INFO] - HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[2026-05-01 19:15:20,394][root][INFO] - local rank base: 0
+[2026-05-01 19:15:22,490][root][INFO] - amp: false
+cmd:
+  checkpoint_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p3_cf_accel_seed17_3002768/checkpoints/2026-05-01-19-14-56
+  commit: core:None,experimental:NA
+  identifier: ''
+  logs_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p3_cf_accel_seed17_3002768/logs/wandb/2026-05-01-19-14-56
+  print_every: 100
+  results_dir: /scratch/user/ahnafalvi/matinvent-hcap-bo/results/hcap_p3_cf_accel_seed17_3002768/results/2026-05-01-19-14-56
+  seed: null
+  timestamp_id: 2026-05-01-19-14-56
+  version: 1.10.0
+dataset:
+  a2g_args:
+    r_energy: true
+    r_forces: true
+    r_stress: true
+  format: ase_db
+  metadata_path: ''
+  transforms:
+    element_references: ''
+    normalizer:
+      energy:
+        mean: 0.0
+        stdev: 0.6274358
+      forces:
+        mean: 0.0
+        stdev: 0.6274358
+      stress:
+        mean: 0.0
+        stdev: 0.6274358
+evaluation_metrics:
+  metrics:
+    energy:
+    - mae
+    - per_atom_mae
+    forces:
+    - mae
+    - cosine_similarity
+    stress:
+    - mae
+  primary_metric: forces_mae
+gp_gpus: null
+gpus: 1
+logger: wandb
+loss_functions:
+- energy:
+    coefficient: 20
+    fn: per_atom_mae
+- forces:
+    coefficient: 20
+    fn: l2mae
+- stress:
+    coefficient: 5
+    fn: mae
+model:
+  backbone:
+    act_type: gate
+    cutoff: 6.0
+    direct_forces: false
+    distance_function: gaussian
+    edge_channels: 128
+    hidden_channels: 128
+    lmax: 3
+    max_neighbors: 300
+    max_num_elements: 100
+    mlp_type: spectral
+    mmax: 2
+    model: esen_backbone
+    norm_type: rms_norm_sh
+    num_distance_basis: 64
+    num_layers: 10
+    otf_graph: true
+    regress_forces: true
+    regress_stress: true
+    sphere_channels: 128
+    use_envelope: true
+    use_pbc: true
+    use_pbc_single: true
+  heads:
+    mptrj:
+      module: esen_mlp_efs_head
+  name: hydra
+  otf_graph: true
+  pass_through_head_outputs: true
+optim:
+  batch_size: 4
+  clip_grad_norm: 100
+  ema_decay: 0.999
+  eval_batch_size: 4
+  eval_every: 5000
+  load_balancing: atoms
+  lr_initial: 0.0004
+  max_epochs: 1
+  num_workers: 4
+  optimizer: AdamW
+  optimizer_params:
+    weight_decay: 0.001
+  scheduler: LambdaLR
+  scheduler_params:
+    epochs: 85271
+    lambda_type: cosine
+    lr: 0.0004
+    lr_min_factor: 0.1
+    warmup_epochs: 8527
+    warmup_factor: 0.2
+outputs:
+  energy:
+    level: system
+    property: energy
+  forces:
+    eval_on_free_atoms: true
+    level: atom
+    property: forces
+    train_on_free_atoms: true
+  stress:
+    level: system
+    property: stress
+relax_dataset: {}
+slurm: {}
+task: {}
+test_dataset: {}
+trainer: ocp
+val_dataset: {}
+
+[2026-05-01 19:15:22,491][root][INFO] - Loading model: hydra
+[2026-05-01 19:15:24,413][root][INFO] - Loaded HydraModel with 30161153 parameters.
+[2026-05-01 19:15:24,413][root][INFO] - Loading checkpoint in inference-only mode, not loading keys associated with trainer state!
+[2026-05-01 19:15:24,465][root][WARNING] - No seed has been set in modelcheckpoint or OCPCalculator! Results may not be reproducible on re-run
+[GPRouted] cycle=0 N=5 oracled=5/5 K=8 ltm=160 target=1.50 PI(oracle_min)=nan anchor=False cold=True 826.7s
+[2026-05-01 19:19:12,930][root][INFO] - Evaluation costs to date: 5
+[2026-05-01 19:19:12,930][root][INFO] - Number of samples that successfully obtained rewards: 5
+[2026-05-01 19:19:12,930][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 19:19:12,930][root][INFO] - heat_capacity mean=0.0000 std=0.0000
+[2026-05-01 19:19:13,452][root][INFO] - 5 crystals generated so far, 5 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 19:19:13,513][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 19:19:13,618][root][INFO] - replay buffer size=0
+[2026-05-01 19:19:13,656][root][INFO] - buffer reward mean=nan
+[2026-05-01 19:19:13,656][root][INFO] - FINETUNE:
+[2026-05-01 19:19:14,443][root][INFO] - Epoch 0: loss: 0.0000, loss_diff: 0.0000, loss_kl: 0.0000
+[2026-05-01 19:19:14,567][root][INFO] - Epoch 1: loss: 0.0000, loss_diff: 0.0000, loss_kl: 0.0000
+[2026-05-01 19:19:14,696][root][INFO] - Epoch 2: loss: 0.0000, loss_diff: 0.0000, loss_kl: 0.0000
+[2026-05-01 19:19:14,696][root][INFO] - *****   LOOP 0 FINISH   *****
+[2026-05-01 19:19:14,696][root][INFO] - Total time taken: 31.90 min.
+
+
+[2026-05-01 19:19:14,696][root][INFO] - *****   LOOP 1 START   *****
+[2026-05-01 19:19:14,697][root][INFO] - SAMPLE:
+[32m2026-05-01 19:20:43.425[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 19:24:10,286][root][INFO] - Number of filtered samples: 4
+[2026-05-01 19:24:10,287][root][INFO] - avg_energy_above_hull_per_atom: 0.256590, avg_rmsd_from_relaxation: 0.908349, frac_novel_unique_stable_structures: 0.080000, frac_stable_structures: 0.300000, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.760000, frac_novel_systems: 0.200000, frac_novel_unique_structures: 0.760000, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.240000, recall: 0.000037
+[2026-05-01 19:24:10,332][root][INFO] - SCORE:
+[GPRouted] cycle=1 N=4 oracled=4/4 K=8 ltm=162 target=1.50 PI(oracle_min)=nan anchor=False cold=False 497.5s
+[2026-05-01 19:32:29,369][root][INFO] - Evaluation costs to date: 9
+[2026-05-01 19:32:29,377][root][INFO] - Number of samples that successfully obtained rewards: 4
+[2026-05-01 19:32:29,377][root][INFO] - reward mean=0.0308 std=0.0393
+[2026-05-01 19:32:29,378][root][INFO] - heat_capacity mean=0.1790 std=0.1840
+[2026-05-01 19:32:29,458][root][INFO] - 9 crystals generated so far, 9 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 19:32:29,510][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 19:32:29,513][root][INFO] - replay buffer size=0
+[2026-05-01 19:32:29,513][root][INFO] - buffer reward mean=nan
+[2026-05-01 19:32:29,513][root][INFO] - FINETUNE:
+[2026-05-01 19:32:29,942][root][INFO] - Epoch 0: loss: 0.0486, loss_diff: 0.0486, loss_kl: 0.0000
+[2026-05-01 19:32:30,100][root][INFO] - Epoch 1: loss: 0.0477, loss_diff: 0.0477, loss_kl: 0.0000
+[2026-05-01 19:32:30,239][root][INFO] - Epoch 2: loss: 0.0456, loss_diff: 0.0456, loss_kl: 0.0000
+[2026-05-01 19:32:30,240][root][INFO] - *****   LOOP 1 FINISH   *****
+[2026-05-01 19:32:30,240][root][INFO] - Total time taken: 13.26 min.
+
+
+[2026-05-01 19:32:30,240][root][INFO] - *****   LOOP 2 START   *****
+[2026-05-01 19:32:30,240][root][INFO] - SAMPLE:
+[32m2026-05-01 19:35:46.835[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 19:40:55,636][root][INFO] - Number of filtered samples: 8
+[2026-05-01 19:40:55,675][root][INFO] - avg_energy_above_hull_per_atom: 0.263796, avg_rmsd_from_relaxation: 0.996447, frac_novel_unique_stable_structures: 0.156863, frac_stable_structures: 0.313725, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.823529, frac_novel_systems: 0.196078, frac_novel_unique_structures: 0.823529, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.176471, recall: 0.000040
+[2026-05-01 19:40:55,681][root][INFO] - SCORE:
+[GPRouted] cycle=2 N=8 oracled=8/8 K=8 ltm=164 target=1.50 PI(oracle_min)=nan anchor=False cold=False 640.6s
+[2026-05-01 19:51:36,447][root][INFO] - Evaluation costs to date: 17
+[2026-05-01 19:51:36,496][root][INFO] - Number of samples that successfully obtained rewards: 8
+[2026-05-01 19:51:36,496][root][INFO] - reward mean=0.0271 std=0.0638
+[2026-05-01 19:51:36,496][root][INFO] - heat_capacity mean=0.1100 std=0.2049
+[2026-05-01 19:51:36,774][root][INFO] - 17 crystals generated so far, 17 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 19:51:36,839][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 19:51:36,841][root][INFO] - replay buffer size=1
+[2026-05-01 19:51:36,842][root][INFO] - buffer reward mean=0.19473288529194624
+[2026-05-01 19:51:36,842][root][INFO] - FINETUNE:
+[2026-05-01 19:51:36,998][root][INFO] - Epoch 0: loss: 0.0403, loss_diff: 0.0403, loss_kl: 0.0000
+[2026-05-01 19:51:37,143][root][INFO] - Epoch 1: loss: 0.0403, loss_diff: 0.0403, loss_kl: 0.0000
+[2026-05-01 19:51:37,289][root][INFO] - Epoch 2: loss: 0.0426, loss_diff: 0.0426, loss_kl: 0.0000
+[2026-05-01 19:51:37,289][root][INFO] - *****   LOOP 2 FINISH   *****
+[2026-05-01 19:51:37,290][root][INFO] - Total time taken: 19.12 min.
+
+
+[2026-05-01 19:51:37,290][root][INFO] - *****   LOOP 3 START   *****
+[2026-05-01 19:51:37,290][root][INFO] - SAMPLE:
+[32m2026-05-01 19:53:26.888[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 19:58:54,082][root][INFO] - Number of filtered samples: 5
+[2026-05-01 19:58:54,150][root][INFO] - avg_energy_above_hull_per_atom: 0.236391, avg_rmsd_from_relaxation: 1.047460, frac_novel_unique_stable_structures: 0.108696, frac_stable_structures: 0.260870, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.782609, frac_novel_systems: 0.239130, frac_novel_unique_structures: 0.782609, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.217391, recall: 0.000022
+[2026-05-01 19:58:54,213][root][INFO] - SCORE:
+[GPRouted] cycle=3 N=5 oracled=5/5 K=8 ltm=166 target=1.50 PI(oracle_min)=nan anchor=False cold=False 303.1s
+[2026-05-01 20:03:58,281][root][INFO] - Evaluation costs to date: 22
+[2026-05-01 20:03:58,281][root][INFO] - Number of samples that successfully obtained rewards: 5
+[2026-05-01 20:03:58,282][root][INFO] - reward mean=0.0588 std=0.0925
+[2026-05-01 20:03:58,282][root][INFO] - heat_capacity mean=0.2029 std=0.2684
+[2026-05-01 20:03:58,357][root][INFO] - 22 crystals generated so far, 22 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 20:04:03,444][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 20:04:03,496][root][INFO] - replay buffer size=2
+[2026-05-01 20:04:03,496][root][INFO] - buffer reward mean=0.2167492312330749
+[2026-05-01 20:04:03,496][root][INFO] - FINETUNE:
+[2026-05-01 20:04:03,652][root][INFO] - Epoch 0: loss: 0.1191, loss_diff: 0.1191, loss_kl: 0.0000
+[2026-05-01 20:04:03,791][root][INFO] - Epoch 1: loss: 0.1226, loss_diff: 0.1226, loss_kl: 0.0000
+[2026-05-01 20:04:03,908][root][INFO] - Epoch 2: loss: 0.1206, loss_diff: 0.1206, loss_kl: 0.0000
+[2026-05-01 20:04:03,908][root][INFO] - *****   LOOP 3 FINISH   *****
+[2026-05-01 20:04:03,909][root][INFO] - Total time taken: 12.44 min.
+
+
+[2026-05-01 20:04:03,909][root][INFO] - *****   LOOP 4 START   *****
+[2026-05-01 20:04:03,909][root][INFO] - SAMPLE:
+[32m2026-05-01 20:05:37.902[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 20:09:06,531][root][INFO] - Number of filtered samples: 7
+[2026-05-01 20:09:06,583][root][INFO] - avg_energy_above_hull_per_atom: 0.195723, avg_rmsd_from_relaxation: 0.864908, frac_novel_unique_stable_structures: 0.152174, frac_stable_structures: 0.326087, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.782609, frac_novel_systems: 0.130435, frac_novel_unique_structures: 0.782609, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.217391, recall: 0.000017
+[2026-05-01 20:09:06,588][root][INFO] - SCORE:
+[GPRouted] cycle=4 N=7 oracled=7/7 K=8 ltm=170 target=1.50 PI(oracle_min)=nan anchor=False cold=False 314.2s
+[2026-05-01 20:14:21,003][root][INFO] - Evaluation costs to date: 29
+[2026-05-01 20:14:21,073][root][INFO] - Number of samples that successfully obtained rewards: 7
+[2026-05-01 20:14:21,073][root][INFO] - reward mean=0.0087 std=0.0141
+[2026-05-01 20:14:21,073][root][INFO] - heat_capacity mean=0.1479 std=0.1337
+[2026-05-01 20:14:21,654][root][INFO] - 29 crystals generated so far, 29 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 20:14:21,753][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 20:14:21,756][root][INFO] - replay buffer size=2
+[2026-05-01 20:14:21,756][root][INFO] - buffer reward mean=0.2167492312330749
+[2026-05-01 20:14:21,756][root][INFO] - FINETUNE:
+[2026-05-01 20:14:22,935][root][INFO] - Epoch 0: loss: 0.0780, loss_diff: 0.0780, loss_kl: 0.0000
+[2026-05-01 20:14:23,072][root][INFO] - Epoch 1: loss: 0.0811, loss_diff: 0.0811, loss_kl: 0.0001
+[2026-05-01 20:14:23,210][root][INFO] - Epoch 2: loss: 0.0816, loss_diff: 0.0816, loss_kl: 0.0001
+[2026-05-01 20:14:23,210][root][INFO] - *****   LOOP 4 FINISH   *****
+[2026-05-01 20:14:23,210][root][INFO] - Total time taken: 10.32 min.
+
+
+[2026-05-01 20:14:23,211][root][INFO] - *****   LOOP 5 START   *****
+[2026-05-01 20:14:23,211][root][INFO] - SAMPLE:
+[32m2026-05-01 20:15:50.762[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 20:20:20,425][root][INFO] - Number of filtered samples: 8
+[2026-05-01 20:20:20,442][root][INFO] - avg_energy_above_hull_per_atom: 0.215802, avg_rmsd_from_relaxation: 0.909696, frac_novel_unique_stable_structures: 0.150943, frac_stable_structures: 0.283019, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.811321, frac_novel_systems: 0.207547, frac_novel_unique_structures: 0.811321, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.188679, recall: 0.000019
+[2026-05-01 20:20:20,487][root][INFO] - SCORE:
+[GPRouted] cycle=5 N=8 oracled=8/8 K=8 ltm=172 target=1.50 PI(oracle_min)=nan anchor=True cold=False 614.4s
+[2026-05-01 20:30:36,191][root][INFO] - Evaluation costs to date: 37
+[2026-05-01 20:30:36,205][root][INFO] - Number of samples that successfully obtained rewards: 8
+[2026-05-01 20:30:36,205][root][INFO] - reward mean=0.0151 std=0.0373
+[2026-05-01 20:30:36,205][root][INFO] - heat_capacity mean=0.0890 std=0.1610
+[2026-05-01 20:30:48,319][root][INFO] - 37 crystals generated so far, 37 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 20:30:57,537][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 20:30:57,596][root][INFO] - replay buffer size=3
+[2026-05-01 20:30:57,596][root][INFO] - buffer reward mean=0.1823547892393164
+[2026-05-01 20:30:57,596][root][INFO] - FINETUNE:
+[2026-05-01 20:30:58,627][root][INFO] - Epoch 0: loss: 0.0830, loss_diff: 0.0830, loss_kl: 0.0001
+[2026-05-01 20:30:58,810][root][INFO] - Epoch 1: loss: 0.0815, loss_diff: 0.0815, loss_kl: 0.0001
+[2026-05-01 20:30:58,995][root][INFO] - Epoch 2: loss: 0.0781, loss_diff: 0.0781, loss_kl: 0.0001
+[2026-05-01 20:30:58,996][root][INFO] - *****   LOOP 5 FINISH   *****
+[2026-05-01 20:30:58,997][root][INFO] - Total time taken: 16.60 min.
+
+
+[2026-05-01 20:30:58,997][root][INFO] - *****   LOOP 6 START   *****
+[2026-05-01 20:30:58,997][root][INFO] - SAMPLE:
+[32m2026-05-01 20:32:27.021[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 20:37:35,151][root][INFO] - Number of filtered samples: 9
+[2026-05-01 20:37:35,194][root][INFO] - avg_energy_above_hull_per_atom: 0.271054, avg_rmsd_from_relaxation: 0.962983, frac_novel_unique_stable_structures: 0.187500, frac_stable_structures: 0.375000, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.791667, frac_novel_systems: 0.187500, frac_novel_unique_structures: 0.791667, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.208333, recall: 0.000019
+[2026-05-01 20:37:35,241][root][INFO] - SCORE:
+[GPRouted] cycle=6 N=9 oracled=8/9 K=8 ltm=177 target=1.50 PI(oracle_min)=0.000 anchor=False cold=False 376.9s
+[2026-05-01 20:43:52,289][root][INFO] - Evaluation costs to date: 46
+[2026-05-01 20:43:52,409][root][INFO] - Number of samples that successfully obtained rewards: 9
+[2026-05-01 20:43:52,409][root][INFO] - reward mean=0.0874 std=0.0725
+[2026-05-01 20:43:52,409][root][INFO] - heat_capacity mean=0.3916 std=0.1415
+[2026-05-01 20:43:52,558][root][INFO] - 46 crystals generated so far, 46 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 20:43:52,594][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 20:43:52,598][root][INFO] - replay buffer size=7
+[2026-05-01 20:43:52,598][root][INFO] - buffer reward mean=0.16773608609546095
+[2026-05-01 20:43:52,598][root][INFO] - FINETUNE:
+[2026-05-01 20:43:53,427][root][INFO] - Epoch 0: loss: 0.1722, loss_diff: 0.1722, loss_kl: 0.0001
+[2026-05-01 20:43:53,583][root][INFO] - Epoch 1: loss: 0.1712, loss_diff: 0.1712, loss_kl: 0.0001
+[2026-05-01 20:43:53,741][root][INFO] - Epoch 2: loss: 0.1794, loss_diff: 0.1794, loss_kl: 0.0001
+[2026-05-01 20:43:53,742][root][INFO] - *****   LOOP 6 FINISH   *****
+[2026-05-01 20:43:53,742][root][INFO] - Total time taken: 12.91 min.
+
+
+[2026-05-01 20:43:53,742][root][INFO] - *****   LOOP 7 START   *****
+[2026-05-01 20:43:53,742][root][INFO] - SAMPLE:
+[32m2026-05-01 20:45:22.024[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 20:48:29,061][root][INFO] - Number of filtered samples: 4
+[2026-05-01 20:48:29,062][root][INFO] - avg_energy_above_hull_per_atom: 0.216003, avg_rmsd_from_relaxation: 0.960034, frac_novel_unique_stable_structures: 0.102564, frac_stable_structures: 0.230769, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.846154, frac_novel_systems: 0.307692, frac_novel_unique_structures: 0.846154, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.153846, recall: 0.000013
+[2026-05-01 20:48:29,083][root][INFO] - SCORE:
+[GPRouted] cycle=7 N=4 oracled=4/4 K=8 ltm=177 target=1.50 PI(oracle_min)=nan anchor=False cold=False 433.1s
+[2026-05-01 20:55:42,354][root][INFO] - Evaluation costs to date: 50
+[2026-05-01 20:55:42,424][root][INFO] - Number of samples that successfully obtained rewards: 4
+[2026-05-01 20:55:42,424][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 20:55:42,424][root][INFO] - heat_capacity mean=0.0000 std=0.0000
+[2026-05-01 20:55:42,777][root][INFO] - 50 crystals generated so far, 50 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 20:55:42,819][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 20:55:42,822][root][INFO] - replay buffer size=7
+[2026-05-01 20:55:42,822][root][INFO] - buffer reward mean=0.16773608609546095
+[2026-05-01 20:55:42,822][root][INFO] - FINETUNE:
+[2026-05-01 20:55:43,085][root][INFO] - Epoch 0: loss: 0.1566, loss_diff: 0.1566, loss_kl: 0.0001
+[2026-05-01 20:55:43,267][root][INFO] - Epoch 1: loss: 0.1565, loss_diff: 0.1565, loss_kl: 0.0001
+[2026-05-01 20:55:43,452][root][INFO] - Epoch 2: loss: 0.1534, loss_diff: 0.1534, loss_kl: 0.0002
+[2026-05-01 20:55:43,453][root][INFO] - *****   LOOP 7 FINISH   *****
+[2026-05-01 20:55:43,453][root][INFO] - Total time taken: 11.83 min.
+
+
+[2026-05-01 20:55:43,453][root][INFO] - *****   LOOP 8 START   *****
+[2026-05-01 20:55:43,453][root][INFO] - SAMPLE:
+[32m2026-05-01 20:57:03.015[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 21:04:23,118][root][INFO] - Number of filtered samples: 4
+[2026-05-01 21:04:23,228][root][INFO] - avg_energy_above_hull_per_atom: 0.210566, avg_rmsd_from_relaxation: 0.831383, frac_novel_unique_stable_structures: 0.075472, frac_stable_structures: 0.301887, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.773585, frac_novel_systems: 0.264151, frac_novel_unique_structures: 0.773585, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.226415, recall: 0.000031
+[2026-05-01 21:04:23,233][root][INFO] - SCORE:
+[GPRouted] cycle=8 N=4 oracled=4/4 K=8 ltm=178 target=1.50 PI(oracle_min)=nan anchor=False cold=False 479.2s
+[2026-05-01 21:12:22,519][root][INFO] - Evaluation costs to date: 54
+[2026-05-01 21:12:22,646][root][INFO] - Number of samples that successfully obtained rewards: 4
+[2026-05-01 21:12:22,647][root][INFO] - reward mean=0.0003 std=0.0004
+[2026-05-01 21:12:22,647][root][INFO] - heat_capacity mean=0.0629 std=0.1090
+[2026-05-01 21:12:22,886][root][INFO] - 54 crystals generated so far, 54 unique components.  Burden: None, Div. Ratio: 1.0.
+[2026-05-01 21:12:22,968][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 21:12:22,971][root][INFO] - replay buffer size=7
+[2026-05-01 21:12:22,971][root][INFO] - buffer reward mean=0.16773608609546095
+[2026-05-01 21:12:22,971][root][INFO] - FINETUNE:
+[2026-05-01 21:12:23,294][root][INFO] - Epoch 0: loss: 0.1520, loss_diff: 0.1520, loss_kl: 0.0001
+[2026-05-01 21:12:23,496][root][INFO] - Epoch 1: loss: 0.1541, loss_diff: 0.1541, loss_kl: 0.0002
+[2026-05-01 21:12:23,709][root][INFO] - Epoch 2: loss: 0.1539, loss_diff: 0.1539, loss_kl: 0.0002
+[2026-05-01 21:12:23,710][root][INFO] - *****   LOOP 8 FINISH   *****
+[2026-05-01 21:12:23,710][root][INFO] - Total time taken: 16.67 min.
+
+
+[2026-05-01 21:12:23,710][root][INFO] - *****   LOOP 9 START   *****
+[2026-05-01 21:12:23,710][root][INFO] - SAMPLE:
+[32m2026-05-01 21:13:47.237[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 21:20:01,411][root][INFO] - Number of filtered samples: 4
+[2026-05-01 21:20:02,106][root][INFO] - avg_energy_above_hull_per_atom: 0.292996, avg_rmsd_from_relaxation: 0.797037, frac_novel_unique_stable_structures: 0.088889, frac_stable_structures: 0.377778, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.688889, frac_novel_systems: 0.155556, frac_novel_unique_structures: 0.688889, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.311111, recall: 0.000047
+[2026-05-01 21:20:02,198][root][INFO] - SCORE:
+[GPRouted] cycle=9 N=4 oracled=4/4 K=8 ltm=179 target=1.50 PI(oracle_min)=nan anchor=False cold=False 531.4s
+[2026-05-01 21:28:54,727][root][INFO] - Evaluation costs to date: 58
+[2026-05-01 21:28:54,749][root][INFO] - Number of samples that successfully obtained rewards: 4
+[2026-05-01 21:28:54,749][root][INFO] - reward mean=0.0056 std=0.0096
+[2026-05-01 21:28:54,749][root][INFO] - heat_capacity mean=0.0722 std=0.1251
+[2026-05-01 21:28:56,554][root][INFO] - 58 crystals generated so far, 57 unique components.  Burden: None, Div. Ratio: 0.9827586206896551.
+[2026-05-01 21:29:00,730][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 21:29:00,734][root][INFO] - replay buffer size=7
+[2026-05-01 21:29:00,734][root][INFO] - buffer reward mean=0.16773608609546095
+[2026-05-01 21:29:00,734][root][INFO] - FINETUNE:
+[2026-05-01 21:29:01,211][root][INFO] - Epoch 0: loss: 0.1586, loss_diff: 0.1586, loss_kl: 0.0002
+[2026-05-01 21:29:01,419][root][INFO] - Epoch 1: loss: 0.1573, loss_diff: 0.1573, loss_kl: 0.0002
+[2026-05-01 21:29:01,631][root][INFO] - Epoch 2: loss: 0.1571, loss_diff: 0.1571, loss_kl: 0.0002
+[2026-05-01 21:29:01,631][root][INFO] - *****   LOOP 9 FINISH   *****
+[2026-05-01 21:29:01,631][root][INFO] - Total time taken: 16.63 min.
+
+
+[2026-05-01 21:29:01,632][root][INFO] - *****   LOOP 10 START   *****
+[2026-05-01 21:29:01,632][root][INFO] - SAMPLE:
+[32m2026-05-01 21:30:24.688[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 21:35:43,944][root][INFO] - Number of filtered samples: 10
+[2026-05-01 21:35:44,229][root][INFO] - avg_energy_above_hull_per_atom: 0.190729, avg_rmsd_from_relaxation: 0.953942, frac_novel_unique_stable_structures: 0.217391, frac_stable_structures: 0.347826, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.847826, frac_novel_systems: 0.217391, frac_novel_unique_structures: 0.847826, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.152174, recall: 0.000020
+[2026-05-01 21:35:44,244][root][INFO] - SCORE:
+[GPRouted] cycle=10 N=10 oracled=10/10 K=8 ltm=184 target=1.50 PI(oracle_min)=nan anchor=True cold=False 900.8s
+[2026-05-01 21:50:45,232][root][INFO] - Evaluation costs to date: 68
+[2026-05-01 21:50:45,290][root][INFO] - Number of samples that successfully obtained rewards: 10
+[2026-05-01 21:50:45,291][root][INFO] - reward mean=0.0284 std=0.0582
+[2026-05-01 21:50:45,291][root][INFO] - heat_capacity mean=0.1669 std=0.1941
+[2026-05-01 21:50:45,483][root][INFO] - 68 crystals generated so far, 67 unique components.  Burden: None, Div. Ratio: 0.9852941176470589.
+[2026-05-01 21:50:45,569][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 21:50:45,602][root][INFO] - replay buffer size=8
+[2026-05-01 21:50:45,603][root][INFO] - buffer reward mean=0.17017769634469665
+[2026-05-01 21:50:45,603][root][INFO] - FINETUNE:
+[2026-05-01 21:50:46,094][root][INFO] - Epoch 0: loss: 0.1423, loss_diff: 0.1423, loss_kl: 0.0003
+[2026-05-01 21:50:46,387][root][INFO] - Epoch 1: loss: 0.1416, loss_diff: 0.1416, loss_kl: 0.0003
+[2026-05-01 21:50:46,678][root][INFO] - Epoch 2: loss: 0.1403, loss_diff: 0.1403, loss_kl: 0.0003
+[2026-05-01 21:50:46,679][root][INFO] - *****   LOOP 10 FINISH   *****
+[2026-05-01 21:50:46,679][root][INFO] - Total time taken: 21.75 min.
+
+
+[2026-05-01 21:50:46,679][root][INFO] - *****   LOOP 11 START   *****
+[2026-05-01 21:50:46,679][root][INFO] - SAMPLE:
+[32m2026-05-01 21:52:13.301[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 21:57:50,279][root][INFO] - Number of filtered samples: 6
+[2026-05-01 21:57:50,408][root][INFO] - avg_energy_above_hull_per_atom: 0.263567, avg_rmsd_from_relaxation: 0.991317, frac_novel_unique_stable_structures: 0.115385, frac_stable_structures: 0.230769, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.846154, frac_novel_systems: 0.269231, frac_novel_unique_structures: 0.846154, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.153846, recall: 0.000019
+[2026-05-01 21:57:50,414][root][INFO] - SCORE:
+[GPRouted] cycle=11 N=6 oracled=6/6 K=8 ltm=187 target=1.50 PI(oracle_min)=nan anchor=False cold=False 477.2s
+[2026-05-01 22:05:47,759][root][INFO] - Evaluation costs to date: 74
+[2026-05-01 22:05:47,804][root][INFO] - Number of samples that successfully obtained rewards: 6
+[2026-05-01 22:05:47,823][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 22:05:47,823][root][INFO] - heat_capacity mean=0.1042 std=0.1070
+[2026-05-01 22:05:48,032][root][INFO] - 74 crystals generated so far, 73 unique components.  Burden: None, Div. Ratio: 0.9864864864864865.
+[2026-05-01 22:05:48,109][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 22:05:48,112][root][INFO] - replay buffer size=8
+[2026-05-01 22:05:48,112][root][INFO] - buffer reward mean=0.17017769634469665
+[2026-05-01 22:05:48,112][root][INFO] - FINETUNE:
+[2026-05-01 22:05:48,525][root][INFO] - Epoch 0: loss: 0.1440, loss_diff: 0.1440, loss_kl: 0.0003
+[2026-05-01 22:05:48,744][root][INFO] - Epoch 1: loss: 0.1395, loss_diff: 0.1395, loss_kl: 0.0003
+[2026-05-01 22:05:48,971][root][INFO] - Epoch 2: loss: 0.1409, loss_diff: 0.1409, loss_kl: 0.0003
+[2026-05-01 22:05:48,971][root][INFO] - *****   LOOP 11 FINISH   *****
+[2026-05-01 22:05:48,972][root][INFO] - Total time taken: 15.04 min.
+
+
+[2026-05-01 22:05:48,972][root][INFO] - *****   LOOP 12 START   *****
+[2026-05-01 22:05:48,972][root][INFO] - SAMPLE:
+[32m2026-05-01 22:08:14.014[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 22:11:58,709][root][INFO] - Number of filtered samples: 8
+[2026-05-01 22:11:58,711][root][INFO] - avg_energy_above_hull_per_atom: 0.317817, avg_rmsd_from_relaxation: 0.883118, frac_novel_unique_stable_structures: 0.177778, frac_stable_structures: 0.377778, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.800000, frac_novel_systems: 0.088889, frac_novel_unique_structures: 0.800000, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.200000, recall: 0.000021
+[2026-05-01 22:11:58,718][root][INFO] - SCORE:
+[GPRouted] cycle=12 N=8 oracled=8/8 K=8 ltm=192 target=1.50 PI(oracle_min)=nan anchor=False cold=False 803.3s
+[2026-05-01 22:25:27,949][root][INFO] - Evaluation costs to date: 82
+[2026-05-01 22:25:28,028][root][INFO] - Number of samples that successfully obtained rewards: 8
+[2026-05-01 22:25:28,028][root][INFO] - reward mean=0.0280 std=0.0740
+[2026-05-01 22:25:28,028][root][INFO] - heat_capacity mean=0.2001 std=0.2005
+[2026-05-01 22:25:37,710][root][INFO] - 82 crystals generated so far, 81 unique components.  Burden: None, Div. Ratio: 0.9878048780487805.
+[2026-05-01 22:25:38,617][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 22:25:38,621][root][INFO] - replay buffer size=9
+[2026-05-01 22:25:38,622][root][INFO] - buffer reward mean=0.1761236752983697
+[2026-05-01 22:25:38,622][root][INFO] - FINETUNE:
+[2026-05-01 22:25:39,010][root][INFO] - Epoch 0: loss: 0.1429, loss_diff: 0.1429, loss_kl: 0.0005
+[2026-05-01 22:25:39,255][root][INFO] - Epoch 1: loss: 0.1389, loss_diff: 0.1389, loss_kl: 0.0006
+[2026-05-01 22:25:39,513][root][INFO] - Epoch 2: loss: 0.1391, loss_diff: 0.1391, loss_kl: 0.0005
+[2026-05-01 22:25:39,513][root][INFO] - *****   LOOP 12 FINISH   *****
+[2026-05-01 22:25:39,514][root][INFO] - Total time taken: 19.84 min.
+
+
+[2026-05-01 22:25:39,514][root][INFO] - *****   LOOP 13 START   *****
+[2026-05-01 22:25:39,514][root][INFO] - SAMPLE:
+[32m2026-05-01 22:28:56.990[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 22:33:37,628][root][INFO] - Number of filtered samples: 5
+[2026-05-01 22:33:37,851][root][INFO] - avg_energy_above_hull_per_atom: 0.201452, avg_rmsd_from_relaxation: 0.961971, frac_novel_unique_stable_structures: 0.104167, frac_stable_structures: 0.250000, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.833333, frac_novel_systems: 0.333333, frac_novel_unique_structures: 0.833333, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.166667, recall: 0.000017
+[2026-05-01 22:33:37,858][root][INFO] - SCORE:
+[GPRouted] cycle=13 N=5 oracled=5/5 K=8 ltm=192 target=1.50 PI(oracle_min)=nan anchor=False cold=False 388.4s
+[2026-05-01 22:40:06,418][root][INFO] - Evaluation costs to date: 87
+[2026-05-01 22:40:06,457][root][INFO] - Number of samples that successfully obtained rewards: 5
+[2026-05-01 22:40:06,457][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 22:40:06,458][root][INFO] - heat_capacity mean=0.0000 std=0.0000
+[2026-05-01 22:40:06,782][root][INFO] - 87 crystals generated so far, 86 unique components.  Burden: None, Div. Ratio: 0.9885057471264368.
+[2026-05-01 22:40:06,863][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 22:40:06,866][root][INFO] - replay buffer size=9
+[2026-05-01 22:40:06,867][root][INFO] - buffer reward mean=0.1761236752983697
+[2026-05-01 22:40:06,867][root][INFO] - FINETUNE:
+[2026-05-01 22:40:07,339][root][INFO] - Epoch 0: loss: 0.1639, loss_diff: 0.1639, loss_kl: 0.0006
+[2026-05-01 22:40:07,555][root][INFO] - Epoch 1: loss: 0.1619, loss_diff: 0.1619, loss_kl: 0.0007
+[2026-05-01 22:40:07,776][root][INFO] - Epoch 2: loss: 0.1592, loss_diff: 0.1592, loss_kl: 0.0007
+[2026-05-01 22:40:07,776][root][INFO] - *****   LOOP 13 FINISH   *****
+[2026-05-01 22:40:07,777][root][INFO] - Total time taken: 14.47 min.
+
+
+[2026-05-01 22:40:07,777][root][INFO] - *****   LOOP 14 START   *****
+[2026-05-01 22:40:07,777][root][INFO] - SAMPLE:
+[32m2026-05-01 22:41:37.428[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 22:46:28,180][root][INFO] - Number of filtered samples: 7
+[2026-05-01 22:46:28,254][root][INFO] - avg_energy_above_hull_per_atom: 0.324887, avg_rmsd_from_relaxation: 0.963829, frac_novel_unique_stable_structures: 0.132075, frac_stable_structures: 0.264151, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.830189, frac_novel_systems: 0.245283, frac_novel_unique_structures: 0.830189, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.169811, recall: 0.000026
+[2026-05-01 22:46:28,260][root][INFO] - SCORE:
+[GPRouted] cycle=14 N=7 oracled=7/7 K=8 ltm=195 target=1.50 PI(oracle_min)=nan anchor=False cold=False 556.9s
+[2026-05-01 22:55:45,403][root][INFO] - Evaluation costs to date: 94
+[2026-05-01 22:55:45,462][root][INFO] - Number of samples that successfully obtained rewards: 7
+[2026-05-01 22:55:45,462][root][INFO] - reward mean=0.0357 std=0.0735
+[2026-05-01 22:55:45,462][root][INFO] - heat_capacity mean=0.1642 std=0.2214
+[2026-05-01 22:55:45,760][root][INFO] - 94 crystals generated so far, 93 unique components.  Burden: None, Div. Ratio: 0.9893617021276596.
+[2026-05-01 22:55:52,989][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 22:55:52,992][root][INFO] - replay buffer size=10
+[2026-05-01 22:55:52,992][root][INFO] - buffer reward mean=0.17981729971261085
+[2026-05-01 22:55:52,992][root][INFO] - FINETUNE:
+[2026-05-01 22:55:54,000][root][INFO] - Epoch 0: loss: 0.1605, loss_diff: 0.1605, loss_kl: 0.0006
+[2026-05-01 22:55:54,246][root][INFO] - Epoch 1: loss: 0.1607, loss_diff: 0.1607, loss_kl: 0.0006
+[2026-05-01 22:55:54,507][root][INFO] - Epoch 2: loss: 0.1625, loss_diff: 0.1625, loss_kl: 0.0007
+[2026-05-01 22:55:54,507][root][INFO] - *****   LOOP 14 FINISH   *****
+[2026-05-01 22:55:54,507][root][INFO] - Total time taken: 15.78 min.
+
+
+[2026-05-01 22:55:54,507][root][INFO] - *****   LOOP 15 START   *****
+[2026-05-01 22:55:54,507][root][INFO] - SAMPLE:
+[32m2026-05-01 22:57:26.727[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 23:02:39,736][root][INFO] - Number of filtered samples: 4
+[2026-05-01 23:02:39,895][root][INFO] - avg_energy_above_hull_per_atom: 0.319406, avg_rmsd_from_relaxation: 0.945547, frac_novel_unique_stable_structures: 0.086957, frac_stable_structures: 0.195652, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.891304, frac_novel_systems: 0.195652, frac_novel_unique_structures: 0.891304, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.108696, recall: 0.000015
+[2026-05-01 23:02:39,899][root][INFO] - SCORE:
+[GPRouted] cycle=15 N=4 oracled=4/4 K=8 ltm=195 target=1.50 PI(oracle_min)=nan anchor=True cold=False 352.9s
+[2026-05-01 23:08:32,931][root][INFO] - Evaluation costs to date: 98
+[2026-05-01 23:08:32,932][root][INFO] - Number of samples that successfully obtained rewards: 4
+[2026-05-01 23:08:32,932][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 23:08:32,932][root][INFO] - heat_capacity mean=0.0000 std=0.0000
+[2026-05-01 23:08:33,168][root][INFO] - 98 crystals generated so far, 97 unique components.  Burden: None, Div. Ratio: 0.9897959183673469.
+[2026-05-01 23:08:33,195][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 23:08:33,198][root][INFO] - replay buffer size=10
+[2026-05-01 23:08:33,198][root][INFO] - buffer reward mean=0.17981729971261085
+[2026-05-01 23:08:33,198][root][INFO] - FINETUNE:
+[2026-05-01 23:08:33,506][root][INFO] - Epoch 0: loss: 0.1850, loss_diff: 0.1850, loss_kl: 0.0013
+[2026-05-01 23:08:33,768][root][INFO] - Epoch 1: loss: 0.1794, loss_diff: 0.1794, loss_kl: 0.0014
+[2026-05-01 23:08:34,031][root][INFO] - Epoch 2: loss: 0.1795, loss_diff: 0.1795, loss_kl: 0.0017
+[2026-05-01 23:08:34,032][root][INFO] - *****   LOOP 15 FINISH   *****
+[2026-05-01 23:08:34,032][root][INFO] - Total time taken: 12.66 min.
+
+
+[2026-05-01 23:08:34,032][root][INFO] - *****   LOOP 16 START   *****
+[2026-05-01 23:08:34,032][root][INFO] - SAMPLE:
+[32m2026-05-01 23:09:52.696[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-01 23:14:25,266][root][INFO] - Number of filtered samples: 6
+[2026-05-01 23:14:25,268][root][INFO] - avg_energy_above_hull_per_atom: 0.224395, avg_rmsd_from_relaxation: 1.012843, frac_novel_unique_stable_structures: 0.130435, frac_stable_structures: 0.239130, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.869565, frac_novel_systems: 0.260870, frac_novel_unique_structures: 0.869565, frac_unique_structures: 1.000000, frac_unique_systems: 0.978261, precision: 0.130435, recall: 0.000012
+[2026-05-01 23:14:25,296][root][INFO] - SCORE:
+[GPRouted] cycle=16 N=6 oracled=6/6 K=8 ltm=195 target=1.50 PI(oracle_min)=nan anchor=False cold=False 2499.4s
+[2026-05-01 23:56:04,975][root][INFO] - Evaluation costs to date: 104
+[2026-05-01 23:56:05,069][root][INFO] - Number of samples that successfully obtained rewards: 6
+[2026-05-01 23:56:05,070][root][INFO] - reward mean=0.0000 std=0.0000
+[2026-05-01 23:56:05,070][root][INFO] - heat_capacity mean=0.0000 std=0.0000
+[2026-05-01 23:56:06,233][root][INFO] - 104 crystals generated so far, 103 unique components.  Burden: None, Div. Ratio: 0.9903846153846154.
+[2026-05-01 23:56:06,395][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-01 23:56:06,399][root][INFO] - replay buffer size=10
+[2026-05-01 23:56:06,399][root][INFO] - buffer reward mean=0.17981729971261085
+[2026-05-01 23:56:06,399][root][INFO] - FINETUNE:
+[2026-05-01 23:56:10,003][root][INFO] - Epoch 0: loss: 0.1616, loss_diff: 0.1615, loss_kl: 0.0009
+[2026-05-01 23:56:10,372][root][INFO] - Epoch 1: loss: 0.1598, loss_diff: 0.1598, loss_kl: 0.0009
+[2026-05-01 23:56:10,744][root][INFO] - Epoch 2: loss: 0.1599, loss_diff: 0.1599, loss_kl: 0.0010
+[2026-05-01 23:56:10,745][root][INFO] - *****   LOOP 16 FINISH   *****
+[2026-05-01 23:56:10,745][root][INFO] - Total time taken: 47.61 min.
+
+
+[2026-05-01 23:56:10,745][root][INFO] - *****   LOOP 17 START   *****
+[2026-05-01 23:56:10,745][root][INFO] - SAMPLE:
+[32m2026-05-01 23:58:41.627[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-02 00:07:10,395][root][INFO] - Number of filtered samples: 7
+[2026-05-02 00:07:10,528][root][INFO] - avg_energy_above_hull_per_atom: 0.310749, avg_rmsd_from_relaxation: 0.726442, frac_novel_unique_stable_structures: 0.148936, frac_stable_structures: 0.276596, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.787234, frac_novel_systems: 0.127660, frac_novel_unique_structures: 0.787234, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.212766, recall: 0.000028
+[2026-05-02 00:07:10,589][root][INFO] - SCORE:
+[GPRouted] cycle=17 N=7 oracled=7/7 K=8 ltm=197 target=1.50 PI(oracle_min)=nan anchor=False cold=False 613.8s
+[2026-05-02 00:17:24,523][root][INFO] - Evaluation costs to date: 111
+[2026-05-02 00:17:24,586][root][INFO] - Number of samples that successfully obtained rewards: 7
+[2026-05-02 00:17:24,586][root][INFO] - reward mean=0.0397 std=0.0973
+[2026-05-02 00:17:24,586][root][INFO] - heat_capacity mean=0.1277 std=0.2545
+[2026-05-02 00:17:24,810][root][INFO] - 111 crystals generated so far, 110 unique components.  Burden: None, Div. Ratio: 0.990990990990991.
+[2026-05-02 00:17:24,837][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-02 00:17:24,840][root][INFO] - replay buffer size=11
+[2026-05-02 00:17:24,840][root][INFO] - buffer reward mean=0.18875463733563141
+[2026-05-02 00:17:24,840][root][INFO] - FINETUNE:
+[2026-05-02 00:17:25,301][root][INFO] - Epoch 0: loss: 0.1749, loss_diff: 0.1748, loss_kl: 0.0010
+[2026-05-02 00:17:25,602][root][INFO] - Epoch 1: loss: 0.1695, loss_diff: 0.1695, loss_kl: 0.0012
+[2026-05-02 00:17:25,905][root][INFO] - Epoch 2: loss: 0.1717, loss_diff: 0.1716, loss_kl: 0.0013
+[2026-05-02 00:17:25,905][root][INFO] - *****   LOOP 17 FINISH   *****
+[2026-05-02 00:17:25,905][root][INFO] - Total time taken: 21.25 min.
+
+
+[2026-05-02 00:17:25,906][root][INFO] - *****   LOOP 18 START   *****
+[2026-05-02 00:17:25,906][root][INFO] - SAMPLE:
+[32m2026-05-02 00:19:04.422[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-02 00:24:30,577][root][INFO] - Number of filtered samples: 5
+[2026-05-02 00:24:30,802][root][INFO] - avg_energy_above_hull_per_atom: 0.259397, avg_rmsd_from_relaxation: 0.874671, frac_novel_unique_stable_structures: 0.104167, frac_stable_structures: 0.270833, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.812500, frac_novel_systems: 0.187500, frac_novel_unique_structures: 0.812500, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.187500, recall: 0.000033
+[2026-05-02 00:24:30,875][root][INFO] - SCORE:
+[GPRouted] cycle=18 N=5 oracled=5/5 K=8 ltm=199 target=1.50 PI(oracle_min)=nan anchor=False cold=False 380.9s
+[2026-05-02 00:30:51,993][root][INFO] - Evaluation costs to date: 116
+[2026-05-02 00:30:52,050][root][INFO] - Number of samples that successfully obtained rewards: 5
+[2026-05-02 00:30:52,050][root][INFO] - reward mean=0.0037 std=0.0074
+[2026-05-02 00:30:52,050][root][INFO] - heat_capacity mean=0.0806 std=0.1111
+[2026-05-02 00:30:52,285][root][INFO] - 116 crystals generated so far, 115 unique components.  Burden: None, Div. Ratio: 0.9913793103448276.
+[2026-05-02 00:30:52,339][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-02 00:30:52,341][root][INFO] - replay buffer size=11
+[2026-05-02 00:30:52,341][root][INFO] - buffer reward mean=0.18875463733563141
+[2026-05-02 00:30:52,341][root][INFO] - FINETUNE:
+[2026-05-02 00:30:53,193][root][INFO] - Epoch 0: loss: 0.1776, loss_diff: 0.1776, loss_kl: 0.0014
+[2026-05-02 00:30:53,474][root][INFO] - Epoch 1: loss: 0.1794, loss_diff: 0.1794, loss_kl: 0.0013
+[2026-05-02 00:30:53,766][root][INFO] - Epoch 2: loss: 0.1786, loss_diff: 0.1786, loss_kl: 0.0014
+[2026-05-02 00:30:53,766][root][INFO] - *****   LOOP 18 FINISH   *****
+[2026-05-02 00:30:53,766][root][INFO] - Total time taken: 13.46 min.
+
+
+[2026-05-02 00:30:53,766][root][INFO] - *****   LOOP 19 START   *****
+[2026-05-02 00:30:53,767][root][INFO] - SAMPLE:
+[32m2026-05-02 00:32:15.140[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[2026-05-02 00:36:32,070][root][INFO] - Number of filtered samples: 7
+[2026-05-02 00:36:32,147][root][INFO] - avg_energy_above_hull_per_atom: 0.214600, avg_rmsd_from_relaxation: 0.968426, frac_novel_unique_stable_structures: 0.162791, frac_stable_structures: 0.255814, frac_successful_jobs: 1.000000, avg_comp_validity: 1.000000, avg_structure_comp_validity: 1.000000, avg_structure_validity: 1.000000, frac_novel_structures: 0.883721, frac_novel_systems: 0.232558, frac_novel_unique_structures: 0.883721, frac_unique_structures: 1.000000, frac_unique_systems: 1.000000, precision: 0.116279, recall: 0.000019
+[2026-05-02 00:36:32,217][root][INFO] - SCORE:
+[GPRouted] cycle=19 N=7 oracled=7/7 K=8 ltm=200 target=1.50 PI(oracle_min)=nan anchor=False cold=False 560.1s
+[2026-05-02 00:45:52,419][root][INFO] - Evaluation costs to date: 123
+[2026-05-02 00:45:52,463][root][INFO] - Number of samples that successfully obtained rewards: 7
+[2026-05-02 00:45:52,464][root][INFO] - reward mean=0.0136 std=0.0332
+[2026-05-02 00:45:52,464][root][INFO] - heat_capacity mean=0.0595 std=0.1456
+[2026-05-02 00:45:52,708][root][INFO] - 123 crystals generated so far, 122 unique components.  Burden: None, Div. Ratio: 0.991869918699187.
+[2026-05-02 00:45:54,078][root][INFO] - Diversity filter: tol_n=0, buff_n=0
+[2026-05-02 00:45:54,081][root][INFO] - replay buffer size=11
+[2026-05-02 00:45:54,081][root][INFO] - buffer reward mean=0.18875463733563141
+[2026-05-02 00:45:54,081][root][INFO] - FINETUNE:
+[2026-05-02 00:45:54,469][root][INFO] - Epoch 0: loss: 0.1621, loss_diff: 0.1620, loss_kl: 0.0020
+[2026-05-02 00:45:54,770][root][INFO] - Epoch 1: loss: 0.1608, loss_diff: 0.1608, loss_kl: 0.0020
+[2026-05-02 00:45:55,069][root][INFO] - Epoch 2: loss: 0.1571, loss_diff: 0.1570, loss_kl: 0.0021
+[2026-05-02 00:45:55,069][root][INFO] - *****   LOOP 19 FINISH   *****
+[2026-05-02 00:45:55,070][root][INFO] - Total time taken: 15.02 min.
+
+
+[2026-05-02 00:45:55,218][root][INFO] - *****   RL END   *****
+[2026-05-02 00:45:55,218][root][INFO] - Total time taken: 21514 s.
+Closing LMDB environment /tmp/job.3002768/tmpt3zh8_m7/reference_MP2020correction
+Phase-3 CrystalFlow accel (seed=17) finished at Sat May  2 00:46:01 CDT 2026

@@ -1,0 +1,64 @@
+# GP-routed reward for formation energy with intelligent calculator selection
+# Uses ORB GP surrogate to route structures to appropriate calculators
+_target_: rewards.reward.Reward
+
+root_dir: rewards
+
+prop_cfg:
+  - name: formation_energy
+    use_gp_routing: true
+
+    router:
+      _target_: rewards.router.CalculatorRouter
+
+      calculators:
+        orb:
+          _target_: rewards.calculators.ORBCalculator
+          root_dir: rewards/formation_energy_orb
+          task: formation_energy
+          device: ${device}
+          fmax: 0.05
+          model: orb-v2
+
+        alignn:
+          _target_: rewards.calculators.ALIGNN
+          root_dir: rewards/formation_energy_alignn
+          task: formation_energy
+          device: ${device}
+          silent: true
+
+        # VASP calculator (for cluster runs)
+        # vasp:
+        #   _target_: rewards.calculators.DFTCalc
+        #   root_dir: rewards/formation_energy_vasp
+        #   task: formation_energy
+
+      gp_model:
+        _target_: rewards.gp.surrogate.GPSurrogate
+        input_dim: 50  # PCA reduced ORB features
+        task: formation_energy
+        device: ${device}
+
+      featurizer:
+        _target_: rewards.calculators.orb.featurizer.ORBFeaturizer
+        n_components: 50
+        device: ${device}
+
+      acquisition_fn:
+        _target_: rewards.acquisition.ExpectedImprovementPerCost
+        cost_model:
+          alignn: 0.001   # Cheapest - pretrained GNN
+          orb: 0.01       # Medium - orbital-based
+          vasp: 1.0       # Expensive DFT
+        xi: 0.01          # Exploration parameter
+
+      default_calculator: orb
+      min_gp_samples: 10
+
+    # Target: descending (lower formation energy is better)
+    target: descending
+    minv: -3.5
+    maxv: -1.0
+
+reward_threshold: 0.6
+reduce: mean  # or 'min' or 'weight'

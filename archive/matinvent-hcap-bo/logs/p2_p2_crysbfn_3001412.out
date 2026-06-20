@@ -1,0 +1,253 @@
+================================================================
+Phase-2 ablation: backend=crysbfn  cycles=10  batch=64  K=8
+  output_dir = /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_crysbfn_3001412
+  node       = fc101
+  start      = Wed Apr 29 18:59:43 CDT 2026
+================================================================
+Tesla T4, 16384 MiB
+merged config saved to /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_crysbfn_3001412/config_merged.yaml
+[phase2] device=cuda
+[phase2] using diffusion adapter: remote::crysbfn
+[phase2] pool source = adapter; cycles=10, B'=64, K=8, τ₀=0.050
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 00  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  874.7s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 01  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  269.3s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 02  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  32.3s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 03  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  32.9s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 04  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  33.3s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 05  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=True  32.4s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 06  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  31.6s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 07  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  32.2s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 08  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  31.1s
+[HCapOracle_eSEN] all results NaN — runner stderr (tail):
+mon/relaxation/ase_utils.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=torch.device("cpu"))
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+INFO:root:Checking local cache: /scratch/user/ahnafalvi/hf_cache for model eSEN-30M-OAM
+INFO:httpx:HTTP Request: HEAD https://huggingface.co/facebook/OMAT24/resolve/main/esen_30m_oam.pt "HTTP/1.1 302 Found"
+[esen] failed: RuntimeError: Registry for trainer_name_mapping is empty. You may have forgot to load a module.
+
+[phase2] cycle 09  oracled= 8/8  ltm=  0  reward μ=0.000  τ=0.050  anchor=False  32.0s
+[phase2] done. final LTM size = 0
+Phase-2 [crysbfn] finished at Wed Apr 29 19:26:26 CDT 2026

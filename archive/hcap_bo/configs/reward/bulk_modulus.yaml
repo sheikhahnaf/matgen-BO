@@ -1,0 +1,19 @@
+# Reward for bulk modulus K_VRH (GPa) — ascending (maximize).
+# Mirrors heat_capacity.yaml structure so swapping reward= toggles the property.
+_target_: rewards.reward.Reward
+
+root_dir: rewards
+
+prop_cfg:
+  - name: bulk_modulus
+    calculator:
+      _target_: rewards.calculators.FairChem  # overridden via Hydra to LocalESEN_BM*
+      root_dir: rewards/bulk_modulus
+      task: bulk_modulus
+      env_name: fair-chem-v1
+      worker: 5
+    target: ascending
+    minv: 20.0    # ~5th percentile of MP elastic_tensor_2015 K_VRH
+    maxv: 400.0   # ~99th percentile (covers diamond ~443 if hit)
+
+reward_threshold: 0.8

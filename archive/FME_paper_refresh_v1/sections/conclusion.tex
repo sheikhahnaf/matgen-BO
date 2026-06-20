@@ -1,0 +1,58 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented the largest cross-factorial benchmark to date for evaluating foundation model embeddings as featurisers for probabilistic surrogates in materials property prediction.
+Across 8{,}640 cross-validated experiments spanning 4~featurisers, 3~surrogates, 3~PCA levels, 3~training sizes, and 3~materials property datasets---elastic tensor (8~properties), dielectric constant (4~properties), and phonon dielectric (3~properties)---six key findings emerge.
+
+\textbf{1.\ ORB embeddings are the universal winner.}
+ORB outperforms all alternatives on every dataset and every surrogate model.
+On elastic properties, ORB\,+\,GP achieves $\bar{R}^2 = 0.803$ and $\bar{\rho} = 0.842$, compared to 0.731/0.820 for MACE, 0.734/0.811 for UMA, and 0.445/0.688 for SOAP.
+On dielectric properties, ORB\,+\,DGP leads with $\bar{R}^2 = 0.336$ and $\bar{\rho} = 0.778$.
+On phonon properties, ORB\,+\,GP achieves $\bar{R}^2 = 0.303$ and $\bar{\rho} = 0.824$.
+This dominance stems from ORB's large and diverse pre-training corpus ($\sim$120M configurations) and its graph attention architecture optimised for periodic crystals.
+
+\textbf{2.\ Ranking accuracy far exceeds regression accuracy.}
+Across all three datasets, Spearman rank correlations substantially exceed \Rtwo{} values.
+The gap widens with property difficulty: modest on elastic data ($\bar{\rho} = 0.842$ vs.\ $\bar{R}^2 = 0.803$), large on dielectric data ($\bar{\rho} = 0.778$ vs.\ $\bar{R}^2 = 0.336$), and dramatic on phonon data ($\bar{\rho} = 0.824$ vs.\ $\bar{R}^2 = 0.303$).
+The extreme case of eps\_electronic ($\rho = 0.930$, $R^2 = -0.001$) demonstrates that surrogates can correctly order 93\% of material pairs even when absolute predictions fail entirely.
+For Bayesian optimisation---where acquisition functions depend on relative ranking, not absolute prediction---this means our surrogates are useful across \emph{all three property domains}, not just elastic.
+We recommend that the community adopt Spearman correlation as a primary metric for BO surrogates.
+
+\textbf{3.\ The GP is the most reliable surrogate; the DGP is the most powerful when properly configured.}
+The standard GP offers the best balance of accuracy, stability, and computational efficiency, serving as a robust default across all datasets and PCA settings.
+The DGP achieves the single best \Rtwo{} on both the elastic dataset ($\bar{R}^2 = 0.807$ at PCA\,=\,25) and the dielectric dataset ($\bar{R}^2 = 0.336$ at PCA\,=\,10), demonstrating its ability to capture non-linear structure--property relationships that the linear GP cannot.
+The key practical consideration is PCA dimensionality: the DGP performs strongly at PCA\,$\leq$\,25 but requires careful configuration at higher dimensions.
+
+\textbf{4.\ Property predictability follows a physical gradient.}
+Properties that depend on local bonding geometry (bulk modulus, $R^2 > 0.91$; phonon DOS peak, $R^2 = 0.911$) are substantially easier than properties that require electronic structure information (band gap, $R^2 = 0.852$; refractive index, $R^2 = 0.552$) or involve collective many-body responses (polycrystalline dielectric constants, $R^2 < 0$; phonon-derived dielectric constants, $R^2 \approx -0.001$).
+This gradient maps directly onto the ``information distance'' between crystal geometry---what the embeddings encode---and the target physical phenomenon.
+
+\textbf{5.\ Foundation model embeddings are remarkably data-efficient.}
+ORB\,+\,GP at $\ntrain = 100$ surpasses SOAP\,+\,GP at $\ntrain = 500$ on the elastic dataset ($\bar{R}^2 = 0.535$ vs.\ $0.445$), providing a head start equivalent to $\sim$400 additional DFT calculations.
+For BO campaigns where each evaluation costs hours of compute, this efficiency translates directly to shorter discovery timelines.
+
+\textbf{6.\ Multi-task GPs help selectively.}
+The MTGP shows no advantage over independent GPs on the elastic dataset ($T = 8$ tasks), but matches or exceeds the GP on the phonon dataset ($T = 3$; $\bar{\rho} = 0.830$ vs.\ 0.824) and improves over GP for weaker featurisers on the dielectric dataset (SOAP\,+\,MTGP: $\bar{R}^2 = 0.177$ vs.\ SOAP\,+\,GP: 0.132).
+Multi-task learning is most beneficial when the number of tasks is small, properties share a common physical origin, and per-task prediction is weak.
+
+\emph{Our updated practical recommendation:} Use ORB\,+\,GP\,+\,PCA\,=\,50 as the default stack for materials BO campaigns.
+Upgrade to DGP at PCA\,$\in \{10, 25\}$ for non-linear properties with sufficient data ($\ntrain \geq 300$).
+Evaluate surrogates by Spearman $\rho$, not only \Rtwo{}, especially for heavy-tailed or electronic properties.
+For heavy-tailed targets, apply log-transforms before training to close the Spearman--\Rtwo{} gap.
+
+\textbf{Limitations.}
+Our benchmark uses three datasets with up to 500~training samples each, all comprising ordered crystalline structures.
+We do not evaluate the full BO loop (acquisition function optimisation and sequential candidate selection), uncertainty calibration (reliability diagrams, ENCE), or the effect of fine-tuning foundation model embeddings on the target property.
+The DGP's sensitivity to PCA dimension suggests that its performance ceiling may be higher with adaptive variational inference schemes.
+At larger sample sizes ($\ntrain > 1{,}000$), the surrogate ranking---particularly for MTGP and DGP---may shift.
+
+\textbf{Future work.}
+Six directions emerge from the cross-dataset analysis:
+(i)~integration into a full BO loop to measure how Spearman-based surrogate quality translates to closed-loop discovery efficiency;
+(ii)~extension to disordered alloy, amorphous, and MOF systems where the featuriser ranking may differ;
+(iii)~fine-tuning of foundation model embeddings on the target property, which could close the gap between ORB and MACE/UMA or between geometric embeddings and electronic-structure-aware models for dielectric properties;
+(iv)~rigorous uncertainty calibration analysis for each surrogate--featuriser combination, which is critical for BO acquisition functions;
+(v)~target-variable preprocessing (log-transforms, robust scaling) to close the Spearman--\Rtwo{} gap on heavy-tailed properties, potentially converting ``unpredictable'' properties like eps\_electronic ($\rho = 0.930$, $R^2 = -0.001$) into well-predicted ones;
+and (vi)~active learning experiments where the surrogate actively selects the next training points, testing whether the DGP's richer posterior improves exploration--exploitation balance relative to the GP.
+
+The complete pipeline, aggregated results, and analysis scripts are available as open-source software to serve as a community benchmark for future featuriser and surrogate development.

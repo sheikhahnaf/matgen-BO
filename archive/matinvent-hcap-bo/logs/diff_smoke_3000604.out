@@ -1,0 +1,79 @@
+================================================================
+Diffusion smoke test on fc104 at Wed Apr 29 06:18:33 CDT 2026
+  output_dir = /scratch/user/ahnafalvi/matinvent-hcap-bo/results/diffusion_smoke_3000604
+================================================================
+Tesla T4, 16384 MiB
+[smoke] testing 3 backends → /scratch/user/ahnafalvi/matinvent-hcap-bo/results/diffusion_smoke_3000604
+
+[smoke] === adit ===
+[smoke] adit           PASS  n=4  formulas=['O8Si2Th2', 'Te3', 'Ca10Ge6', 'CrEuO6SrZr']  (8.8s)
+
+[smoke] === crysbfn ===
+[smoke] crysbfn        PASS  n=4  formulas=['CdDyLuPr', 'MoTe4', 'Mo2Te9W', 'Te15W']  (39.7s)
+
+[smoke] === crystalflow ===
+[smoke] crystalflow    PASS  n=4  formulas=['Eu6Na2P6', 'Bi2ErKTe7', 'Er2S2Sb2', 'CLuNi2Si2']  (46.6s)
+
+[smoke] DONE — pass: 3 / 3
+Smoke finished at Wed Apr 29 06:20:09 CDT 2026
+Summary:
+{
+  "results": [
+    {
+      "model": "adit",
+      "ok": true,
+      "n_returned": 4,
+      "formulas": [
+        "O8Si2Th2",
+        "Te3",
+        "Ca10Ge6",
+        "CrEuO6SrZr"
+      ],
+      "natoms": [
+        12,
+        3,
+        16,
+        10
+      ],
+      "elapsed_s": 8.8
+    },
+    {
+      "model": "crysbfn",
+      "ok": true,
+      "n_returned": 4,
+      "formulas": [
+        "CdDyLuPr",
+        "MoTe4",
+        "Mo2Te9W",
+        "Te15W"
+      ],
+      "natoms": [
+        4,
+        5,
+        12,
+        16
+      ],
+      "elapsed_s": 39.7
+    },
+    {
+      "model": "crystalflow",
+      "ok": true,
+      "n_returned": 4,
+      "formulas": [
+        "Eu6Na2P6",
+        "Bi2ErKTe7",
+        "Er2S2Sb2",
+        "CLuNi2Si2"
+      ],
+      "natoms": [
+        14,
+        11,
+        6,
+        6
+      ],
+      "elapsed_s": 46.6
+    }
+  ],
+  "n_pass": 3,
+  "n_fail": 0
+}

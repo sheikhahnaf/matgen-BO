@@ -1,0 +1,39 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Heavy artifacts
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+checkpoints/
+*/checkpoints/
+
+# Raw run outputs (regenerate from SLURM scripts)
+hcap_bo/results/
+hcap_bo/results_bm/
+hcap_bo/logs/
+hcap_bo/logs_bm/
+hcap_bo/data/diffusion_reviews/
+hcap_bo/data/raw/
+hcap_bo/data/*.h5
+
+# Synthetic-score cache (regenerate from pymatgen)
+matinvent/rewards/calculators/syn_score/
+pristine_matinvent/rewards/calculators/syn_score/
+
+# Env caches
+.env
+.venv/
+*.egg-info/
+
+# Misc
+*.log
+quick_test*.log
+test_run*.log
+matinvent/src/mattergen/data-release/

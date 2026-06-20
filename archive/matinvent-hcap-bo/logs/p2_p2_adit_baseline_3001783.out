@@ -1,0 +1,23 @@
+================================================================
+Phase-2 ablation: backend=adit  cycles=10  batch=8  K=8
+  output_dir = /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_adit_baseline_3001783
+  node       = fc101
+  start      = Thu Apr 30 03:20:57 CDT 2026
+================================================================
+Tesla T4, 16384 MiB
+merged config saved to /scratch/user/ahnafalvi/matinvent-hcap-bo/results/p2_adit_baseline_3001783/config_merged.yaml
+[phase2] device=cuda
+[phase2] using diffusion adapter: remote::adit
+[phase2] pool source = adapter; cycles=10, B'=8, K=8, τ₀=0.050
+[phase2] cycle 00  oracled= 8/8  ltm=  4  reward μ=0.133  τ=0.050  anchor=False  1725.9s
+[phase2] cycle 01  oracled= 8/8  ltm=  6  reward μ=0.417  τ=0.050  anchor=True  1718.6s
+[phase2] cycle 02  oracled= 8/8  ltm= 10  reward μ=0.582  τ=0.050  anchor=True  923.6s
+[phase2] cycle 03  oracled= 8/8  ltm= 14  reward μ=0.367  τ=0.050  anchor=True  1195.3s
+[phase2] cycle 04  oracled= 8/8  ltm= 17  reward μ=0.517  τ=0.050  anchor=True  1103.8s
+[phase2] cycle 05  oracled= 8/8  ltm= 22  reward μ=0.372  τ=0.242  anchor=True  914.4s
+[phase2] cycle 06  oracled= 8/8  ltm= 25  reward μ=0.499  τ=0.242  anchor=True  755.8s
+[phase2] cycle 07  oracled= 8/8  ltm= 29  reward μ=0.499  τ=0.242  anchor=True  945.8s
+[phase2] cycle 08  oracled= 8/8  ltm= 35  reward μ=0.362  τ=0.268  anchor=True  948.0s
+[phase2] cycle 09  oracled= 8/8  ltm= 42  reward μ=0.300  τ=0.103  anchor=True  797.6s
+[phase2] done. final LTM size = 42
+Phase-2 [adit] finished at Thu Apr 30 06:35:21 CDT 2026

@@ -1,0 +1,57 @@
+Oracle 3-way starting at Tue Apr 28 05:41:53 CDT 2026 on fc023
+Tesla T4, 16384 MiB
+[3way] 5 structures × 3 oracles
+
+[3way] === ESEN ===
+  Si-diamond          0.7138 J/g/K
+  MgO-rocksalt        0.9405 J/g/K
+  Cu-fcc              0.3777 J/g/K
+  AlN-wurtzite        0.7579 J/g/K
+  CaF2-fluorite       0.8536 J/g/K
+
+[3way] === ORB ===
+  Si-diamond          0.7118 J/g/K
+  MgO-rocksalt        0.9406 J/g/K
+  Cu-fcc              0.3721 J/g/K
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] === UMA ===
+  Si-diamond          0.7136 J/g/K
+  MgO-rocksalt        0.9399 J/g/K
+  Cu-fcc              0.3710 J/g/K
+  AlN-wurtzite        0.7559 J/g/K
+  CaF2-fluorite       0.8530 J/g/K
+
+[3way] Cp (J/g/K) — wide table:
+oracle             esen       orb       uma
+formula                                    
+AlN-wurtzite   0.757883       NaN  0.755945
+CaF2-fluorite  0.853571       NaN  0.852995
+Cu-fcc         0.377698  0.372098  0.371011
+MgO-rocksalt   0.940497  0.940593  0.939862
+Si-diamond     0.713840  0.711786  0.713626
+
+[3way] pairwise summary:
+{
+  "esen_vs_orb": {
+    "n": 3,
+    "mean_abs_diff": 0.0025833333333333264,
+    "mean_rel_diff_pct": 0.601252025776105,
+    "max_abs_diff": 0.005599999999999994
+  },
+  "esen_vs_uma": {
+    "n": 5,
+    "mean_abs_diff": 0.002010000000000023,
+    "mean_rel_diff_pct": 0.44476357482456275,
+    "max_abs_diff": 0.0066869999999999985
+  },
+  "orb_vs_uma": {
+    "n": 3,
+    "mean_abs_diff": 0.0012193333333333316,
+    "mean_rel_diff_pct": 0.2095329140151286,
+    "max_abs_diff": 0.0018399999999999528
+  },
+  "_failed_oracles": []
+}
+Oracle 3-way finished at Tue Apr 28 05:54:49 CDT 2026

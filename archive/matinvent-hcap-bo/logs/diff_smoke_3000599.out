@@ -1,0 +1,76 @@
+================================================================
+Diffusion smoke test on fc103 at Wed Apr 29 05:56:34 CDT 2026
+  output_dir = /scratch/user/ahnafalvi/matinvent-hcap-bo/results/diffusion_smoke_3000599
+================================================================
+Tesla T4, 16384 MiB
+[smoke] testing 3 backends → /scratch/user/ahnafalvi/matinvent-hcap-bo/results/diffusion_smoke_3000599
+
+[smoke] === adit ===
+[smoke] adit           PASS  n=4  formulas=['O8Si2Th2', 'Te3', 'Ca10Ge6', 'CrEuO6SrZr']  (29.9s)
+
+[smoke] === crysbfn ===
+[smoke] crysbfn        FAIL  RuntimeError: Remote crysbfn failed (code 1). stderr (tail):
+REMOTE RUNNER FAILED: ModuleNotFoundError: No module named 'absl'
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/runners/remote_runner.py", line 41, in main
+    atoms_list = adapter.sample(
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn.py", line 132, in sample
+    model = self._load()
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn
+
+[smoke] === crystalflow ===
+[smoke] crystalflow    PASS  n=4  formulas=['Rh3Si3', 'Bi5Cs3Se8', 'CCl2Er3', 'C4Lu4O12']  (53.7s)
+
+[smoke] DONE — pass: 2 / 3
+Smoke finished at Wed Apr 29 06:02:28 CDT 2026
+Summary:
+{
+  "results": [
+    {
+      "model": "adit",
+      "ok": true,
+      "n_returned": 4,
+      "formulas": [
+        "O8Si2Th2",
+        "Te3",
+        "Ca10Ge6",
+        "CrEuO6SrZr"
+      ],
+      "natoms": [
+        12,
+        3,
+        16,
+        10
+      ],
+      "elapsed_s": 29.9
+    },
+    {
+      "model": "crysbfn",
+      "ok": false,
+      "error_type": "RuntimeError",
+      "error_msg": "Remote crysbfn failed (code 1). stderr (tail):\nREMOTE RUNNER FAILED: ModuleNotFoundError: No module named 'absl'\nTraceback (most recent call last):\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/runners/remote_runner.py\", line 41, in main\n    atoms_list = adapter.sample(\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn.py\", line 132, in sample\n    model = self._load()\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn",
+      "traceback": "Traceback (most recent call last):\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/diffusion_smoke.py\", line 54, in _smoke_one\n    atoms_list = adapter.sample(n=n, seed=0)\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/remote.py\", line 117, in sample\n    raise RuntimeError(\nRuntimeError: Remote crysbfn failed (code 1). stderr (tail):\nREMOTE RUNNER FAILED: ModuleNotFoundError: No module named 'absl'\nTraceback (most recent call last):\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/runners/remote_runner.py\", line 41, in main\n    atoms_list = adapter.sample(\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn.py\", line 132, in sample\n    model = self._load()\n  File \"/scratch/user/ahnafalvi/matinvent-hcap-bo/src/diffusion/adapters/crysbfn.py\", line 70, in _load\n    from crysbfn.pl_modules.crysbfn_plmodel import CrysBFN_PL_Model  # type: ignore\n  File \"/scratch/user/ahnafalvi/diffusion-zoo-repos/CrysBFN/crysbfn/pl_modules/crysbfn_plmodel.py\", line 29, in <module>\n    from crysbfn.pl_modules.crysbfn import CrysBFN\n  File \"/scratch/user/ahnafalvi/diffusion-zoo-repos/CrysBFN/crysbfn/pl_modules/crysbfn.py\", line 6, in <module>\n    from crysbfn.pl_modules.bfn_base import bfnBase\n  File \"/scratch/user/ahnafalvi/diffusion-zoo-repos/CrysBFN/crysbfn/pl_modules/bfn_base.py\", line 11, in <module>\n    from absl import logging\nModuleNotFoundError: No module named 'absl'\n\n",
+      "elapsed_s": 262.7
+    },
+    {
+      "model": "crystalflow",
+      "ok": true,
+      "n_returned": 4,
+      "formulas": [
+        "Rh3Si3",
+        "Bi5Cs3Se8",
+        "CCl2Er3",
+        "C4Lu4O12"
+      ],
+      "natoms": [
+        6,
+        16,
+        6,
+        20
+      ],
+      "elapsed_s": 53.7
+    }
+  ],
+  "n_pass": 2,
+  "n_fail": 1
+}

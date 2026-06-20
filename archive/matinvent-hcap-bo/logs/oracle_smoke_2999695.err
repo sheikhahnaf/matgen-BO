@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/user/ahnafalvi/envs/matinvent-hcap-bo/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 42, in <module>
+    sys.exit(main())
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/cli.py", line 38, in main
+    return int(mod.run(config_path=args.config, output_dir=args.output_dir) or 0)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/phases/oracle_smoke.py", line 50, in run
+    cp, mask = oracle.evaluate(atoms_list)
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle_fairchem.py", line 90, in evaluate
+    raise RuntimeError(
+RuntimeError: FairChem runner failed (code 1). stderr:
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle_fairchem_runner.py", line 24, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+ERROR conda.cli.main_run:execute(124): `conda run python /scratch/user/ahnafalvi/matinvent-hcap-bo/src/oracle_fairchem_runner.py /scratch/user/ahnafalvi/matinvent-hcap-bo/results/oracle_smoke_2999695/tmpvw7qz34u/in.xyz /scratch/user/ahnafalvi/matinvent-hcap-bo/results/oracle_smoke_2999695/tmpvw7qz34u/out.txt 1` failed. (See above for error)
+

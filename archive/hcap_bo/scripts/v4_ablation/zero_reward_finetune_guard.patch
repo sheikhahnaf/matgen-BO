@@ -1,0 +1,20 @@
+--- a/matinvent-pristine/pipeline/mat_invent.py	2026-04-28 06:13:29.000000000 -0500
++++ a/matinvent-pristine-patched/pipeline/mat_invent.py	2026-05-27 15:31:43.000000000 -0500
+@@ -261,9 +261,14 @@
+ 
+         # finetuning
+         logging.info('FINETUNE:')
+-        baseline = self.ltm.get_baseline(self.step)
+-        baseline = min(baseline, ft_reward.min())
+-        self.ft_step(ft_data, ft_reward, baseline)
++        if np.size(ft_reward) == 0:
++            # Zero-reward cycle (all oracle calls failed): no gradient signal,
++            # skip finetune instead of crashing on empty-array .min().
++            logging.info('Skipping finetune: no successful rewards this cycle.')
++        else:
++            baseline = self.ltm.get_baseline(self.step)
++            baseline = min(baseline, ft_reward.min())
++            self.ft_step(ft_data, ft_reward, baseline)
+ 
+         end_time = time.time()
+         total_time = (end_time - start_time) / 60

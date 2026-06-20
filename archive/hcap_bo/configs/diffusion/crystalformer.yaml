@@ -1,0 +1,14 @@
+# CrystalFormer (Cao et al.) — autoregressive transformer for crystals.
+# https://github.com/deepmodeling/CrystalFormer
+generation:
+  adapter:
+    _target_: src.diffusion.RemoteGeneratorAdapter
+    env_prefix: ${oc.env:SCRATCH}/envs/mat-zoo-modern
+    model_name: crystalformer
+    adapter_kwargs:
+      checkpoint: ${oc.env:SCRATCH}/checkpoints/crystalformer/multi_epoch_044000.pkl
+      device: cuda
+      temperature: 1.0
+      top_p: 1.0
+      top_k: 30
+    timeout_seconds: 1800

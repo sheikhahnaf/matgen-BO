@@ -1,0 +1,41 @@
+Oracle 3-way starting at Tue Apr 28 04:40:14 CDT 2026 on fc023
+Tesla T4, 16384 MiB
+[3way] 5 structures × 3 oracles
+
+[3way] === ESEN ===
+  Si-diamond          FAIL
+  MgO-rocksalt        FAIL
+  Cu-fcc              FAIL
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] === ORB ===
+[3way] orb eval FAILED: HCapOracle_ORB runner failed (code 1). stderr (tail):
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/runners/run_orb_phonon.py", line 27, in <module>
+    from ase.constraints import ExpCellFilter
+ImportError: cannot import name 'ExpCellFilter' from 'ase.constraints' (/scratch/user/ahnafalvi/envs/matinvent-hcap-fairchem/lib/python3.11/site-packages/ase/constraints.py)
+
+  Si-diamond          FAIL
+  MgO-rocksalt        FAIL
+  Cu-fcc              FAIL
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] === UMA ===
+[3way] uma eval FAILED: HCapOracle_UMA runner failed (code 1). stderr (tail):
+Traceback (most recent call last):
+  File "/scratch/user/ahnafalvi/matinvent-hcap-bo/src/runners/run_uma_phonon.py", line 18, in <module>
+    from ase.constraints import ExpCellFilter
+ImportError: cannot import name 'ExpCellFilter' from 'ase.constraints' (/scratch/user/ahnafalvi/envs/matinvent-hcap-fairchem/lib/python3.11/site-packages/ase/constraints.py)
+
+  Si-diamond          FAIL
+  MgO-rocksalt        FAIL
+  Cu-fcc              FAIL
+  AlN-wurtzite        FAIL
+  CaF2-fluorite       FAIL
+
+[3way] Cp (J/g/K) — wide table:
+Empty DataFrame
+Columns: []
+Index: []
