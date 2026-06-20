@@ -1,0 +1,42 @@
+{
+  "n_pos": 9857,
+  "n_unl": 12000,
+  "label_freq_c": 0.8603243468828372,
+  "prior_beta": 0.31564034879274466,
+  "auroc": 0.9525279708160022,
+  "auprc": 0.9438690823877272,
+  "ece": 0.09485650458981387,
+  "threshold_at0.5": 0.5,
+  "tpr_at0.5": 0.9558689256366034,
+  "predpos_rate_unl_at0.5": 0.23783333333333334,
+  "precision_pessimistic_at0.5": 0.7675138481590095,
+  "precision_estimated_at0.5": 1.0,
+  "f1_estimated_at0.5": 0.9774365890347009,
+  "threshold_atprior": 0.37094519922342023,
+  "tpr_atprior": 0.9778837374454702,
+  "predpos_rate_unl_atprior": 0.31566666666666665,
+  "precision_pessimistic_atprior": 0.7178818797944441,
+  "precision_estimated_atprior": 0.9778022089737306,
+  "f1_estimated_atprior": 0.9778429715102245,
+  "coverage": 0.6786841744063687,
+  "abstain_rate": 0.3213158255936313,
+  "abstain_rate_pos": 0.23211930607689968,
+  "abstain_breakdown": {
+    "confidence": 0.1287916914489637,
+    "disagreement": 0.0,
+    "ood": 0.23347211419682481
+  },
+  "feature_set": "orb_mag",
+  "base": "xgboost",
+  "best_params": {
+    "n_bags": 16,
+    "neg_sample_ratio": 0.5308767414437037,
+    "n_estimators": 300,
+    "max_depth": 9,
+    "learning_rate": 0.020589728197687916,
+    "subsample": 0.6727299868828402,
+    "colsample_bytree": 0.6733618039413735,
+    "reg_alpha": 0.3042422429595377,
+    "reg_lambda": 1.2871346474483567
+  }
+}
