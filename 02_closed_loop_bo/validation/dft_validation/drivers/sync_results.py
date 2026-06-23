@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-"""Auto-sync the DFT campaign results into RESULTS_AUTO.md and the vasp-dft skill.
+"""Auto-sync the DFT campaign results into RESULTS_AUTO.md.
 
 Idempotent; meant to run on a periodic loop. Pulls every result JSON from FASTER (K0/phonon/
 kconv/conv), regenerates a tables-only RESULTS_AUTO.md (so a bug here can never mangle the curated
-insights.md), and copies insights.md + RESULTS_AUTO.md into the skill so the skill is always current.
+insights.md), and optionally mirrors insights.md + RESULTS_AUTO.md into an external references dir.
 Prints a one-line summary (counts) so a monitor can emit only when something changed.
 """
 import os, json, glob, shutil, subprocess
 
 LOCAL = "/Volumes/SSD1_SMAAA/matinvent-bo/dft_validation"
 RES = os.path.join(LOCAL, "results"); FAS = os.path.join(RES, "faster")
-SKILL = "/Users/alvi/.claude/skills/vasp-dft/references"
+SKILL = os.environ.get("DFT_REFS_DIR", "")  # optional external references dir; set via env
 REMOTE = "faster:/scratch/user/ahnafalvi/dft_validation/"
 
 def pull():
@@ -81,12 +81,13 @@ def main():
           "_Regenerated each sync from FASTER result JSONs. Tables only — do not hand-edit; "
           "curated narrative lives in `insights.md`._", "", k0, "", ph, "", "## Convergence study", "", cv, ""]
     open(os.path.join(RES, "RESULTS_AUTO.md"), "w").write("\n".join(md))
-    # keep the skill current
-    for src, dst in [(os.path.join(LOCAL, "insights.md"), "campaign-insights.md"),
-                     (os.path.join(RES, "RESULTS_AUTO.md"), "campaign-results-auto.md")]:
-        if os.path.exists(src):
-            shutil.copy(src, os.path.join(SKILL, dst))
-    print("SYNC k0=%d phonon=%d conv=%d -> RESULTS_AUTO.md + skill" % (nk, npg, nc))
+    # optionally mirror into an external references dir (set DFT_REFS_DIR)
+    if SKILL:
+        for src, dst in [(os.path.join(LOCAL, "insights.md"), "campaign-insights.md"),
+                         (os.path.join(RES, "RESULTS_AUTO.md"), "campaign-results-auto.md")]:
+            if os.path.exists(src):
+                shutil.copy(src, os.path.join(SKILL, dst))
+    print("SYNC k0=%d phonon=%d conv=%d -> RESULTS_AUTO.md" % (nk, npg, nc))
 
 if __name__ == "__main__":
     main()

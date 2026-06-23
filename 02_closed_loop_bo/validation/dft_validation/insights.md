@@ -358,7 +358,6 @@ mean "lowest *known* at that composition"). (c) ±~0.05 eV/atom from settings/co
 - `drivers/kconv.slurm`, `drivers/conv.slurm` — FASTER submit scripts
 - `results/convergence/` — kconv JSONs + job outputs (MoN, Li₄Mg done; Na₂BO₃ running)
 - `structures/` — the 29 staged CIFs
-- A self-contained `vasp-dft` skill (`~/.claude/skills/vasp-dft/`) generalizes all of this.
 - `../three_way_comparison/` — sibling folder with ALL three-way assets: `drivers/three_way_causal.py`
   (causal GP replay, GPU), `drivers/rank_analysis.py` (per-step ranking), `drivers/three_way.slurm`,
   `drivers/legacy/three_way_gp_insample.py` (archived flawed in-sample version), `results/*.csv`,
