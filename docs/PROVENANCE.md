@@ -13,6 +13,8 @@ This repo was assembled (additively, `mkdir`+`cp`) from several working repos/di
 | `01_static_benchmark/figures/rendered/` | `FoundationalEmbeddings_2026/figures/` |
 | `02_closed_loop_bo/{src,data,results}` | `matinvent-BO/hcap_bo/` (mbo-publish) — closed-loop code, LTM parquets, `results-paper-v4/` |
 | `02_closed_loop_bo/figures/generators/` | `FME_paper_refresh_v1/figures_src/closed_loop_*.py, oracle_savings.py` |
+| `02_closed_loop_bo/validation/three_way_comparison/` | `matinvent-hcap-bo/hcap_bo/three_way_comparison/` — causal three-way GP-prediction comparison on closed-loop runs |
+| `02_closed_loop_bo/validation/dft_validation/` | `matinvent-hcap-bo/hcap_bo/dft_validation/` — oracle-parity DFT bulk-modulus validation of the discovered structures (SI Table) |
 | `03_synthesizability/src/apu_synthesizability/` | `hcap_bo/src/apu_synthesizability/` |
 | `03_synthesizability/results/` | `hcap_bo/results/apu_grace/` (metrics/leaderboard; checkpoints external) |
 | `shared/` | `figures_src/plot_style.py, data_loaders.py` + ASE `common.py` |

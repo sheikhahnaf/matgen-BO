@@ -1,0 +1,15 @@
+
+=== FAITHFUL causal GP-vs-eSEN (seed-warm, ACC runs) — K0 (GPa) ===
+n=1209 preds, 15 ACC runs, parts=15
+GP vs eSEN: rho=0.897  r=0.921  RMSE=25.366
+saved -> /Volumes/SSD1_SMAAA/matinvent-bo/three_way_comparison/results/gp_causal_allpreds_bm_seeded.csv
+
+=== FAITHFUL DFT vs eSEN vs GP(causal) — ACC-run validated winners (4) ===
+formula  rank  cycle_id  n_train_accum  dft_K0  esen_K0  gp_causal_K0  gp_sigma
+  Os5W3     3        16             76   355.9    339.6         310.3      33.2
+CoIrOs2     5         2             20   346.0    338.0         304.7      30.0
+CoIrOs2     6         2             20   346.0    338.0         304.7      30.0
+CoIrOs2     7         2             20   348.1    337.6         304.7      30.0
+GP(causal) vs DFT    n=4 RMSE=43.0 MAE=43.0 bias=-43.0 rho=0.775
+GP(causal) vs eSEN   n=4 RMSE=32.3 MAE=32.2 bias=-32.2 rho=0.775
+ALL_DONE
