@@ -19,4 +19,9 @@ run "$G/refresh_style_regen" difficulty_radar.py
 run "$G/refresh_style_regen" learning_curves.py
 # cross-dataset / cross-surrogate supplementary (S-figures), with published-value self-checks
 run "$G/s13_s14_regen" regen_s13_s14.py
+# Pheasy large-dataset SI figures (SI Figs S14-S17), written to pheasy_si_regen/out_pheasy/
+run "$G/pheasy_si_regen" fig2_bar_charts.py
+run "$G/pheasy_si_regen" heatmap_pca_replotter.py
+run "$G/pheasy_si_regen" difficulty_radar.py
+run "$G/pheasy_si_regen" learning_curves.py
 echo "Done. Rendered figures under figures/regenerated/ and figures/generators/*/out/."
