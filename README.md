@@ -4,7 +4,7 @@ Reproduction code, data, and figures for *"Surrogate-Gated Generation and Founda
 Embeddings for Bayesian Materials Design"* — three subsystems:
 probabilistic **surrogates on pretrained atomistic embeddings** (GP / MTGP / DGP × MACE/ORB/UMA/SOAP), a **closed-loop generative discovery loop** (MatterGen / CrystalFlow / ADiT, GP-routed Expected-Improvement + DPP gate), and an **ORB-PU synthesizability** classifier.
 
-**Archives:** code (this repo, versioned): DOI [10.5281/zenodo.21829874](https://doi.org/10.5281/zenodo.21829874) · model checkpoints (HuggingFace): DOI [10.57967/hf/9893](https://doi.org/10.57967/hf/9893)
+**Archives:** code (this repo, versioned): DOI [10.5281/zenodo.21830237](https://doi.org/10.5281/zenodo.21830237) · model checkpoints (HuggingFace): DOI [10.57967/hf/9893](https://doi.org/10.57967/hf/9893)
 
 ## Layout
 ```
