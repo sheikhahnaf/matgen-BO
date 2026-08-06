@@ -32,3 +32,19 @@ final phonon panels come from the `refresh_style_regen/` generators (DFPT data);
 |---|---|---|
 | Fig 11 (per-backbone/policy synth + A-PU vs CGNF) | `03_synthesizability/figures/generators/plot_synth_compare.py` | `03_synthesizability/results/` (metrics/leaderboard/scores) |
 | Table S4/S5 (Optuna leaderboard, CGNF vs ORB-PU) | derive from `03_synthesizability/results/` CSVs | in-tree |
+
+## Final manuscript figures (dispatched cost basis + corrected OOD flag)
+
+These generators produce the exact figures in the submitted manuscript, verified
+**pixel-identical** against the paper's committed PNGs on 2026-08-06. They run as part
+of `run.sh` in each subsystem.
+
+| Paper artifact | Generator | Inputs |
+|---|---|---|
+| Fig 3 (discovery vs cost, 3 backbones), Fig 5 (MatterGen ablation) | `02_closed_loop_bo/figures/generators/dispatched_regen/make_value_cost_dispatched.py` | `02_closed_loop_bo/results/results-paper-v4/` (long_term_memory.csv, metrics.csv, gate logs) |
+| SI Fig S1 (per-cycle curves, corrected mapping) | `.../dispatched_regen/make_si_curves_corrected.py` | same |
+| SI Figs S2, S3, S5 (dispatched oracle-call schedules + endpoint comet) | `.../dispatched_regen/make_si_oracle_dispatched.py` | same |
+| Fig 10 (per-backbone synth, corrected OOD) + SI Fig S18 (A-PU vs CGNF scatter) | `03_synthesizability/figures/generators/oodfix_regen/make_synth_oodfix.py` | `03_synthesizability/results/generated_scores/scores.csv` + trained ORB-PU model (in-tree copy, `$MATGEN_BO_APU_MODEL`, or auto-download from the HuggingFace archive `SheikhAhnaf/apu-synthesizability-checkpoints`, DOI 10.57967/hf/9893) |
+
+Outputs land in `figures/regenerated/{dispatched_regen,oodfix_regen}/`; the committed
+reference copies in `figures/rendered/` are never overwritten.
