@@ -1,0 +1,256 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mf_poster_style}[2026/09/16 MaterialsFramework poster style]
+
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{amsmath}
+\RequirePackage{tikz}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{qrcode}
+\RequirePackage{ragged2e}
+\RequirePackage{fontspec}
+\RequirePackage{listings}
+\RequirePackage{sansmath}
+\RequirePackage{varwidth}
+
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,
+                shapes.misc,shapes.arrows,decorations.pathreplacing,patterns}
+
+\definecolor{AggieMaroon}{HTML}{500000}
+\definecolor{PanelGrey}{HTML}{F6F6F6}
+\definecolor{DarkGrey}{HTML}{707070}
+\definecolor{BodyBlack}{HTML}{000000}
+\colorlet{RuleGrey}{DarkGrey!35}
+\colorlet{MaroonWash}{AggieMaroon!8}
+
+\setsansfont{texgyreheros}[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+  Scale          = 0.96,
+  Ligatures      = TeX
+]
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\titlefont}{\sffamily}
+\newcommand{\headfont}{\sffamily}
+\setbeamerfont{normal text}{family=\sffamily}
+\setbeamercolor{normal text}{fg=BodyBlack,bg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{AggieMaroon}\rule[0.25ex]{0.45ex}{0.45ex}}
+\setbeamercolor{itemize item}{fg=AggieMaroon}
+
+\sansmath
+
+\setlength{\emergencystretch}{3em}
+
+\newlength{\headerdepth}\setlength{\headerdepth}{12.2cm}
+\newlength{\footerheight}\setlength{\footerheight}{8.8cm}
+\newlength{\headerhalf}\setlength{\headerhalf}{0.5\headerdepth}
+\newcommand{\sidemargin}{2.2cm}
+
+\setbeamersize{text margin left=\sidemargin,text margin right=\sidemargin}
+
+\newcommand{\colw}{0.235}
+\newcommand{\midcolw}{0.490}
+
+\newlength{\colheight}
+\setlength{\colheight}{63.85cm}
+\newlength{\subcolheight}
+\setlength{\subcolheight}{28cm}
+
+\newenvironment{postercol}[2][\colheight]{%
+  \begin{column}{#2}%
+  \begin{minipage}[t][#1][s]{\linewidth}%
+}{%
+  \end{minipage}%
+  \end{column}%
+}
+
+\newenvironment{postersubcol}[2][\subcolheight]{%
+  \begin{column}{#2}%
+  \begin{minipage}[t][#1][s]{\linewidth}%
+}{%
+  \end{minipage}%
+  \end{column}%
+}
+
+\newcommand{\bodyfont}{}
+\newcommand{\capfont}{\small}
+\newtcolorbox{posterbox}[2][]{
+  enhanced,
+  fontupper=\bodyfont,
+  colback=white,
+  colframe=DarkGrey,
+  boxrule=1.2pt,
+  arc=2mm,
+  left=1.3cm,
+  right=1.3cm,
+  top=1.15cm,
+  bottom=0.9cm,
+  before skip=0.6cm,
+  after skip=0.6cm,
+  title={\strut#2},
+  coltitle=AggieMaroon,
+  fonttitle=\headfont\bfseries\LARGE,
+  attach boxed title to top left={xshift=1.1cm,yshift=-\tcboxedtitleheight/2-0.20cm},
+  varwidth boxed title*=-1.2cm,
+  boxed title style={
+    colback=white,
+    colframe=white,
+    boxrule=0pt,
+    left=2mm, right=3mm, top=0pt, bottom=0pt
+  },
+  #1
+}
+
+\newcommand{\impactnumber}[3][68]{%
+  \begin{minipage}[t]{0.31\linewidth}
+  \centering
+  {\titlefont\bfseries\fontsize{#1}{#1}\selectfont\color{AggieMaroon} #2}\\[-0.05cm]
+  {\small #3}
+  \end{minipage}%
+}
+
+\newcommand{\figcaption}[1]{%
+  \par\vspace{0.40cm}
+  {\justifying\capfont\color{DarkGrey} #1\par}%
+}
+
+\newcommand{\posterchrome}[4]{%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[AggieMaroon] (current page.north west)
+       rectangle ([yshift=-\headerdepth]current page.north east);
+  \fill[PanelGrey] ([yshift=\footerheight]current page.south west)
+       rectangle (current page.south east);
+  \ifx\relax#1\relax\else
+    \node[opacity=0.035,anchor=center] at
+      ([xshift=#2,yshift=#3]current page.north west)
+      {\titlefont\bfseries\fontsize{#4}{#4}\selectfont\color{AggieMaroon} #1};
+  \fi
+\end{tikzpicture}%
+}
+
+\newcommand{\posterfooterrule}{%
+\begin{tikzpicture}[remember picture,overlay]
+  \draw[AggieMaroon,line width=2.5pt]
+    ([xshift=\sidemargin,yshift=\footerheight]current page.south west) --
+    ([xshift=-\sidemargin,yshift=\footerheight]current page.south east);
+\end{tikzpicture}%
+}
+
+\newcommand{\contentstart}{9.2cm}   %
+\newlength{\stripbottomgap}
+\setlength{\stripbottomgap}{9.85cm}
+
+\newcommand{\posterheader}[3]{%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=west,inner sep=0pt] at
+    ([xshift=\sidemargin,yshift=-\headerhalf]current page.north west) {%
+    \begin{minipage}{\textwidth}
+    \begin{columns}[c,totalwidth=\textwidth]
+      \begin{column}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figs/tamu_msen_white.pdf}
+      \end{column}
+      \begin{column}{0.74\textwidth}
+        {\color{white}\resizebox{\linewidth}{!}{%
+          \titlefont\bfseries\fontsize{60}{60}\selectfont #1}\par}
+        \vspace{0.62cm}
+        {\fontsize{34}{40}\selectfont\color{white} #2\par}
+        \vspace{0.26cm}
+        {\fontsize{26}{31}\selectfont\color{PanelGrey} #3\par}
+      \end{column}
+    \end{columns}
+    \end{minipage}};
+\end{tikzpicture}%
+}
+
+\newcommand{\takeaway}[2]{%
+  {\headfont\bfseries\Large\color{AggieMaroon} #1}\\[0.22cm]
+  {\small\justifying #2\par}%
+}
+
+\newcommand{\posterstrip}[3]{%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south west,inner sep=0pt] at
+    ([xshift=\sidemargin,yshift=\stripbottomgap]current page.south west) {%
+    \begin{minipage}{\textwidth}
+    \begin{tcolorbox}[
+      enhanced, colback=PanelGrey, colframe=AggieMaroon,
+      boxrule=1.5pt, arc=2mm,
+      left=1.4cm, right=1.4cm, top=0.85cm, bottom=0.85cm]
+    \begin{columns}[T,totalwidth=\textwidth]
+      \begin{column}{0.305\textwidth}#1\end{column}
+      \begin{column}{0.305\textwidth}#2\end{column}
+      \begin{column}{0.305\textwidth}#3\end{column}
+    \end{columns}
+    \end{tcolorbox}
+    \end{minipage}};
+\end{tikzpicture}%
+}
+
+\newlength{\qrboxw}
+\newcommand{\setqrboxw}{%
+  \settowidth{\qrboxw}{\headfont\bfseries\small MaterialsFramework}%
+  \addtolength{\qrboxw}{8mm}}
+\newcommand{\qrpanel}[2]{%
+  \begin{tcolorbox}[colback=white,colframe=AggieMaroon,boxrule=2pt,arc=1mm,
+                    width=\qrboxw,left=2mm,right=2mm,top=2mm,bottom=2mm]
+    \centering
+    \qrcode[height=3.9cm,level=M]{#1}\\[0.15cm]
+    {\headfont\bfseries\small\color{AggieMaroon} #2}
+  \end{tcolorbox}}
+\newcommand{\posterfooter}[5]{%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west,inner sep=0pt] at
+    ([xshift=\sidemargin,yshift=-83.9cm]current page.north west) {%
+    \begin{minipage}[t]{\textwidth}
+    \begin{columns}[T,totalwidth=\textwidth]
+      \begin{column}{0.395\textwidth}
+        {\headfont\bfseries\Large\color{AggieMaroon} References}\\[0.25cm]
+        {\small\raggedright\color{DarkGrey} #1\par}
+      \end{column}
+      \begin{column}{0.305\textwidth}
+        {\headfont\bfseries\Large\color{AggieMaroon} Acknowledgements}\\[0.25cm]
+        {\small\raggedright\color{DarkGrey} #2\par}
+      \end{column}
+      \begin{column}{0.29\textwidth}
+        \setqrboxw\vspace*{0.56cm}\par
+        \hfill
+        \begin{minipage}[t]{\qrboxw}\qrpanel{#3}{MaterialsFramework}\end{minipage}%
+        \hspace{0.9cm}%
+        \begin{minipage}[t]{\qrboxw}\qrpanel{#4}{PhaseForge}\end{minipage}%
+        \hspace{0.9cm}%
+        \begin{minipage}[t]{\qrboxw}\qrpanel{#5}{PhaseForgePlus}\end{minipage}%
+        \hspace*{1.37cm}
+      \end{column}
+    \end{columns}
+    \end{minipage}};
+\end{tikzpicture}%
+}
+
+\lstdefinestyle{mfpython}{
+  language=Python,
+  basicstyle=\ttfamily\fontsize{20}{25}\selectfont\color{BodyBlack},
+  keywordstyle=\bfseries\color{AggieMaroon},
+  stringstyle=\color{DarkGrey},
+  commentstyle=\itshape\color{DarkGrey},
+  emphstyle=\bfseries\color{AggieMaroon},
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=false,
+  xleftmargin=0.6cm,
+  aboveskip=0pt, belowskip=0pt,
+  literate={_}{{\_}}1
+}
+
+\newcommand{\inventoryhead}[2]{%
+  {\headfont\bfseries\large\color{AggieMaroon} #1}\enspace
+  {\small\color{DarkGrey} #2}\par\vspace{0.12cm}
+  {\color{RuleGrey}\rule{\linewidth}{1pt}}\par\vspace{0.18cm}
+}
+
+\endinput
