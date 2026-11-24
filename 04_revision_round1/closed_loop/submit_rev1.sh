@@ -33,7 +33,11 @@ submit () {  # arm backbone target seed cycles walltime
         gres=(--gres="${GRES_BM_LIST[$((BM_COUNT % ${#GRES_BM_LIST[@]}))]}")
         BM_COUNT=$((BM_COUNT + 1))
     fi
-    sbatch --account="$ACCOUNT" --job-name="$name" --time="$wall" "${gres[@]}" \
+    # The job script excludes one node of the cluster used for the paper. On another
+    # cluster set EXCLUDE_NODES (possibly to an empty string) to replace that list.
+    local excl=()
+    [ -n "${EXCLUDE_NODES+x}" ] && excl=(--exclude="$EXCLUDE_NODES")
+    sbatch --account="$ACCOUNT" --job-name="$name" --time="$wall" "${gres[@]}" "${excl[@]}" \
         --output="$REV_ROOT/logs/${name}_%j.out" --error="$REV_ROOT/logs/${name}_%j.err" \
         --export=ALL,ARM=$arm,BACKBONE=$bb,TARGET=$tgt,SEED=$seed,CYCLES=$cycles,REV_ROOT=$REV_ROOT \
         "$SCRIPT" | awk -v n="$name" '/Submitted batch job/{print n, $NF}'

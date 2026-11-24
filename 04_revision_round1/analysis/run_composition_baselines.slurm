@@ -3,9 +3,9 @@
 #SBATCH --time=12:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=16
 #SBATCH --partition=cpu
-#SBATCH --mem=96G
+#SBATCH --mem=64G
 #
 # Composition-baseline analysis on a CPU node (exact GPs on ~2,000-3,000 points).
 # Required (sbatch --export): REPO = root of a clone of this repository, TARGET = cp | bm.
