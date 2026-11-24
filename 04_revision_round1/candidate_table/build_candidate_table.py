@@ -42,10 +42,10 @@ from ase.io import read as ase_read
 
 P3 = re.compile(r'^(?:hcap|bm)_p3v4(?:_bm)?_(mg|cf|adit)_(accel|baseline)_seed(\d+)_(\d+)$')
 ABL = re.compile(r'^hcap_mgabl_(cap4ext|cap4|oracleall)_(?:cp|bm)_seed(\d+)(_patched)?_(\d+)$')
-REV = re.compile(r'^rev1_(cap4|frozen_gate)_(mg|cf|adit)_(?:cp|bm)_seed(\d+)_(\d+)$')
+REV = re.compile(r'^rev1_(cap4|frozen_gate|ei_only|div_only)_(mg|cf|adit)_(?:cp|bm)_seed(\d+)_(\d+)$')
 ARM = {'accel': 'ACC', 'baseline': 'BASE', 'cap4': 'cap4', 'cap4ext': 'cap4ext',
-       'oracleall': 'oracle_all', 'frozen_gate': 'frozen_gate'}
-GATED = {'ACC', 'frozen_gate'}
+       'oracleall': 'oracle_all', 'frozen_gate': 'frozen_gate', 'ei_only': 'ei_only', 'div_only': 'div_only'}
+GATED = {'ACC', 'frozen_gate', 'ei_only', 'div_only'}
 
 FAIL_LINE = re.compile(r'^\[LocalESEN(?:_BM)?\] (.*)$')
 

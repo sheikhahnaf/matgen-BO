@@ -24,8 +24,17 @@
 #                    the gate selects and refits as in ACC, the generator stays
 #                    at its pretrained weights for the whole run.
 #
+#   ARM=ei_only      selection by Expected Improvement alone.
+#                    Original ACC command line with the diversity weight set to
+#                    zero (GP_DPP_LAMBDA=0): the top four by EI reach the oracle.
+#
+#   ARM=div_only     selection by diversity alone.
+#                    Original ACC command line with the EI scores replaced by
+#                    zeros (fme_rev.diversity_gate): the surrogate's ranking
+#                    plays no part in the selection.
+#
 # Required (sbatch --export):
-#   ARM       cap4 | frozen_gate
+#   ARM       cap4 | frozen_gate | ei_only | div_only
 #   BACKBONE  mg | cf | adit
 #   TARGET    cp | bm
 #   SEED      7 | 17 | 23 | 99 | 113
@@ -56,7 +65,7 @@ export PYTHONPATH="$REV_ROOT:$PROJ:$PRISTINE"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 CYCLES="${CYCLES:-20}"
-ARM="${ARM:?set ARM=cap4|frozen_gate}"
+ARM="${ARM:?set ARM=cap4|frozen_gate|ei_only|div_only}"
 BACKBONE="${BACKBONE:?set BACKBONE=mg|cf|adit}"
 TARGET="${TARGET:?set TARGET=cp|bm}"
 SEED="${SEED:?set SEED}"
@@ -78,6 +87,7 @@ if [ "$TARGET" = "cp" ]; then
     REWARD_NAME=heat_capacity
     ORACLE=src.calculators.LocalESEN
     GATED=src.calculators.LocalESEN_GPRoutedV4
+    GATED_DIV=fme_rev.diversity_gate.DiversityOnlyGateCp
     EXTRA_REWARD=()
     GP_TARGET=1.5
     GP_SEED_POOL="$PROJ/data/ltm_seed_pool_v3.parquet"
@@ -85,6 +95,7 @@ elif [ "$TARGET" = "bm" ]; then
     REWARD_NAME=bulk_modulus_local
     ORACLE=src.calculators.LocalESEN_BM
     GATED=src.calculators.LocalESEN_BM_GPRoutedV4
+    GATED_DIV=fme_rev.diversity_gate.DiversityOnlyGateBM
     EXTRA_REWARD=(reward.prop_cfg.0.target=ascending reward.prop_cfg.0.maxv=400.0)
     GP_TARGET=300
     GP_SEED_POOL="$PROJ/data/bm/ltm_bm_seed_pool.parquet"
@@ -92,14 +103,27 @@ else
     echo "unknown TARGET=$TARGET"; exit 2
 fi
 
-# --- arm block: the single override that defines each arm --------------------
+# --- arm block: the single change that defines each arm ----------------------
+USE_GATE=0
+DPP_LAMBDA=0.5
 if [ "$ARM" = "cap4" ]; then
     CALC="$ORACLE"
     ARM_ARGS=(sample_cfg.max_num=4)
 elif [ "$ARM" = "frozen_gate" ]; then
-    CALC="$GATED"
+    CALC="$GATED"; USE_GATE=1
     ARM_ARGS=(pipeline._target_=fme_rev.frozen_pipeline.MatInventFrozen)
-    # GP gate settings: identical to the original ACC runs
+elif [ "$ARM" = "ei_only" ]; then
+    CALC="$GATED"; USE_GATE=1; DPP_LAMBDA=0
+    ARM_ARGS=()
+elif [ "$ARM" = "div_only" ]; then
+    CALC="$GATED_DIV"; USE_GATE=1
+    ARM_ARGS=()
+else
+    echo "unknown ARM=$ARM"; exit 2
+fi
+
+if [ "$USE_GATE" = "1" ]; then
+    # GP gate settings: identical to the original ACC runs (DPP weight 0.5 unless the arm changes it)
     export GP_PCA_COMPONENTS=50
     export GP_TOP_K=4
     export GP_K_RATIO=0.5
@@ -107,19 +131,18 @@ elif [ "$ARM" = "frozen_gate" ]; then
     export GP_ANCHOR_EVERY=999
     export GP_COLD_START_MIN=0
     export GP_ACQUISITION=ei
-    export GP_DPP_LAMBDA=0.5
+    export GP_DPP_LAMBDA="$DPP_LAMBDA"
     export GP_WARMSTART_DECAY=0.9
     export GP_WARMSTART_NOISE_MIN=1e-6
     export GP_LTM_SEED="$GP_SEED_POOL"
     export GP_LTM_PATH="$REV_ROOT/ltm/ltm_${EXPNAME}.parquet"
-else
-    echo "unknown ARM=$ARM"; exit 2
 fi
 
 cd "$PRISTINE"
 echo "=== REV1 arm=$ARM backbone=$BACKBONE target=$TARGET seed=$SEED cycles=$CYCLES ==="
 echo "    expname=$EXPNAME   $(date)  $(hostname)"
 echo "    PROJ=$PROJ  PRISTINE=$PRISTINE  REV_ROOT=$REV_ROOT"
+[ "$USE_GATE" = "1" ] && echo "    gate: K=$GP_TOP_K acquisition=$GP_ACQUISITION dpp_lambda=$GP_DPP_LAMBDA calculator=$CALC"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
 
 $PY -u main.py \
