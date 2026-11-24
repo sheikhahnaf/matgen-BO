@@ -237,9 +237,10 @@ def main():
     for t in targets:
         res, p4, sel = run_target(t)
         all_res.append(res); all_p4.append(p4); all_sel.append(sel)
-    pd.concat(all_res).to_csv(C.OUT / 'composition_baselines_scores.csv', index=False)
-    pd.DataFrame(all_p4).to_csv(C.OUT / 'composition_baselines_same_formula_pairs.csv', index=False)
-    pd.concat(all_sel).to_csv(C.OUT / 'composition_baselines_selection.csv', index=False)
+    tag = '_'.join(targets)   # one set of files per invocation, so the two targets can run as separate jobs
+    pd.concat(all_res).to_csv(C.OUT / f'composition_baselines_scores_{tag}.csv', index=False)
+    pd.DataFrame(all_p4).to_csv(C.OUT / f'composition_baselines_same_formula_pairs_{tag}.csv', index=False)
+    pd.concat(all_sel).to_csv(C.OUT / f'composition_baselines_selection_{tag}.csv', index=False)
 
 
 if __name__ == '__main__':
