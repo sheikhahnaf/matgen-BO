@@ -74,7 +74,7 @@ def main():
             with torch.no_grad():
                 test_post = model.posterior(X_test_t)
                 test_pred = target_scaler.inverse_transform(
-                    test_post.mean.squeeze(-1).cpu().numpy().reshape(-1, 1)).flatten()
+                    test_post.mean.squeeze(-1).detach().cpu().numpy().reshape(-1, 1)).flatten()
             all_test_metrics.append(G.calculate_metrics(y_train_all[test_idx], test_pred))
 
             if X_holdout is not None and len(X_holdout) > 0:
@@ -84,9 +84,9 @@ def main():
                     post = model.posterior(X_holdout_t)
                     post_obs = model.posterior(X_holdout_t, observation_noise=True)
                     mu = target_scaler.inverse_transform(
-                        post.mean.squeeze(-1).cpu().numpy().reshape(-1, 1)).flatten()
-                    sd_latent = post.variance.squeeze(-1).sqrt().cpu().numpy() * scale
-                    sd_obs = post_obs.variance.squeeze(-1).sqrt().cpu().numpy() * scale
+                        post.mean.squeeze(-1).detach().cpu().numpy().reshape(-1, 1)).flatten()
+                    sd_latent = post.variance.squeeze(-1).sqrt().detach().cpu().numpy() * scale
+                    sd_obs = post_obs.variance.squeeze(-1).sqrt().detach().cpu().numpy() * scale
 
                 holdout_metrics = G.calculate_metrics(y_holdout, mu)
                 all_holdout_metrics.append(holdout_metrics)

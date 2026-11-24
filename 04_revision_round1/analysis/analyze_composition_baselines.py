@@ -78,8 +78,8 @@ def gp_fit_predict(Xtr, ytr, Xte):
     model.eval()
     with torch.no_grad():
         post = model.posterior(torch.tensor(xs.transform(Xte), dtype=torch.float64))
-    mu = ys.inverse_transform(post.mean.numpy().reshape(-1, 1)).ravel()
-    sd = post.variance.sqrt().numpy().ravel() * float(ys.scale_[0])
+    mu = ys.inverse_transform(post.mean.detach().numpy().reshape(-1, 1)).ravel()
+    sd = post.variance.sqrt().detach().numpy().ravel() * float(ys.scale_[0])
     return mu, sd
 
 
