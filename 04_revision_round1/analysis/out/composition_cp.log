@@ -1,3 +1,28 @@
 
 ######## cp: 2123 labeled structures (446 seed, 1677 in-loop), 2083 reduced formulas
    Dulong-Petit value alone: R2 of the parameter-free prediction 0.926, R2 of a linear fit 0.972, Spearman 0.994
+   P1 random 5-fold             orb_gp     R2 0.916  RMSE 0.06483  rho 0.936
+   P1 random 5-fold             magpie_gp  R2 0.989  RMSE 0.02341  rho 0.992
+   P1 random 5-fold             magpie_rf  R2 0.991  RMSE 0.0213  rho 0.998
+   P1 random 5-fold             mass_gp    R2 0.941  RMSE 0.05421  rho 0.993
+   P1 random 5-fold             dulong     R2 0.926  RMSE 0.0609  rho 0.994
+   P2 formula-grouped 5-fold    orb_gp     R2 0.913  RMSE 0.06601  rho 0.934
+   P2 formula-grouped 5-fold    magpie_gp  R2 0.981  RMSE 0.03056  rho 0.990
+   P2 formula-grouped 5-fold    magpie_rf  R2 0.986  RMSE 0.02649  rho 0.998
+   P2 formula-grouped 5-fold    mass_gp    R2 0.889  RMSE 0.07471  rho 0.993
+   P2 formula-grouped 5-fold    dulong     R2 0.926  RMSE 0.0609  rho 0.994
+   P3 seed pool -> in-loop      orb_gp     R2 0.731  RMSE 0.1196  rho 0.842
+   P3 seed pool -> in-loop      magpie_gp  R2 0.930  RMSE 0.06087  rho 0.975
+   P3 seed pool -> in-loop      magpie_rf  R2 0.950  RMSE 0.0513  rho 0.995
+   P3 seed pool -> in-loop      mass_gp    R2 0.841  RMSE 0.09177  rho 0.992
+   P3 seed pool -> in-loop      dulong     R2 0.922  RMSE 0.06456  rho 0.992
+   P4 same-formula pairs: {'target': 'cp', 'n_formulas_with_polymorphs': 31, 'n_pairs': 4, 'min_gap': 0.012, 'orb_gp_pair_accuracy': 0.0, 'magpie_gp_pair_accuracy': 0.0, 'within_formula_sd': 0.0031, 'total_sd': 0.2241}
+   P5 mean reward of the four picks per cycle (ungated pools):
+          random_mean  best4_mean  orb_gp_mean  orb_gp_ei_mean  magpie_gp_mean  magpie_gp_ei_mean  magpie_rf_mean  mass_gp_mean  mass_gp_ei_mean  dulong_mean
+backbone                                                                                                                                                     
+adit           0.0201      0.0478       0.0273          0.0202          0.0300             0.0203          0.0300        0.0285           0.0184       0.0293
+cf             0.0215      0.0396       0.0319          0.0267          0.0366             0.0267          0.0367        0.0367           0.0236       0.0367
+mg             0.0234      0.0870       0.0620          0.0475          0.0687             0.0439          0.0682        0.0665           0.0414       0.0665
+   pooled: {'random_mean': 0.0217, 'best4_mean': 0.0597, 'orb_gp_mean': 0.0412, 'orb_gp_ei_mean': 0.032, 'magpie_gp_mean': 0.0459, 'magpie_gp_ei_mean': 0.0307, 'magpie_rf_mean': 0.0458, 'mass_gp_mean': 0.0446, 'mass_gp_ei_mean': 0.0282, 'dulong_mean': 0.0449}
+   share of cycles in which the pick contains the best candidate of the pool:
+   {'orb_gp': 0.709, 'orb_gp_ei': 0.524, 'magpie_gp': 0.793, 'magpie_gp_ei': 0.509, 'magpie_rf': 0.818, 'mass_gp': 0.796, 'mass_gp_ei': 0.462, 'dulong': 0.804}  random expectation 0.417

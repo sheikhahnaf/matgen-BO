@@ -1,0 +1,24 @@
+
+######## bm: 3000 labeled structures (500 seed, 2500 in-loop), 2940 reduced formulas
+   P1 random 5-fold             orb_gp     R2 0.975  RMSE 11.17  rho 0.985
+   P1 random 5-fold             magpie_gp  R2 0.947  RMSE 16.34  rho 0.968
+   P1 random 5-fold             magpie_rf  R2 0.945  RMSE 16.6  rho 0.968
+   P1 random 5-fold             mass_gp    R2 0.047  RMSE 69.07  rho 0.153
+   P2 formula-grouped 5-fold    orb_gp     R2 0.974  RMSE 11.33  rho 0.986
+   P2 formula-grouped 5-fold    magpie_gp  R2 0.943  RMSE 16.9  rho 0.968
+   P2 formula-grouped 5-fold    magpie_rf  R2 0.944  RMSE 16.69  rho 0.969
+   P2 formula-grouped 5-fold    mass_gp    R2 0.043  RMSE 69.21  rho 0.164
+   P3 seed pool -> in-loop      orb_gp     R2 0.919  RMSE 19.49  rho 0.932
+   P3 seed pool -> in-loop      magpie_gp  R2 0.743  RMSE 34.79  rho 0.785
+   P3 seed pool -> in-loop      magpie_rf  R2 0.804  RMSE 30.38  rho 0.865
+   P3 seed pool -> in-loop      mass_gp    R2 -0.422  RMSE 81.92  rho -0.034
+   P4 same-formula pairs: {'target': 'bm', 'n_formulas_with_polymorphs': 57, 'n_pairs': 19, 'min_gap': 4.3514, 'orb_gp_pair_accuracy': 0.7895, 'magpie_gp_pair_accuracy': 0.0526, 'within_formula_sd': 7.9819, 'total_sd': 70.7571}
+   P5 mean reward of the four picks per cycle (ungated pools):
+          random_mean  best4_mean  orb_gp_mean  orb_gp_ei_mean  magpie_gp_mean  magpie_gp_ei_mean  magpie_rf_mean  mass_gp_mean  mass_gp_ei_mean
+backbone                                                                                                                                        
+adit           0.2194      0.3562       0.3468          0.2615           0.313             0.1882          0.3272        0.2069           0.1771
+cf             0.1272      0.1931       0.1866          0.1481           0.172             0.1055          0.1801        0.1140           0.1213
+mg             0.1834      0.4005       0.3915          0.2682           0.378             0.1902          0.3781        0.1933           0.1832
+   pooled: {'random_mean': 0.1819, 'best4_mean': 0.348, 'orb_gp_mean': 0.3394, 'orb_gp_ei_mean': 0.2428, 'magpie_gp_mean': 0.3203, 'magpie_gp_ei_mean': 0.173, 'magpie_rf_mean': 0.3257, 'mass_gp_mean': 0.1813, 'mass_gp_ei_mean': 0.1694}
+   share of cycles in which the pick contains the best candidate of the pool:
+   {'orb_gp': 0.978, 'orb_gp_ei': 0.739, 'magpie_gp': 0.895, 'magpie_gp_ei': 0.326, 'magpie_rf': 0.941, 'mass_gp': 0.356, 'mass_gp_ei': 0.291}  random expectation 0.342

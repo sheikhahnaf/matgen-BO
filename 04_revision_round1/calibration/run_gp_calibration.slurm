@@ -12,11 +12,14 @@
 # five splits, descriptors SOAP / MACE / ORB / UMA.
 #
 # Required (sbatch --export):
-#   KIND      elastic | dielectric | dfpt
+#   KIND      elastic | dielectric | dfpt | pheasy
 #   REV_ROOT  directory holding calibration/ and static_src/ ; outputs in $REV_ROOT/calibration/out
 # Optional:
 #   DESCRIPTORS  space-separated subset (default "orb soap mace uma")
 #   NTRAINS      default "500 250 100"
+#   NSPLITS      default 5
+# KIND=pheasy follows the published large-dataset run: ten splits, holdout capped at
+# 3,000 structures, training sizes up to 2,000 (set NTRAINS and NSPLITS at submission).
 
 set -uo pipefail
 module purge
@@ -33,6 +36,7 @@ REV_ROOT="${REV_ROOT:?set REV_ROOT}"
 KIND="${KIND:?set KIND=elastic|dielectric|dfpt}"
 DESCRIPTORS="${DESCRIPTORS:-orb soap mace uma}"
 NTRAINS="${NTRAINS:-500 250 100}"
+NSPLITS="${NSPLITS:-5}"
 
 # SOAP and MACE run in the MACE environment, ORB and UMA in the fairchem one
 # (same assignment as the published sweeps).
@@ -44,6 +48,7 @@ case "$KIND" in
     elastic)    SRC="$REV_ROOT/static_src";               DATASET=elastic_tensor_2015 ;;
     dielectric) SRC="$REV_ROOT/static_src";               DATASET=dielectric_constant ;;
     dfpt)       SRC="$REV_ROOT/static_src/phonon_thermo"; DATASET="$REV_ROOT/static_data/dfpt_phonon_thermo.pkl" ;;
+    pheasy)     SRC="$REV_ROOT/static_src/phonon_thermo"; DATASET="$REV_ROOT/static_data/pheasy_phonon_thermo.pkl"; export HOLDOUT_CAP=3000 ;;
     *) echo "unknown KIND=$KIND"; exit 2 ;;
 esac
 
@@ -66,7 +71,7 @@ for N in $NTRAINS; do
             --dataset "$DATASET" \
             --pca-components $PCA \
             --n-train $N \
-            --n-splits 5 \
+            --n-splits $NSPLITS \
             --descriptor $D \
             --output-dir "$CELL" \
             --device cuda \
