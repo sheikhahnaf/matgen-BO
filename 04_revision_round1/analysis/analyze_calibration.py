@@ -31,8 +31,10 @@ PROPS = {
     'elastic': ['K_VRH', 'K_Voigt', 'K_Reuss', 'G_VRH', 'G_Voigt', 'G_Reuss', 'elastic_anisotropy', 'poisson_ratio'],
     'dielectric': ['band_gap', 'n', 'poly_electronic', 'poly_total'],
     'dfpt': ['Cv_300K', 'S_300K', 'F_300K', 'max_phonon_freq'],
+    'pheasy': ['Cv_300K', 'S_300K', 'F_300K', 'max_phonon_freq'],
 }
-KIND_LABEL = {'elastic': 'Elastic (8)', 'dielectric': 'Dielectric (4)', 'dfpt': 'Phonon thermo. (4)'}
+KIND_LABEL = {'elastic': 'Elastic (8)', 'dielectric': 'Dielectric (4)', 'dfpt': 'Phonon, DFPT (4)',
+              'pheasy': 'Phonon, Pheasy (4)'}
 METRICS = ['cov50', 'cov68', 'cov90', 'cov95', 'z_rms', 'nlpd_std', 'miscal_area', 'rho_err_sd', 'sharpness']
 
 
@@ -145,7 +147,7 @@ def figure(curves, loop_data):
     q = np.linspace(0.01, 0.99, 99)
 
     ax = axes[0]
-    colors = {'elastic': '#1f77b4', 'dielectric': '#ff7f0e', 'dfpt': '#2ca02c'}
+    colors = {'elastic': '#1f77b4', 'dielectric': '#ff7f0e', 'dfpt': '#2ca02c', 'pheasy': '#9467bd'}
     if curves:
         for kind, d in curves.items():
             qq, emp = C.calibration_curve(d['y_true'], d['mu'], d['sd_obs'])
