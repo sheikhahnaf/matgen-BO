@@ -126,8 +126,12 @@ def selection_part(z_rms):
             a = set(C.greedy_dpp_topk(C.expected_improvement(mu, sd, f_best), Z, 4))
             b = set(C.greedy_dpp_topk(C.expected_improvement(mu, factor * sd, f_best), Z, 4))
             m = set(np.argsort(-mu)[:4])
+            # the same check for a plain top-4 by Expected Improvement (no diversity term)
+            e1 = set(np.argsort(-C.expected_improvement(mu, sd, f_best))[:4])
+            e2 = set(np.argsort(-C.expected_improvement(mu, factor * sd, f_best))[:4])
             rows.append(dict(target=tgt, backbone=g['backbone'].iloc[0], run=run, step=step, pool=len(g),
-                             overlap_rescaled=len(a & b) / 4, overlap_mean_only=len(a & m) / 4))
+                             overlap_rescaled=len(a & b) / 4, overlap_mean_only=len(a & m) / 4,
+                             ei_top4_overlap_rescaled=len(e1 & e2) / 4, ei_top4_overlap_mean_only=len(e1 & m) / 4))
     if not rows:
         return None
     out = pd.DataFrame(rows)
@@ -137,7 +141,7 @@ def selection_part(z_rms):
     print('\n== Part C: share of the gate\'s four picks that stay the same')
     print('   overlap_rescaled: sd multiplied by the measured z-score spread; overlap_mean_only: ranking by the mean alone')
     print(summ.to_string(float_format=lambda v: f'{v:.3f}'))
-    print(out.groupby('target')[['overlap_rescaled', 'overlap_mean_only']].mean().to_string(float_format=lambda v: f'{v:.3f}'))
+    print(out.groupby('target')[['overlap_rescaled', 'overlap_mean_only', 'ei_top4_overlap_rescaled', 'ei_top4_overlap_mean_only']].mean().to_string(float_format=lambda v: f'{v:.3f}'))
     return out
 
 
@@ -147,7 +151,7 @@ def figure(curves, loop_data):
     q = np.linspace(0.01, 0.99, 99)
 
     ax = axes[0]
-    colors = {'elastic': '#1f77b4', 'dielectric': '#ff7f0e', 'dfpt': '#2ca02c', 'pheasy': '#9467bd'}
+    colors = {'elastic': '#1f77b4', 'dielectric': '#ff7f0e', 'dfpt': '#2ca02c', 'pheasy': '#17becf'}
     if curves:
         for kind, d in curves.items():
             qq, emp = C.calibration_curve(d['y_true'], d['mu'], d['sd_obs'])

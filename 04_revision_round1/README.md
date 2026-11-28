@@ -12,7 +12,7 @@ The state of the repository before this folder was added is tagged
 
 | Folder | What it holds |
 |---|---|
-| `closed_loop/` | Job script, submit script and two small modules for the new closed-loop arms |
+| `closed_loop/` | Job script, submit script and two small modules for the new closed-loop arms, with `results/` (per-run metrics, memory and gate logs of all 90 runs) and `gate_memory/` |
 | `calibration/` | Re-run of the static GP fits that keeps each holdout prediction with its standard deviation |
 | `candidate_table/` | One table of every candidate that reached the property calculator in the published runs |
 | `analysis/` | Scripts that turn the tables into the numbers and figures of the revision |
@@ -64,7 +64,11 @@ replaced by a copy that skips the parity plots and writes, for every holdout
 sample, the true value, the posterior mean and the predictive standard
 deviation with and without the fitted noise. `run_gp_calibration.slurm` runs
 the full grid for one dataset (PCA 10/25/50, 100/250/500 training points, four
-descriptors, five splits).
+descriptors, five splits). `KIND=pheasy` runs the large phonon dataset with ten
+splits and training sizes up to 2,000. Its per-sample predictions are large and
+are kept in the Hugging Face archive (`revision_round1/calibration_pheasy/`).
+The fine-tuned generator checkpoints of the new runs are in the same archive
+under `finetuned_diffusion/` (`closed_loop/hf_upload_rev1.py`).
 
 Check of the rerun against the published summary files (PCA 50, 500 training
 points): SOAP reproduces the published holdout R2 exactly. For the three
@@ -106,6 +110,17 @@ Run from this folder with the repository environment (`environment.yml`).
 | `analyze_calibration.py` | Are the GP's predictive intervals calibrated, on the static benchmark and inside the loop? | `out/static_calibration_*.csv`, `out/loop_calibration.csv`, `figures/fig_gp_calibration.png` |
 | `reconstruct_gate_picks.py` | Which candidates did the gate send to the oracle in each cycle of the published gated runs, and how was each pick made? | `out/gate_picks_*.csv` |
 | `analyze_composition_baselines.py` | Does the ORB embedding add anything over composition-only models for the two loop targets? | `out/composition_baselines_*.csv` |
+| `analyze_new_arms.py` | Where does each closed-loop arm end, and at what oracle cost? | `out/new_arms_*.csv`, `figures/fig_new_arms_*.png` |
+| `analyze_value_cost.py` | What running best does each arm reach at a fixed number of oracle calls? | `out/value_cost_*.csv`, `figures/fig_rev_value_cost.png` |
+| `analyze_arm_tests.py` | Pooled tests of each control against the gate, and oracle values with and without generator updates | `out/arm_pooled_tests.csv`, `out/frozen_label_values.csv` |
+
+The selection rule of the gate is greedy: the candidate with the largest Expected
+Improvement first, then candidates that maximize Expected Improvement minus 0.5
+times the largest cosine similarity to those already selected. The code and the
+older folders call the second term "DPP". It is a similarity penalty and not a
+Determinantal Point Process. `reconstruct_gate_picks.py` shows that in the
+published runs only the first pick of a cycle was decided by Expected
+Improvement, which is why the `ei_only` and `div_only` arms were added.
 
 `rev_common.py` holds the shared pieces: data loading, the gate's GP and
 selection rule, and the calibration metrics.
